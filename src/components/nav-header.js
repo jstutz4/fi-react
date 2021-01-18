@@ -1,13 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
+// { Component, PropTypes } 
 
 const ulCSS = {
     listStyleType: "none",
     margin: "0",
     paddingLeft: "0",
+    textAlign: 'center',
 }
 
 const navHorizontal = {
-    float: "left",
+    display: 'inline-block',
     padding: "0 7px",
 }
 
