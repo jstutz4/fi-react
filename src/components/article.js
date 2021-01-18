@@ -22,7 +22,7 @@ const headerCSS =
 export default function article(props) {
     return(
         <section style={sectionCSS}>
-            <h1 style={headerCSS}>My Why</h1>
+            <h1 style={headerCSS}>{props.title}</h1>
             <article>
                 Lorem ipsum dolor sit amet, usu iusto ridens volumus et, enim verear vim ea, aliquid vivendum no vel. Alia sonet utamur usu id. Vis at fuisset posidonium, liber audire est eu, civibus legendos no per. Vix timeam scripta sensibus ad. Natum probo discere his at.
 

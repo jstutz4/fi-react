@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // { Component, PropTypes } 
 
 const ulCSS = {
@@ -24,16 +25,16 @@ const navColor = {
 
 const mainNavNames = 
 [
-    {name:"Getting Started", link:"#"}, 
-    {name:"Saving", link:"#"},
-    {name:"Investing", link:"#"},
-    {name:"About", link:"#"},
+    {name:"Getting Started", link:"/"}, 
+    {name:"Saving", link:"/save"},
+    {name:"Investing", link:"/invest"},
+    {name:"About", link:"/about"},
 ]
 
 const linkItems = [];
 
 mainNavNames.forEach((item) => {
-    linkItems.push(<li key={item.name} style={navHorizontal}><a href={item.link}>{item.name}</a></li>);
+    linkItems.push(<li key={item.name} style={navHorizontal}><Link to={item.link}>{item.name}</Link></li>);
 })
 
 export default function NavHeader(props) {
