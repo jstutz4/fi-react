@@ -1,3 +1,8 @@
+body {
+  font-size: larger;
+  background-color: gray;
+}
+
 .center {
   max-width: 80vw;
   margin: auto;
@@ -5,10 +10,10 @@
   flex-direction: column;
 }
 
-nav a:link {
+nav a{
   text-decoration: none;
-  color: black;
-  border: 2px green inset;
+  color: white;
+  border: 2px green outset;
   background-color: rgba(0, 200, 0, .3);
   padding: 0 7px;
   border-radius: 15px;
@@ -20,11 +25,18 @@ nav a:link {
   
 nav a:hover, nav a:active, nav a:focus {
   /* text-decoration: none; */
-  border-style: outset;
-  background-color: green;
-  color: white;
+  border-style: inset;
 }
   
 /* nav a:active {
   text-decoration: none;
 } */
+
+footer a {
+  color: white;
+  padding-right: 10px;
+}
+
+footer a:hover {
+  color: orange;
+}

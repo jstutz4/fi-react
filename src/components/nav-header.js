@@ -18,7 +18,7 @@ const navColor = {
     border: "3px green solid",
     borderRadius: "6px",
     float: "left",
-    backgroundColor: "rgba(0,200,0, .3)",
+    backgroundColor: "rgba(1,100,32, .9)",
     padding: "3px",
     marginTop: "5vh",
 }
