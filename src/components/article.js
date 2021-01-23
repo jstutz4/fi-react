@@ -3,8 +3,7 @@ import React from 'react'
 const sectionCSS = {
     marginTop: '10vh',
       backgroundColor: 'lightgray',
-      padding: '1vw',
-      paddingTop: '0',
+      padding: '10px 1vw',
       borderRadius: '15px',
   }
 

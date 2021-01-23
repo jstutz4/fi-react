@@ -1,6 +1,8 @@
 import React from 'react'
-// import NavHeader from '../components/nav-header'
 import Article from '../components/article'
+import ArticleNav from '../components/articleNav'
+import { Link } from 'react-router-dom'
+
 
 
 const content1 = `What is money? What do you exchange your money for? What do you exchange for your money? Think about these questions before reading on..
@@ -16,10 +18,49 @@ const content3 = `Another element that will help you understand what you want to
 
 const content4 = `This is your foundation your values and your why. When you have a strong sense of your foundation and the joy you get out of from the events of your life you can begin to take control of who you want to be, and not just letting the world taking control and not caring who you end up. In the next section we will go over how you can become aware of how your choices are measuring up to your values, why and joy you want in this life. `
 
-export default function gettingStarted() {
+
+const activeLink = {
+  border: 'none',
+  backgroundColor: 'darkgreen',
+  borderRadius: '0',
+}
+
+const articleGroup1 = {title: "Understanding Money", content: [content1, content2, content3, content4], quote: [quote1, quote2]}
+const articleGroup2 = {title: "Track Your movement of money", content: [content1, content4], quote: [quote1]}
+// const articleGroup3 = {title: "Start Small", content: [content1, content3, content4], quote: [quote1, quote2]}
+
+export default function gettingStarted(props) {
+  let message = articleGroup1
+
+  let links = [{"id":1, "to":"/start/1", "name": "article1"}, {"id":2, "to":"/start/2", "name": "article2"}]
+
+  let articleLinks = []
+  let activeArticle = {}
+
+  links.forEach((article) => {
+    activeArticle = {}
+    if(props.match.params.id === article.id.toString()){
+      activeArticle = activeLink
+    }
+    articleLinks.push(<Link style={activeArticle} to={article.to}>{article.name}</Link>)
+  })
+  
+
+  if(props.match.params.id){
+    console.log("switching to new one")
+      switch(props.match.params.id){
+        case "2":
+          message = articleGroup2
+          break
+        default:
+          message = articleGroup1
+      }
+    }
+
   return (
-    <React.Fragment>
-      {Article({title: "Understanding Money", content: [content1, content2, content3, content4], quote: [quote1, quote2]})}
-    </React.Fragment>
+    <section>
+      {ArticleNav({"articleLinks": articleLinks})}
+      {Article(message)}
+    </section>
   )
 }

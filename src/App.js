@@ -9,10 +9,11 @@ import invest from './pages/invest'
 function App() {
   return (
     <Switch>
-      <Route exact path="/" component={gettingStarted} />
-      <Route exact path="/about" component={about} />
-      <Route exact path="/save" component={save} />
+      <Route exact path="/start/:id" component={gettingStarted} />
+      <Route path="/save/:id" component={save} />
+      <Route exact path="/save/" component={save} />
       <Route exact path="/invest" component={invest} />
+      <Route exact path="/about" component={about} />
     </Switch>
   );
 }

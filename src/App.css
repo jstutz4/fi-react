@@ -27,7 +27,24 @@ nav a:hover, nav a:active, nav a:focus {
   /* text-decoration: none; */
   border-style: inset;
 }
-  
+ 
+
+.articleNav a {
+  border: none;
+  background-color: darkgrey;
+}
+.articleNav a:hover {
+  border: none;
+  background-color: darkgreen;
+  border-radius: 0;
+}
+
+.activeArticle {
+    border: none;
+    background-color: darkgreen;
+    border-radius: 0;
+}
+
 /* nav a:active {
   text-decoration: none;
 } */

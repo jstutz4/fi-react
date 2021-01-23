@@ -14,8 +14,8 @@ const content3 = `I hope me sharing my thoughts and ideas will give you the jump
 const title = "My Why"
 export default function about() {
   return (
-    <React.Fragment>
+    <section>
         {Article({title: title, content: [content1, content2, content3], quote: [quote1, quote2] })}
-    </React.Fragment>
+    </section>
   );
 }

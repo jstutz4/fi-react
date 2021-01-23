@@ -1,19 +1,23 @@
 import React from 'react';
+// import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import skeleton from './components/skeleton';
+
 import Footer from './components/footer'
 import NavHeader from './components/nav-header'
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <div className="center">
-        {NavHeader()}
-        <App />
-        {Footer()}
+            {NavHeader()}
+            <App />
+            {Footer()}
     </div>
     </BrowserRouter>
   </React.StrictMode>,
