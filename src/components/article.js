@@ -1,4 +1,5 @@
 import React from 'react'
+import Video from './video'
 
 const sectionCSS = {
     marginTop: '10vh',
@@ -22,7 +23,7 @@ const headerCSS =
 
 
 export default function article(props) {
-    let content=props.content.map((section,index)=>{
+    let content = props.content.map((section,index)=>{
     let quote = props.quote[index] ? <blockquote  style={quoteCSS}>{props.quote[index]}</blockquote> : null
     let key = props.title + index
         return (
@@ -33,10 +34,10 @@ export default function article(props) {
         )
       })
 
-
     return(
         <section style={sectionCSS}>
             <h1 style={headerCSS}>{props.title}</h1>
+            {Video({"video":props.video, "files": props.files})}
             {content}
         </section>
     );

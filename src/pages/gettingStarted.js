@@ -4,11 +4,10 @@ import ArticleNav from '../components/articleNav'
 import { Link } from 'react-router-dom'
 
 
-
 const content1 = `What is money? What do you exchange your money for? What do you exchange for your money? Think about these questions before reading on..
 The above questions may shed light on your why, that is why do you want money. Another way to ask this question is what would you do if didn't have to work? What do you do now when you don't have to work? You may not know what your life would look like if you didn't have to work and that is okay. One of the goals is to be able to answer this question.
 `
-const quote1 = `What would you do if you didn't have to work?`
+const quote1 = `What would you do if you didn't have to work for money?`
 
 const content2 = `To be able to compare or weigh activities, jobs, or destressors with each other we need a common measurement. What do you exchange for your money? TIME. Time is the one thing we cannot control and we never know when we will run out. If you view your choices as a value of time then you can begin to make informed judgments on your choices.`
 
@@ -42,12 +41,11 @@ export default function gettingStarted(props) {
     if(props.match.params.id === article.id.toString()){
       activeArticle = activeLink
     }
-    articleLinks.push(<Link style={activeArticle} to={article.to}>{article.name}</Link>)
+    articleLinks.push(<Link key={article.name} style={activeArticle} to={article.to}>{article.name}</Link>)
   })
   
 
   if(props.match.params.id){
-    console.log("switching to new one")
       switch(props.match.params.id){
         case "2":
           message = articleGroup2
@@ -60,7 +58,7 @@ export default function gettingStarted(props) {
   return (
     <section>
       {ArticleNav({"articleLinks": articleLinks})}
-      {Article(message)}
+      {Article({...message, "video": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1", "name": "Intro video", "files": [{"source": "../../public/files/trackMoney.xlsx", "text":"Track your expenses -Sample"}]})}
     </section>
   )
 }

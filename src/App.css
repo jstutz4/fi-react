@@ -57,3 +57,19 @@ footer a {
 footer a:hover {
   color: orange;
 }
+
+
+.video {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.video * {
+  align-self: center;
+}
+
+.video iframe{
+  min-width: 30vw;
+  min-height: 15vw;
+}
