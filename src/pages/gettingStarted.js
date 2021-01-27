@@ -42,6 +42,7 @@ export default function gettingStarted(props) {
       activeArticle = activeLink
     }
     articleLinks.push(<Link key={article.name} style={activeArticle} to={article.to}>{article.name}</Link>)
+    // articleLinks.push(<Link key={article.name} style={activeArticle} to={article.to}>{article.name} onClick={setArticle(article.id)}</Link>)
   })
   
 
@@ -58,7 +59,7 @@ export default function gettingStarted(props) {
   return (
     <section>
       {ArticleNav({"articleLinks": articleLinks})}
-      {Article({...message, "video": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1", "name": "Intro video", "files": [{"source": "../../public/files/trackMoney.xlsx", "text":"Track your expenses -Sample"}]})}
+      {Article({...message, "video": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1", "name": "Intro video", "files": [{"source": "./../files/trackMoney.xlsx", "text":"Track your expenses -Sample"}]})}
     </section>
   )
 }
