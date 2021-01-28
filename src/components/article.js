@@ -37,7 +37,7 @@ export default function article(props) {
     return(
         <section style={sectionCSS}>
             <h1 style={headerCSS}>{props.title}</h1>
-            {Video({"video":props.video, "files": props.files})}
+            {Video({"video":props.video, "title": props.name, "files": props.files})}
             {content}
         </section>
     );
