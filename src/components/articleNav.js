@@ -18,12 +18,11 @@ const noBullets = {
 
 
 export default function articleNav(props) {
-    console.log(props)
     return (
         <nav style={absPos} className="articleNav">
             <ul style={noBullets}>
                 <li>
-                    {props.articleLinks}
+                    {props.children}
                 </li>
             </ul>
         </nav>

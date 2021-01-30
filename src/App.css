@@ -10,6 +10,7 @@ body {
   flex-direction: column;
 }
 
+
 nav a{
   text-decoration: none;
   color: white;
@@ -22,17 +23,18 @@ nav a{
 /* nav a:visited {
   text-decoration: none;
 } */
-  
-nav a:hover, nav a:active, nav a:focus {
+
+nav a:hover {
   /* text-decoration: none; */
   border-style: inset;
 }
- 
+
 
 .articleNav a {
   border: none;
   background-color: darkgrey;
 }
+
 .articleNav a:hover {
   border: none;
   background-color: darkgreen;
@@ -40,14 +42,11 @@ nav a:hover, nav a:active, nav a:focus {
 }
 
 .activeArticle {
-    border: none;
-    background-color: darkgreen;
-    border-radius: 0;
+  border: none;
+  background-color: darkgreen !important;
+  border-radius: 0;
 }
 
-/* nav a:active {
-  text-decoration: none;
-} */
 
 footer a {
   color: white;

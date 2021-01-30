@@ -25,7 +25,7 @@ const headerCSS =
 export default function article(props) {
     let content = props.content.map((section,index)=>{
     let quote = props.quote[index] ? <blockquote  style={quoteCSS}>{props.quote[index]}</blockquote> : null
-    let key = props.title + index
+    let key = props.articleTitle + index
         return (
             <React.Fragment key={key}>
                 <article >{section}</article>
@@ -36,8 +36,8 @@ export default function article(props) {
 
     return(
         <section style={sectionCSS}>
-            <h1 style={headerCSS}>{props.title}</h1>
-            {Video({"video":props.video, "title": props.name, "files": props.files})}
+            <h1 style={headerCSS}>{props.articleTitle}</h1>
+            {Video({...props})}
             {content}
         </section>
     );

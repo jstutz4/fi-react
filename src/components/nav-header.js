@@ -23,12 +23,10 @@ const navColor = {
     marginTop: "5vh",
 }
 
-const defaultSave = "1"
-
 const mainNavNames = 
 [
     {name:"Getting Started", link:"/start/1"}, 
-    {name:"Saving", link:`/save/${defaultSave}`},
+    {name:"Saving", link:`/save/13`},
     {name:"Investing", link:"/invest"},
     {name:"About", link:"/about"},
 ]

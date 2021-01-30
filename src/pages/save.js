@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Article from '../components/article'
 import ArticleNav from '../components/articleNav'
-import { Link } from 'react-router-dom'
+import articleLinkHelper from '../components/articleLinkHelper'
 
 
 
@@ -12,54 +12,42 @@ const quote1 = `Savings provide protection and security even if you loose your j
 const content2 = `If you are like me and that feel like its not the best to be holding onto 20-50K in emergency fund in bank accounts, well you do have other options. I would encourage you to diversify your savings especially as you feel more confident in you and your families ability to receive an income even after a job loss, to begin to put money towards investing like bonds, treasuries, gold, and stock market index funds. This extension of an emergency fund can be held in a taxable brokage account or ROTH IRA account. `
 
 
-const articleGroup1 = {title: "What is Savings For", content: [content1, content2], quote: [quote1]}
+const articleNav = [{"id":13, "to": "/save/13", "name": "article1"}, {"id":14, "to": "/save/14", "name": "article2"}, {"id":15, "to": "/save/15", "name": "article3"}]
 
-const articleGroup2 = {title: "From Saving to Investing", content: [content2, content1], quote: []}
-const articleGroup3 = {title: "Where to stash your savings", content: [content2, content1], quote: []}
+const saveArticles = {13: {"video": null,
+                            "articleTitle": "What is Savings For",
+                            "content":[content1, content2], 
+                            "quote": [quote1]
+                          },
+                      14: {"video": "", 
+                          "articleTitle": "Where to stash your savings",
+                          "content":[content2, content1], 
+                          "quote": []
+                        },
+                      15: {"video": "", 
+                          "articleTitle": "From Saving to Investing",
+                          "content":[content1, content1], 
+                          "quote": [quote1]
+                        },
+                          
+                       }
 
-const activeLink = {
-  border: 'none',
-  backgroundColor: 'darkgreen',
-  borderRadius: '0',
-}
+export default function Start(props) {
+  const defaultID = Object.keys(saveArticles)[0]
+  const [activeArticle, setActiveArticle] = useState(defaultID);
 
-export default function save(props) {
-  console.log(props.match)
-  console.log(props.location)
-  let message = articleGroup1
-  console.log("keep old one")
-  let links = [{"id":1, "to":"/save/1", "name": "article1"}, {"id":2, "to":"/save/2", "name": "article2"}, {"id":3, "to":"/save/3", "name": "article3"}]
 
-  let articleLinks = []
-  let activeArticle = {}
-
-  links.forEach((article) => {
-    activeArticle = {}
-    if(props.match.params.id === article.id.toString()){
-      activeArticle = activeLink
-    }
-    articleLinks.push(<Link style={activeArticle} to={article.to}>{article.name}</Link>)
-  })
-  
-
-  if(props.match.params.id){
-    console.log("switching to new one")
-      switch(props.match.params.id){
-        case "3":
-          message = articleGroup3
-          break
-        case "2":
-          message = articleGroup2
-          break
-        default:
-          message = articleGroup1
-      }
-    }
+  // useEffect(() => {
+  //   // go fetch next article? 
+    
+  // });
 
   return (
     <section>
-        {ArticleNav({"articleLinks":articleLinks})}
-        {Article(message)}
+      <ArticleNav>
+        {articleLinkHelper({"links": articleNav}, activeArticle, setActiveArticle)}
+      </ArticleNav>
+      {Article(saveArticles[activeArticle])}
     </section>
-  )
+  );
 }
