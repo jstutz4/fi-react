@@ -22,7 +22,7 @@ const articleNav = [{"id":1, "to":"/start/1", "name": "article1"}, {"id":2, "to"
 
 const startArticles = {1: {"video": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1", 
                             "videoTitle": "Intro video", 
-                            "files": [{"source": "../../public/files/trackMoney.xlsx", "text":"Track your expenses -Sample"}],
+                            "files": [{"source": "/fi-react/files/trackMoney.xlsx", "text":"Track your expenses -Sample"}],
                             "articleTitle": "Understanding Money",
                             "content":[content1, content2, content3, content4], 
                             "quote": [quote1, quote2]
