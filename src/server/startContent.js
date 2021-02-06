@@ -1,9 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import Article from '../components/article'
-import ArticleNav from '../components/articleNav'
-import articleLinkHelper from '../components/articleLinkHelper'
-
-// each article will have its own id
 const content1 = `What is money? What do you exchange your money for? What do you exchange for your money? Think about these questions before reading on..
 The above questions may shed light on your why, that is why do you want money. Another way to ask this question is what would you do if didn't have to work? What do you do now when you don't have to work? You may not know what your life would look like if you didn't have to work and that is okay. One of the goals is to be able to answer this question.
 `
@@ -17,41 +11,33 @@ const content3 = `Another element that will help you understand what you want to
 
 const content4 = `This is your foundation your values and your why. When you have a strong sense of your foundation and the joy you get out of from the events of your life you can begin to take control of who you want to be, and not just letting the world taking control and not caring who you end up. In the next section we will go over how you can become aware of how your choices are measuring up to your values, why and joy you want in this life. `
 
-// for the getting started page
-const articleNav = [{"id":1, "to":"/start/1", "name": "article1"}, {"id":2, "to":"/start/2", "name": "article2"}]
 
-const startArticles = {1: {"video": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1", 
-                            "videoTitle": "Intro video", 
-                            "files": [{"source": "/fi-react/files/trackMoney.xlsx", "text":"Track your expenses -Sample"}],
-                            "articleTitle": "Understanding Money",
-                            "content":[content1, content2, content3, content4], 
-                            "quote": [quote1, quote2]
-                          },
-                       2: {"video": "", 
-                          "articleTitle": "You and money",
-                          "content":[content2, content3, content4], 
-                          "quote": []
-                        },
-                          
-                       }
- 
-
-export default function Start(props) {
-  const defaultID = Object.keys(startArticles)[0]
-  const [activeArticle, setActiveArticle] = useState(defaultID);
-
-
-  // useEffect(() => {
-  //   // go fetch next article? 
-    
-  // });
-
-  return (
-    <section>
-      <ArticleNav>
-        {articleLinkHelper({"links": articleNav}, activeArticle, setActiveArticle)}
-      </ArticleNav>
-      {Article(startArticles[activeArticle])}
-    </section>
-  );
+const UnderstandingMoney = {
+"id":1,
+"video": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1", 
+"videoTitle": "Intro video", 
+"files": [{"id":101,"source": "/fi-react/files/trackMoney.xlsx", "text":"Track your expenses -Sample"}],
+"articleTitle": "Understanding Money",
+"contents":[content1, content2, content3, content4], 
+"quotes": [quote1, quote2]
 }
+
+const HowTo = {
+"id":7,
+"video": "", 
+"videoTitle": "", 
+"articleTitle": "You and money",
+"contents":[content2, content3, content4], 
+"quotes": []
+}
+
+const StartNav = [
+    {id: 1, name:"Your Why", to:"/start/1"}, 
+    {id: 7, name:"Track Expenses", to:`/start/7`},
+    ]
+
+module.exports ={
+UnderstandingMoney,
+HowTo,
+StartNav,
+};

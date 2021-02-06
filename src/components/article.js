@@ -23,8 +23,11 @@ const headerCSS =
 
 
 export default function article(props) {
-    let content = props.content.map((section,index)=>{
-    let quote = props.quote[index] ? <blockquote  style={quoteCSS}>{props.quote[index]}</blockquote> : null
+    if(!props || !props.contents){
+        return <section>No Data</section>
+    }
+    let content = props.contents.map((section,index)=>{
+    let quote = props.quotes[index] ? <blockquote  style={quoteCSS}>{props.quotes[index]}</blockquote> : null
     let key = props.articleTitle + index
         return (
             <React.Fragment key={key}>

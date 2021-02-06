@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom'
 export default function articleLinkHelper(props, activeArticle, setActiveArticle){
     let articleLinks = []
 
-    props.links.forEach((article) => {
-       let activeStyle = ""
-        if(activeArticle === article.id){
-          activeStyle = "activeArticle"
-        }
-        articleLinks.push(getLink(article, activeStyle, setActiveArticle))
-      })
+    if(props && props.links){
+      props.links.forEach((article) => {
+        let activeStyle = ""
+          if(activeArticle === article.id){
+            activeStyle = "activeArticle"
+          }
+          articleLinks.push(getLink(article, activeStyle, setActiveArticle))
+        })
 
-    return(
-        <React.Fragment>
-            {articleLinks}
-        </React.Fragment>
-    )
+      return(
+          <React.Fragment>
+              {articleLinks}
+          </React.Fragment>
+      )
+    }
 }
 
 function getLink(article, activeStyle, setActiveArticle){

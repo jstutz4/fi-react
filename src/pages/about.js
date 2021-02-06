@@ -1,21 +1,61 @@
-import React from 'react'
-import Article from '../components/article'
+import React, { useState } from 'react'
+import MainContent from '../components/main'
 
-const content1 = `One of my first memories with many was about saving. When I was growing up I have a paper route. Each month when the pay check came my mother explained that I didn't have many expenses so she encouraged me to save 80% of what I earned each month.`
+import { useQuery } from '@apollo/react-hooks';
+import gql from "graphql-tag";
 
-const quote1 = `From a young age I was taught to Save.`
+export default function about(props) {
+  const aboutQuery = gql`
+  query aboutQuery {
+    page(screenName:"about") {
+      id,
+      screenName,
+      articles {
+        id,
+        articleTitle,
+        video,
+        videoTitle,
+        files {
+          id,
+          source,
+          text
+        },
+        contents,
+        quotes,
+      },
+    }
+    
+    nav(id:4){
+      id,
+      to,
+      name,
+    }
 
-const content2 = `In college I have a had a significate about of money just sitting in a bank and thought how can I start investing? I discovered podcasts and started listening to 'millennial investing' and 'choose FI'. Through these podcast I was introduced to a variety of ideas and eventually read 'The Simple Path to Wealth' and 'Your money or Your Life'. The one question I kept asking is how can we start combining ideas together and what effect will that have when comparing different financial independence ideas?`
+  }`
+  const initialState = 10000
+  const [activeArticle, setActiveArticle] = useState(initialState);
+  
+  let { data, loading, error }  = useQuery(aboutQuery);
+  
+  if(loading) return <section>No Data</section>
+  if(error) return <section>we have an error</section>
+  
+  const urlID = props.match.params.id
 
-const quote2 = `I kept asking, How can we compare different ideas as a groups instead of individual tactics?`
-
-const content3 = `I hope me sharing my thoughts and ideas will give you the jump start in to financial independence (FI) you need.`
-
-const title = "My Why"
-export default function about() {
+  //if the url param id was changed then update active article
+  if( urlID && activeArticle != urlID){
+    setActiveArticle(props.match.params.id)
+  } //if url param id is null and first render
+  else if(!urlID && activeArticle == initialState){
+    setActiveArticle(data.page.articles[0].id)
+  }
+  
+  const articleNav = data.nav
+  const article = data.page.articles.filter(art => art.id == activeArticle)[0]
+  
   return (
-    <section>
-        {Article({title: title, content: [content1, content2, content3], quote: [quote1, quote2] })}
-    </section>
+    <React.Fragment>
+      {MainContent(props,articleNav,article, activeArticle, setActiveArticle)}
+    </React.Fragment>
   );
 }

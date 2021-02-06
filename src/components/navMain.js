@@ -1,6 +1,8 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-// { Component, PropTypes } 
+
+import { useQuery } from '@apollo/react-hooks';
+import gql from "graphql-tag";
 
 const ulCSS = {
     listStyleType: "none",
@@ -25,8 +27,8 @@ const navColor = {
 
 const mainNavNames = 
 [
-    {name:"Getting Started", link:"/start/1"}, 
-    {name:"Saving", link:`/save/13`},
+    {name:"Getting Started", link:"/start"}, 
+    {name:"Saving", link:`/save`},
     {name:"Investing", link:"/invest"},
     {name:"About", link:"/about"},
 ]
@@ -34,10 +36,14 @@ const mainNavNames =
 const linkItems = [];
 
 mainNavNames.forEach((item) => {
-    linkItems.push(<li key={item.name} style={navHorizontal}><Link to={item.link}>{item.name}</Link></li>);
+    linkItems.push(<li key={item.name} style={navHorizontal}>
+        <Link to={item.link}>{item.name}</Link>
+        </li>);
 })
 
+
 export default function NavHeader(props) {
+
     return(
         <nav style={navColor}>
             <ul style={ulCSS}>

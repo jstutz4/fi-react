@@ -1,20 +1,17 @@
 import { Route, Switch } from 'react-router-dom'
 import './App.css';
 import about from './pages/about'
-// import gettingStarted from './pages/gettingStarted'
 import save from './pages/save'
 import invest from './pages/invest'
-import newGettingStarted from './pages/newGettingStarted'
+import gettingStarted from './pages/gettingStarted'
 
 
-function App() {
+function App(props) {
   return (
     <Switch>
-      <Route exact path="/start/:id" component={newGettingStarted} />
-      <Route exact path="/start" component={newGettingStarted} />
-      <Route path="/save/:id" component={save} />
-      <Route exact path="/save/" component={save} />
-      <Route exact path="/invest" component={invest} />
+      <Route path="/start/:id?" component={gettingStarted} />
+      <Route path="/save/:id?" component={save} />
+      <Route exact path="/invest/:id?" component={invest} />
       <Route exact path="/about" component={about} />
     </Switch>
   );

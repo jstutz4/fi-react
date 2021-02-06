@@ -1,20 +1,67 @@
-import React from 'react'
-import Article from '../components/article'
-// import ArticleNav from '../components/articleNav'
+import React, { useState, useEffect } from 'react';
+
+import MainContent from '../components/main'
+import { useQuery } from '@apollo/react-hooks';
+import gql from "graphql-tag";
 
 
-const content1 = `Why do we invest? Is it to made a quick buck, to support businesses that support our values, to make sure our retirement accounts are "full", or is investing something by the rich for the rich? Do you consider education has an investment? How much did money, or time did it require and how much time or money did your education give you in return. When considering the future a couple hundred or thousand dollar investment to learn new skills, or a degree or certificate if the return is high even for it to make sense to you. So when you think of investment don't just consider the stock market, real estate, and other commodities, but also education and marketable skills.`
+const investQuery = gql`
+  query investQuery {
+    page(screenName:"invest") {
+      id,
+      screenName,
+      articles {
+        id,
+        articleTitle,
+        video,
+        videoTitle,
+        files {
+          id,
+          source,
+          text
+        },
+        contents,
+        quotes,
+      },
+    }
+    
+    nav(id:3){
+      id,
+      to,
+      name,
+    }
 
-const content2 = `The money we "invest" should be consider money we will not need till a future several years down the road. With a mindset of investing for the future short-term gains don't matter. This is why when the market drops we don't care because we know it is going to go back up, and we can wait. The most important key to investing is to understand why you invest in what you investing in, make a plan, execute the plan, and stick to your plan. Most loss of investing comes from emotional and psychological (fear) choices that are not inline with an a future minded investing plan. `
-
-const quote1 = `Investing is not just the stock market or real estate but you! Future minded investing is investing in you.`
+  }`
 
 
-export default function invest() {
+export default function invest(props) {
+  // set to some junk value
+  const initialState = 10000
+  const [activeArticle, setActiveArticle] = useState(initialState);
+  
+  let { data, loading, error }  = useQuery(investQuery);
+  
+  if(loading) return <section>No Data</section>
+  if(error) return <section>we have an error</section>
+  
+  const urlID = props.match.params.id
+
+  //if the url param id was changed then update active article
+  if( urlID && activeArticle != urlID){
+    setActiveArticle(props.match.params.id)
+  } //if url param id is null and first render
+  else if(!urlID && activeArticle == initialState){
+    setActiveArticle(data.page.articles[0].id)
+  }
+  
+  const articleNav = data.nav
+  const article = data.page.articles.filter(art => art.id == activeArticle)[0]
+
+
+
   return (
-    <section>
-        {/* {ArticleNav({"articleLinks": []})} */}
-        {Article({title: "Future Minded Investing", content: [content1, content2], quote: [quote1]})}
-    </section>
-  )
+    <React.Fragment>
+      {MainContent(props, articleNav,article, activeArticle, setActiveArticle)}
+    </React.Fragment>
+  );
 }
