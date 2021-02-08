@@ -2,7 +2,7 @@
   "name": "fi-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jstutz4.github.io/fi-react/",
+
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
@@ -26,7 +26,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "npm-run-all --parallel watch:server start:web",
+    "start": "react-scripts start",
     "start:web": "react-scripts start",
     "start:server": "node src/server",
     "watch:server": "nodemon --watch src/server src/server",
@@ -60,5 +60,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.1.0"
-  }
+  },
+
+  "proxy": "http://localhost:4000"
 }

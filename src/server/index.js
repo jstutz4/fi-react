@@ -3,6 +3,8 @@ const cors = require('cors');
 const {graphqlHTTP} = require('express-graphql');
 const gql = require('graphql-tag');
 const { buildASTSchema } = require('graphql');
+const path = require('path')
+
 const startPage = require('./startContent')
 const savePage = require('./saveContent')
 const investPage = require('./investContent')
@@ -134,6 +136,12 @@ app.use('/graphql', graphqlHTTP({
   rootValue: root,
   graphiql: true,
 }));
+
+app.use(express.static('public'))
+
+app.get('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
 
 const port = process.env.PORT || 4000
 app.listen(port);
