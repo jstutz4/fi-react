@@ -34,7 +34,7 @@ const investQuery = gql`
   }`
 
 
-export default function invest(props) {
+export default function Invest(props) {
   // set to some junk value
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);

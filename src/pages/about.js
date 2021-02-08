@@ -4,7 +4,7 @@ import MainContent from '../components/main'
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
 
-export default function about(props) {
+export default function About(props) {
   const aboutQuery = gql`
   query aboutQuery {
     page(screenName:"about") {
