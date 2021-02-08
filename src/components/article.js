@@ -2,10 +2,10 @@ import React from 'react'
 import Video from './video'
 
 const sectionCSS = {
-    marginTop: '10vh',
-      backgroundColor: 'lightgray',
-      padding: '10px 1vw',
-      borderRadius: '15px',
+    marginTop: '50px',
+    backgroundColor: 'lightgray',
+    padding: '10px 1vw',
+    borderRadius: '15px',
   }
 
 const quoteCSS = {

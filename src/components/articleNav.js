@@ -1,17 +1,13 @@
 import React from 'react'
 
 const absPos = {
-    position: "absolute",
-    top: '98px',
-    
+    position: "absolute",    
 }
 
 const noBullets = {
     listStyleType: "none",
     backgroundColor: 'darkgrey',
     padding: '0',
-    marginLeft: '16px',
-
 }
 
 

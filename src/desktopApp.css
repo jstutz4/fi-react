@@ -1,0 +1,56 @@
+@media only screen and (min-width: 1050px){
+    #mainNav{
+        align-self: center;
+    }
+
+    .article{
+        align-self: center;
+        max-width: 1000px;
+    }
+
+    .articleNav ul{
+        display: inline-block;
+    }
+    
+    nav a{
+    text-decoration: none;
+    color: white;
+    border: 2px green outset;
+    background-color: rgba(0, 200, 0, .3);
+    padding: 0 7px;
+    border-radius: 15px;
+    }
+
+
+    nav a:hover {
+        border-style: inset;
+        border-bottom: none;
+    }
+
+    ul {
+        display: flex;
+    }
+
+    ul li {
+        align-self:center ;
+        padding-left: 10px;
+    }
+    ul li:first-child {
+        padding-left: 0;
+    }
+
+    li:hover{
+        background-color: rgba(0, 200, 0, .01);
+    }
+
+    .hidden {
+        display: block;
+    }
+
+    .show{
+        display: none;
+    }
+    .MainNav:first-child{
+        display: flex;
+    }
+}
