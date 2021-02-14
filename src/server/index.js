@@ -5,10 +5,58 @@ const gql = require('graphql-tag');
 const { buildASTSchema } = require('graphql');
 const path = require('path')
 
+const sqlite3  = require('sqlite3').verbose();
+
 const startPage = require('./startContent')
 const savePage = require('./saveContent')
 const investPage = require('./investContent')
-const aboutPage = require('./aboutContent')
+const aboutPage = require('./aboutContent');
+const { resolve } = require('path');
+// const db = require('../../public/test.db')
+
+
+
+const { Pool } = require('pg');
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: ' ',
+  port: 5432,
+})
+// pool.query('SELECT * from video', (err, res) => {
+//   if(err){
+//     console.log(err)
+//   }
+//   else {
+//     console.log(res.rows) 
+//   }
+// })
+
+
+// const { Client, Pool } = require('pg');
+// const connnectionString = process.env.DATABASE_URL || "postgresql://postgres@localhost:5432/article";
+// const pool = new Pool({
+//     connectionString: connnectionString,
+//     key: " "
+// });
+
+// pool.query('select * from stocks', [], function(error, result){
+//   if(error){
+//     console.log(error)
+//   }
+//   else {
+//     console.log(result.rows)
+//   }
+// })
+
+
+// db.query('SELECT * FROM Employee', function (err, result) {
+//   if (err) {
+//       console.log(err);
+//   }
+//   console.log(results.rows);
+// });
 
 const POSTS = [
   { id: 2, author: "John Doe" },
@@ -70,13 +118,41 @@ const NAVS = {
 
 }
 
+ async function getVideo(id){
+  const video1query = `SELECT * from video where videoid = $1`
+  pool.query(video1query, [id], (err, res) => {
+    if(err){
+      console.log(err)
+      return "some string"
+    }
+    else {
+      // console.log(Promise.resolve(res.rows)) 
+      return Promise.resolve(res.rows[0])
+    }
+    // pool.end() 
+  })
+}
 
+const TEST = [
+  {
+    videoid: 1,
+    title: 'Intro video',
+    source: 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1'
+  },
+  {
+    videoid: 2,
+    title: 'djhvideo',
+    source: 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1'
+  }
+]
   const schema = buildASTSchema(gql`
   type Query {
     posts: [Post]
     post(id: ID!): Post
     page(screenName: String!): Page
     nav(id:ID): [Nav]
+    video(id:ID!): Video
+    videos: [Video]
 
   }
 
@@ -109,6 +185,12 @@ const NAVS = {
     text: String
   }
 
+  type Video {
+    videoid: ID,
+    title: String
+    source: String
+  }
+
   type Nav {
     id: ID
     to: String
@@ -120,6 +202,13 @@ const NAVS = {
 // assigns and id to the posts
 const mapPost = (post, id) => post && ({ id, ...post });
 
+function returnTest(){
+  return TEST
+}
+let dbVideo = Promise.resolve(getVideo(1))
+console.log(dbVideo)
+
+//resolvers
 const root = {
   posts: () => POSTS,
   // posts: () => POSTS.map(mapPost),
@@ -127,15 +216,33 @@ const root = {
   // post: ({ id }) => mapPost(POSTS[id], id),
   page:({screenName}) => PAGES.filter(page => page.screenName == screenName)[0],
   nav: ({id}) => NAVS[id],
+  videos:() => returnTest(),
+  // video:({id}) => {const promise = getVideo(id); return promise.then(result => {
+  //   console.log("return this " + result )
+  // })}
+
+  // Video: {
+  //   video(root, args) { 
+  //     console.log("idk stop")
+  //     return getVideo(args.id) },
+  //   // posts(root, args) { return posts.filter(post => post.id === args.id)[0] }
+  // },
 };
 
-const app = express();
-app.use(cors());
-app.use('/graphql', graphqlHTTP({
-  schema,
-  rootValue: root,
-  graphiql: true,
-}));
+
+// console.log("LOOK")
+// console.log(schema.getTypeMap())
+// let videoType = new schema
+
+// const db = new sqlite3.Database('../../public/test.db')
+
+    const app = express();
+    app.use(cors());
+    app.use('/graphql', graphqlHTTP({
+      schema,
+      rootValue: root,
+      graphiql: true,
+    }))
 
 app.use(express.static('public'))
 

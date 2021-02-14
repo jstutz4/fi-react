@@ -1,0 +1,52 @@
+CREATE TABLE File (
+  FileID      SERIAL PRIMARY KEY, 
+  source      TEXT NOT NULL,
+  displayname TEXT NOT NULL
+);
+
+CREATE TABLE Video (
+  VideoID    SERIAL PRIMARY KEY, 
+  title      TEXT NOT NULL,
+  source     TEXT NOT NULL
+);
+
+CREATE TABLE VideoFile (
+  ID    SERIAL PRIMARY KEY,
+  VideoID     INTEGER NOT NULL,
+  FileID      INTEGER NOT NULL,
+  
+  FOREIGN KEY(VideoID) REFERENCES Video(VideoID),
+  FOREIGN KEY(FileID) REFERENCES File(FileID)
+);
+
+
+/**INSERT DATA **/
+
+INSERT INTO File (source, displayname)
+VALUES('/fi-react/files/trackMoney.xlsx', 'Track your expenses -Sample');
+
+INSERT INTO File (source, displayname)
+VALUES('/fi-react/files/youandmoney.txt', 'Questions to learn how you see money');
+
+INSERT INTO Video (title, source)
+VALUES('Intro video', 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1');
+
+INSERT INTO VideoFile(VideoID, FileID)
+VALUES((SELECT VideoID FROM Video WHERE title = 'Intro video'), (SELECT FileID from File WHERE displayname LIKE '%Track%expenses%' ));
+
+INSERT INTO VideoFile(VideoID, Fileid)
+VALUES((SELECT VideoID FROM Video WHERE title = 'Intro video'), (SELECT FileID from File WHERE displayname LIKE '%uestions%oney%'));
+
+/**queries**/
+
+SELECT File.source, File.displayname from VideoFile
+INNER JOIN File ON File.FileID = VideoFile.FileID
+WHERE VideoID = 2;
+
+/* either one works */
+
+SELECT source, displayname from File
+INNER JOIN VideoFile ON VideoFile.FileID = File.FileID
+WHERE VideoID = 1;
+
+SELECT title, source from Video WHERE VideoID = 1;
