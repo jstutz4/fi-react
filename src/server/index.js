@@ -81,8 +81,7 @@ const NAVS = {
   type Query {
     posts: [Post]
     post(id: ID!): Post
-    page(screenName: String!): Page
-    nav(id:ID): [Nav]
+    page(id: ID!): Page
     video(id:ID!): Video
     videos: [Video]
     article(id:ID): Article
@@ -99,6 +98,7 @@ const NAVS = {
     id: ID
     screenName: String!
     articles: [Article]
+    articleNav: [Link]
   }
 
   type Article {
@@ -122,7 +122,7 @@ const NAVS = {
     files: [File]
   }
 
-  type Nav {
+  type Link {
     id: ID
     to: String
     name: String
@@ -132,9 +132,10 @@ const NAVS = {
 
 //resolvers
 const root = {
-  videos: require('./queries/getVideosQuery').func,
-  video:  require('./queries/getVideoQuery').func,
-  article: require('./queries/getArticle').func, 
+  // videos: require('./queries/getVideosQuery').func,
+  // video:  require('./queries/getVideoQuery').func,
+  // article: require('./queries/getArticle').func, 
+  page: require('./queries/getPage').func
   // page: require('') 
   // posts: () => POSTS,
   // // posts: () => POSTS.map(mapPost),

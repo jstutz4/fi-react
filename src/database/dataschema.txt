@@ -55,6 +55,26 @@ CREATE TABLE articleParagraphs (
   FOREIGN KEY(paragraphid) REFERENCES paragraph(id)
 );
 
+create table nav(
+  id serial PRIMARY key,
+
+)
+
+create table page (
+  id serial PRIMARY key,
+  screenName text not null
+);
+
+create table pagearticles (
+  id serial PRIMARY key,
+  pageid INTEGER not null,
+  articleid integer not null,
+
+  FOREIGN KEY(pageid) REFERENCES page(id),
+  FOREIGN KEY(articleid) REFERENCES article(id)
+);
+
+
 
 /**INSERT DATA **/
 
@@ -84,6 +104,9 @@ VALUES((SELECT VideoID FROM Video WHERE title = 'Intro video'), (SELECT FileID f
 
 Insert into article (articletitle, videoID)
 VALUES('Understanding Money', (Select videoID from video where videoid = 1));
+
+Insert into article (articletitle, videoID)
+VALUES('Being content', null);
 
 insert into paragraph(paragraph)
 values($$What is money? What do you exchange your money for? What do you exchange for your money? Think about these questions before reading on.. The above questions may shed light on your why, that is why do you want money. Another way to ask this question is what would you do if didn't have to work? What do you do now when you don't have to work? You may not know what your life would look like if you didn't have to work and that is okay. One of the goals is to be able to answer this question.$$);
@@ -121,6 +144,14 @@ values(1, 1);
 insert into articleQuotes(articleid, quoteid)
 values(1, 2);
 
+insert into page (screenName)
+values($$start$$);
+
+insert into pagearticles (pageid, articleid)
+values(1,1);
+insert into pagearticles (pageid, articleid)
+values(1,2);
+
 /**queries**/
 
 SELECT v.title, v.source as vidSource, File.source as fileSource, File.displayname from video
@@ -137,5 +168,6 @@ WHERE VideoID = 1;
 
 SELECT title, source from Video WHERE VideoID = 1;
 
-ALTER TABLE files
-ALTER COLUMN displayname SET DATA TYPE varchar(100);
+select articleid from pagearticles where pageid = 1;
+
+select * from article where id = any (select articleid from pagearticles where pageid = 1);

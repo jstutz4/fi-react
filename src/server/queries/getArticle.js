@@ -4,6 +4,7 @@ const videoQuery = require('./getVideoQuery')
 
 
 exports.func = async ({id}) => {
+    
     var pool = new Pool({
         user: 'postgres',
         host: 'localhost',
@@ -32,13 +33,9 @@ exports.func = async ({id}) => {
       quotes = quotes.map((quote) => {return quote.quote})
 
 
-    //   pool.end()
-    //   console.log("we have a problem")
-    //   console.log(id)
-    //   console.log(article)
-    //   console.log(paragraphs)
-    //   console.log(quotes)
-    //   console.log(video)
+      pool.end()
+
+      
 
       return {...article, "contents":paragraphs, "quotes": quotes, "video":video}
 }
