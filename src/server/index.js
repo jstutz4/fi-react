@@ -7,56 +7,12 @@ const path = require('path')
 
 const sqlite3  = require('sqlite3').verbose();
 
+
 const startPage = require('./startContent')
 const savePage = require('./saveContent')
 const investPage = require('./investContent')
 const aboutPage = require('./aboutContent');
 const { resolve } = require('path');
-// const db = require('../../public/test.db')
-
-
-
-const { Pool } = require('pg');
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: ' ',
-  port: 5432,
-})
-// pool.query('SELECT * from video', (err, res) => {
-//   if(err){
-//     console.log(err)
-//   }
-//   else {
-//     console.log(res.rows) 
-//   }
-// })
-
-
-// const { Client, Pool } = require('pg');
-// const connnectionString = process.env.DATABASE_URL || "postgresql://postgres@localhost:5432/article";
-// const pool = new Pool({
-//     connectionString: connnectionString,
-//     key: " "
-// });
-
-// pool.query('select * from stocks', [], function(error, result){
-//   if(error){
-//     console.log(error)
-//   }
-//   else {
-//     console.log(result.rows)
-//   }
-// })
-
-
-// db.query('SELECT * FROM Employee', function (err, result) {
-//   if (err) {
-//       console.log(err);
-//   }
-//   console.log(results.rows);
-// });
 
 const POSTS = [
   { id: 2, author: "John Doe" },
@@ -118,33 +74,9 @@ const NAVS = {
 
 }
 
- async function getVideo(id){
-  const video1query = `SELECT * from video where videoid = $1`
-  pool.query(video1query, [id], (err, res) => {
-    if(err){
-      console.log(err)
-      return "some string"
-    }
-    else {
-      // console.log(Promise.resolve(res.rows)) 
-      return Promise.resolve(res.rows[0])
-    }
-    // pool.end() 
-  })
-}
 
-const TEST = [
-  {
-    videoid: 1,
-    title: 'Intro video',
-    source: 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1'
-  },
-  {
-    videoid: 2,
-    title: 'djhvideo',
-    source: 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1'
-  }
-]
+/*START HERE*/
+
   const schema = buildASTSchema(gql`
   type Query {
     posts: [Post]
@@ -153,7 +85,7 @@ const TEST = [
     nav(id:ID): [Nav]
     video(id:ID!): Video
     videos: [Video]
-
+    article(id:ID): Article
   }
 
   type Post {
@@ -171,10 +103,8 @@ const TEST = [
 
   type Article {
     id: ID
-    articleTitle: String!
-    video: String
-    videoTitle: String
-    files: [File]
+    articletitle: String!
+    video: Video
     contents: [String]
     quotes: [String]
   }
@@ -182,13 +112,14 @@ const TEST = [
   type File {
     id: ID
     source: String
-    text: String
+    displayname: String
   }
 
   type Video {
-    videoid: ID,
+    videoid: ID
     title: String
     source: String
+    files: [File]
   }
 
   type Nav {
@@ -199,24 +130,19 @@ const TEST = [
 
 `);
 
-// assigns and id to the posts
-const mapPost = (post, id) => post && ({ id, ...post });
-
-function returnTest(){
-  return TEST
-}
-let dbVideo = Promise.resolve(getVideo(1))
-console.log(dbVideo)
-
 //resolvers
 const root = {
-  posts: () => POSTS,
-  // posts: () => POSTS.map(mapPost),
-  post: ({ id }) => POSTS.filter(post => post.id == id)[0],
-  // post: ({ id }) => mapPost(POSTS[id], id),
-  page:({screenName}) => PAGES.filter(page => page.screenName == screenName)[0],
-  nav: ({id}) => NAVS[id],
-  videos:() => returnTest(),
+  videos: require('./queries/getVideosQuery').func,
+  video:  require('./queries/getVideoQuery').func,
+  article: require('./queries/getArticle').func, 
+  // page: require('') 
+  // posts: () => POSTS,
+  // // posts: () => POSTS.map(mapPost),
+  // post: ({ id }) => POSTS.filter(post => post.id == id)[0],
+  // // post: ({ id }) => mapPost(POSTS[id], id),
+  // page:({screenName}) => PAGES.filter(page => page.screenName == screenName)[0],
+  // nav: ({id}) => NAVS[id],
+  // videos:() => returnTest(),
   // video:({id}) => {const promise = getVideo(id); return promise.then(result => {
   //   console.log("return this " + result )
   // })}
@@ -244,11 +170,11 @@ const root = {
       graphiql: true,
     }))
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
-app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
+// app.get('*', (request, response) => {
+//   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+// })
 
 const port = process.env.PORT || 4000
 app.listen(port);
