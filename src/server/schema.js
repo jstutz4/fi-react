@@ -25,12 +25,10 @@ async function getVideo(){
       // pool.end() 
     })
 
-    // console.log(Promise.resolve(results))
     return results
   }
 
-const dbVideo = Promise.resolve(getVideo())
-console.log(dbVideo)
+
 
 const videosDB = [
     {

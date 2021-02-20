@@ -21,6 +21,5 @@ exports.func = async (_,) => {
         vid.files = await files.filter(file => file.videoid == vid.videoid )
       })
 
-      // console.log(allvideos)
       return videos 
 }

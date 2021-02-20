@@ -22,10 +22,13 @@ exports.func = async ({id}) => {
       where articleID = $1;`
 
       var article = await common.getOne(pool, `select * from article where id = $1`, [id])
-      var video = await new Promise((resolve, reject) => {
-        resolve(videoQuery.func({"id":article.videoid}))
 
-      })
+      if(article.videoid){
+        var video = await new Promise((resolve, reject) => {
+          resolve(videoQuery.func({"id":article.videoid}))
+
+        })
+      }
 
       var paragraphs = await common.getAll(pool, paragraphsQuery, [id])
       paragraphs = paragraphs.map((par)=> {return par.paragraph})

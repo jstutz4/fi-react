@@ -6,32 +6,32 @@ import gql from "graphql-tag";
 
 
 const investQuery = gql`
-  query investQuery {
-    page(screenName:"invest") {
+query justAName {
+  page(screenName:"investing") {
+    screenName,
+    articleNav {
+      to,
+      name
+    }
+    articles {
       id,
-      screenName,
-      articles {
-        id,
-        articleTitle,
-        video,
-        videoTitle,
+      articletitle,
+      video {
+        videoid,
+        title,
+        source,
         files {
           id,
           source,
-          text
-        },
-        contents,
-        quotes,
-      },
+          displayname
+        }
+      }
+      contents,
+      quotes,
     }
-    
-    nav(id:3){
-      id,
-      to,
-      name,
-    }
-
-  }`
+  }
+}
+  `
 
 
 export default function Invest(props) {
@@ -51,17 +51,17 @@ export default function Invest(props) {
     setActiveArticle(props.match.params.id)
   } //if url param id is null and first render
   else if(!urlID && activeArticle == initialState){
-    setActiveArticle(data.page.articles[0].id)
+    if(data && data.page && data.page.articles && data.page.articles.length > 0)
+      setActiveArticle(data.page.articles[0].id)
   }
-  
-  const articleNav = data.nav
+
+  const articleNav = data.page.articleNav
+  const page = '/invest/'
   const article = data.page.articles.filter(art => art.id == activeArticle)[0]
-
-
-
+  
   return (
     <React.Fragment>
-      {MainContent(props, articleNav,article, activeArticle, setActiveArticle)}
+      {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );
 }

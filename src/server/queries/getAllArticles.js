@@ -1,11 +1,11 @@
 const { Pool } = require('pg');
 const common = require('../dbCalls/GetAll')
 const videoQuery = require('./getVideoQuery')
+const articleQuery = require('./getArticle')
 
 
 exports.func = async (ids) => {
-    console.log("we got article")
-      console.log(ids)
+    
     var pool = new Pool({
         user: 'postgres',
         host: 'localhost',
@@ -22,27 +22,15 @@ exports.func = async (ids) => {
       INNER JOIN articleQuotes aq ON aq.quoteID = quote.ID
       where articleID = $1;`
       
-      var articles = await ids.map(async(id)=> {
-
-            var article = await common.getOne(pool, `select * from article where id = $1`, [id])
-            var video = await new Promise((resolve, reject) => {
-              resolve(videoQuery.func({"id":article.videoid}))
-      
-            })
-      
-            var paragraphs = await common.getAll(pool, paragraphsQuery, [id])
-            paragraphs = paragraphs.map((par)=> {return par.paragraph})
-            var quotes = await common.getAll(pool, quotesQuery, [id])
-            quotes = quotes.map((quote) => {return quote.quote})
+      // ids = await ids.map(id => id.articleid)
+      var articles = await Promise.all(ids.map((art)=> {
+        return new Promise((resolve, reject)=> {
+          resolve(articleQuery.func({id:art.articleid}))
+        }) 
+      }))
             
-            return {...article, "contents":paragraphs, "quotes": quotes, "video":video}
-
-          })
+      pool.end()
+      return articles
      
 
-      //pool.end()
-
-      console.log("we have all articles")
-      console.log(articles)
-      return articles
 }

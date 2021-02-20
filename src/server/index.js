@@ -81,7 +81,7 @@ const NAVS = {
   type Query {
     posts: [Post]
     post(id: ID!): Post
-    page(id: ID!): Page
+    page(screenName: String!): Page
     video(id:ID!): Video
     videos: [Video]
     article(id:ID): Article
@@ -134,7 +134,7 @@ const NAVS = {
 const root = {
   // videos: require('./queries/getVideosQuery').func,
   // video:  require('./queries/getVideoQuery').func,
-  // article: require('./queries/getArticle').func, 
+  article: require('./queries/getArticle').func, 
   page: require('./queries/getPage').func
   // page: require('') 
   // posts: () => POSTS,

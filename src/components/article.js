@@ -40,7 +40,7 @@ export default function article(props) {
     return(
         <section style={sectionCSS}>
             <h1 style={headerCSS}>{props.articleTitle}</h1>
-            {Video({...props})}
+            {Video(props.video)}
             {content}
         </section>
     );

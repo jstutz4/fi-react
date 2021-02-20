@@ -9,30 +9,31 @@ export default function Start(props) {
   const startQuery = gql`
   query justAName {
     page(screenName:"start") {
-      id,
       screenName,
+      articleNav {
+        to,
+        name
+      }
       articles {
         id,
-        articleTitle,
-        video,
-        videoTitle,
-        files {
-          id,
+        articletitle,
+        video {
+          videoid,
+          title,
           source,
-          text
-        },
+          files {
+            id,
+            source,
+            displayname
+          }
+        }
         contents,
         quotes,
-      },
+      }
     }
-    
-    nav(id:1){
-      id,
-      to,
-      name,
-    }
+  }
+    `
 
-  }`
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);
   
@@ -48,15 +49,17 @@ export default function Start(props) {
     setActiveArticle(props.match.params.id)
   } //if url param id is null and first render
   else if(!urlID && activeArticle == initialState){
-    setActiveArticle(data.page.articles[0].id)
+    if(data && data.page && data.page.articles && data.page.articles.length > 0)
+      setActiveArticle(data.page.articles[0].id)
   }
-  
-  const articleNav = data.nav
+
+  const articleNav = data.page.articleNav
+  const page = '/start/'
   const article = data.page.articles.filter(art => art.id == activeArticle)[0]
   
   return (
     <React.Fragment>
-      {MainContent(props,articleNav,article, activeArticle, setActiveArticle)}
+      {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );
 }

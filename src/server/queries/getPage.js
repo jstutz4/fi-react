@@ -1,10 +1,9 @@
 const { Pool } = require('pg');
 const common = require('../dbCalls/GetAll')
-// const articleQuery = require('./getAllArticles')
-const articleQuery = require('./getArticle')
+const articleQuery = require('./getAllArticles')
 
 
-exports.func = async ({id}) => {
+exports.func = async ({screenName}) => {
     var pool = new Pool({
         user: 'postgres',
         host: 'localhost',
@@ -12,32 +11,21 @@ exports.func = async ({id}) => {
         password: ' ',
         port: 5432,
       })
+      const articlesFromScreenName = `select articleid, a.articletitle from pagearticles 
+      inner join article a ON a.id = pagearticles.articleid
+      where pageid = (select id from page where screenName = $1 );`
 
-        var articleids = await common.getAll(pool, `select * from article where id = any (select articleid from pagearticles where pageid = $1);`, [id])
+        var articleids = await common.getAll(pool, articlesFromScreenName, [screenName])
 
         var articleNav = await articleids.map((art) => {
-            return {"name":art.articletitle, "to": art.id}
+            return {"name":art.articletitle, "to": art.articleid}
         })
 
       var article = await new Promise ((resolve, reject) => {
-          resolve(articleQuery.func({"id": articleids[0].id}))
+          resolve(articleQuery.func(articleids))
       })
-
-    //   articleids = articleids.map(item => item.id)
-
-    //   var articles = await new Promise((resolve, reject) => {
-    //       resolve(articleQuery.func(articleids))
-    //   })
-
-    //   var paragraphs = await common.getAll(pool, paragraphsQuery, [id])
-    //   paragraphs = paragraphs.map((par)=> {return par.paragraph})
-    //   var quotes = await common.getAll(pool, quotesQuery, [id])
-    //   quotes = quotes.map((quote) => {return quote.quote})
-
 
       pool.end()
 
-
-    //   console.log(articleNav)
-      return {"screenName": 'start', "articles":[article], "articleNav": articleNav}
+      return {"screenName": 'start', "articles":article, "articleNav": articleNav}
 }

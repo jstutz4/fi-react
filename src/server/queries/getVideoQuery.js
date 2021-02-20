@@ -17,9 +17,5 @@ exports.func = async ({id}) => {
       var Video = await common.getOne(pool, `select * from video where videoid = $1`, [id])
       var videoFiles = await common.getAll(pool, videoFilesQuery, [id])
       pool.end()
-      // console.log("we have a problem")
-      // console.log(id)
-      // console.log(Video)
-      // console.log(videoFiles)
       return {...Video, files:videoFiles} 
 }
