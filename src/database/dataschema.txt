@@ -1,0 +1,282 @@
+CREATE TABLE File (
+  FileID      SERIAL PRIMARY KEY, 
+  source      TEXT NOT NULL,
+  displayname TEXT NOT NULL
+);
+
+CREATE TABLE Video (
+  VideoID    SERIAL PRIMARY KEY, 
+  title      TEXT NOT NULL,
+  source     TEXT NOT NULL
+);
+
+CREATE TABLE VideoFile (
+  ID    SERIAL PRIMARY KEY,
+  VideoID     INTEGER NOT NULL,
+  FileID      INTEGER NOT NULL,
+  
+  FOREIGN KEY(VideoID) REFERENCES Video(VideoID),
+  FOREIGN KEY(FileID) REFERENCES File(FileID)
+);
+
+CREATE TABLE Article (
+  ID    SERIAL PRIMARY KEY,
+  articleTitle VARCHAR(120) NOT NULL,
+  VideoID     INTEGER, 
+  
+  FOREIGN KEY(VideoID) REFERENCES Video(VideoID)
+);
+
+CREATE TABLE paragraph (
+  id serial PRIMARY KEY,
+  paragraph text not null
+);
+
+CREATE TABLE quote (
+  id serial PRIMARY KEY,
+  quote text not null
+);
+
+CREATE TABLE articleQuotes (
+  id serial PRIMARY KEY,
+  articleid INTEGER not null,
+  quoteid INTEGER not null,
+
+  FOREIGN KEY(articleid) REFERENCES article(id),
+  FOREIGN KEY(quoteid) REFERENCES quote(id)
+);
+
+CREATE TABLE articleParagraphs (
+  id serial PRIMARY KEY,
+  articleid INTEGER not null,
+  paragraphid INTEGER not null,
+
+  FOREIGN KEY(articleid) REFERENCES article(id),
+  FOREIGN KEY(paragraphid) REFERENCES paragraph(id)
+);
+
+create table nav(
+  id serial PRIMARY key,
+
+)
+
+create table page (
+  id serial PRIMARY key,
+  screenName text not null
+);
+
+create table pagearticles (
+  id serial PRIMARY key,
+  pageid INTEGER not null,
+  articleid integer not null,
+
+  FOREIGN KEY(pageid) REFERENCES page(id),
+  FOREIGN KEY(articleid) REFERENCES article(id)
+);
+
+
+
+/**INSERT DATA **/
+
+INSERT INTO File (source, displayname)
+VALUES('/fi-react/files/trackMoney.xlsx', 'Track your expenses -Sample');
+
+INSERT INTO File (source, displayname)
+VALUES('/fi-react/files/anotherfile.txt', 'anotherfile');
+
+INSERT INTO File (source, displayname)
+VALUES('/fi-react/files/youandmoney.txt', 'Questions to learn how you see money');
+
+INSERT INTO Video (title, source)
+VALUES('Intro video', 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1');
+
+INSERT INTO Video (title, source)
+VALUES('How to vid', 'https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=3');
+
+INSERT INTO VideoFile(VideoID, FileID)
+VALUES((SELECT VideoID FROM Video WHERE title = 'Intro video'), (SELECT FileID from File WHERE displayname LIKE '%Track%expenses%' ));
+
+INSERT INTO VideoFile(VideoID, Fileid)
+VALUES((SELECT VideoID FROM Video WHERE title = 'How to vid'), (SELECT FileID from File WHERE displayname LIKE '%other%file'));
+
+INSERT INTO VideoFile(VideoID, FileID)
+VALUES((SELECT VideoID FROM Video WHERE title = 'Intro video'), (SELECT FileID from File WHERE displayname LIKE '%Track%expenses%' ));
+
+Insert into article (articletitle, videoID)
+VALUES('Understanding Money', (Select videoID from video where videoid = 1));
+
+Insert into article (articletitle, videoID)
+VALUES('Being content', null);
+
+Insert into article (articletitle, videoID)
+VALUES('The Eighth Wonder of the world', null);
+
+Insert into article (articletitle, videoID)
+VALUES('Saving for More Choices', null);
+
+insert into paragraph(paragraph)
+values($$What is money? What do you exchange your money for? What do you exchange for your money? Think about these questions before reading on.. The above questions may shed light on your why, that is why do you want money. Another way to ask this question is what would you do if didn't have to work? What do you do now when you don't have to work? You may not know what your life would look like if you didn't have to work and that is okay. One of the goals is to be able to answer this question.$$);
+
+insert into paragraph(paragraph)
+values($$To be able to compare or weigh activities, jobs, or destressors with each other we need a common measurement. What do you exchange for your money? TIME. Time is the one thing we cannot control and we never know when we will run out. If you view your choices as a value of time then you can begin to make informed judgments on your choices.$$);
+
+insert into paragraph(paragraph)
+values($$Another element that will help you understand what you want to do if you didn't work and money was not a problem is values. How can you know if the choices you are making are good and leading you to the future you will enjoy? Values, knowing what your values are and what they mean to you gives you a standard to move towards and a way to make informed judgments on your choices. It is okay if your values change over time, in fact I think we should strive to refine our values throughout our lives.$$);
+
+insert into paragraph(paragraph)
+values($$This is your foundation your values and your why. When you have a strong sense of your foundation and the joy you get out of from the events of your life you can begin to take control of who you want to be, and not just letting the world taking control and not caring who you end up. In the next section we will go over how you can become aware of how your choices are measuring up to your values, why and joy you want in this life.$$);
+
+
+insert into paragraph(paragraph)
+values($$Why on earth do you need to save? Think about what you would do with $100, $1,000, or $10,000 right now? How many possibilities would you have to choose from? What if your rent increases $200 this month what would you do with the “extra” $100 -$10,000 I may give you? What if you got laid of at work or a close loved one was just diagnosed with cancer and will have a rapid increase in expenses what would you do with the money then?$$);
+
+insert into paragraph(paragraph)
+values($$Saving money gives you more choices! More choices to be flexible in your expenses. It gives you the opportunity to take advantages of sales, to wait for a better price on a home, it gives to time to plan and make smart choices when you lose your job instead of freaking out and turning to credit cards to take care your “needed” expenses. Savings is a form of insurance that protects you when a gray swan event happens.$$);
+
+insert into paragraph(paragraph)
+values($$It is not if a financial emergency it is when a financial emergency will happen. Are you prepared?
+The amount of saving you should have depended on you. It should cover your expenses for you to consider options and adjust to your new circumstances. For some it looks like 1-3 months of expenses, others 12-24 months and even others 0 months of expenses. The last group is not the group with zero savings and no plan if they are hit with an unplanned expense that month, but a group that has a plan and security to be able to handle an unplanned expense without going into debt. One group is not any better than any it just depends on you and what helps you have a better finical independence without sacrificing any of your physical or mental health. Yes, I your level of comfort with the amount of savings you need may change and I hope it does change as you learn more about what you exchange money for, and how your future expenses will change. Start now to make a commitment to build a savings fund for one month of expense, then make a plan and execute your plan to build one month of expenses.$$);
+
+insert into paragraph(paragraph)
+values($$Your savings should be in a place that is different than money you use for spending and monthly expense. It could look like cash in a safe, or a bank account that at a different bank then your checking account. Whatever your savings look like for you it should be you can access quickly but not tempted to spend to go out to dinner or other monthly expenses. With a saving protection buffer built you are ready to take on the extra risk of when an unplanned event comes knocking on your door next month.$$);
+
+
+insert into paragraph(paragraph)
+values($$When you start to spend less than you earn it gives yourself more choices. One of those choices are to invest. Investing has really become a buzz word these days for making money especially quick money. Investing is putting your money to work, and with that comes risk, cost, and choices. Why should you invest? In today’s world with low interest rates at the bank, Inflation eats away your money if it is sitting still. How much can $100 make? Your current $100 can get you a few things, but would you be willing to wait years to have double, triple, or quadruple that amount even with considering inflation? What will it take for you to part with your $100?$$);
+
+insert into paragraph(paragraph)
+values($$So how much money can $100 dollars make in 30 years at an interest rate of 6%? Well, your single $100 can make $475 becoming worth $575 - $210 for inflation your $100 can now buy almost four times at much as when you first started. So, what is the big deal, is four times the money worth it? Let’s paint another story currently the average interest rate on the stock market, which mean if you the whole market and do nothing you will get a return of 10% each year. Taking our $100 making 10% each year for 30 years how much more buying power does it have? It will have about 15 times or be worth about $1500 at the end of 30 years. Incredible! $$);
+
+
+insert into paragraph(paragraph)
+values($$Now let’s see what happens if you our $100 stops making money after 15 years. It will be worth less than three times as much after inflation. Surprise! Wait, I am sure you made a mistake after 15 years it only is worth 3 times, what happened to my 15 times the amount? What did we just learn? Time in the market makes an exponential difference. Think of an exponential curve they are only two ways to get higher up on that curve time and money. Do a search for compound interest calculators and see how many ways you can get to a million dollars. See what happens if you change the interest rate by 2%, or the length by a couple years, or even the starting initial amount. Try to come up with situations that describe you currently and situations that describe your dreams. You can do it, Go do it!$$);
+
+insert into paragraph(paragraph)
+values($$$$);
+
+
+
+
+insert into articleParagraphs(articleid, paragraphid)
+values(1, 4);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(1, 5);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(1, 6);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(1, 7);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(4, 8);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(4, 9);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(4, 10);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(4, 11);
+
+
+insert into articleParagraphs(articleid, paragraphid)
+values(3, 12);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(3, 13);
+
+insert into articleParagraphs(articleid, paragraphid)
+values(3, 14);
+
+
+
+insert into quote(quote)
+values($$What would you do if you didn't have to work for money?$$);
+
+insert into quote(quote)
+values($$We exchange our TIME for money$$);
+
+insert into quote(quote)
+values($$How many ways can you spend an “extra” $100, $1,000 or $10,000?$$);
+
+insert into quote(quote)
+values($$Saved money is money with Choices, money for opportunity!$$);
+
+insert into quote(quote)
+values($$Is your savings prepared for a $100-$5000 unplanned expense?$$);
+
+insert into quote(quote)
+values($$Sitting money to money losing power. What will it take for you to part with your $100?$$);
+
+insert into quote(quote)
+values($$How many ways can you get to one million dollars by making small adjustment?$$);
+
+insert into articleQuotes(articleid, quoteid)
+values(1, 1);
+
+insert into articleQuotes(articleid, quoteid)
+values(1, 2);
+
+insert into articleQuotes(articleid, quoteid)
+values(4, 3);
+
+insert into articleQuotes(articleid, quoteid)
+values(4, 4);
+
+insert into articleQuotes(articleid, quoteid)
+values(4, 5);
+
+insert into articleQuotes(articleid, quoteid)
+values(3, 6);
+
+insert into articleQuotes(articleid, quoteid)
+values(3, 7);
+
+insert into page (screenName)
+values($$start$$);
+
+insert into pagearticles (pageid, articleid)
+values(1,1);
+insert into pagearticles (pageid, articleid)
+values(1,2);
+
+
+insert into page (screenName)
+values($$saving$$);
+
+insert into pagearticles (pageid, articleid)
+values(2,4);
+
+
+insert into page (screenName)
+values($$investing$$);
+
+insert into pagearticles (pageid, articleid)
+values(3,3);
+
+/**queries**/
+
+SELECT v.title, v.source as vidSource, File.source as fileSource, File.displayname from video
+Inner Join video v ON v.videoid = video.videoid
+INNER JOIN videofile ON video.videoID = videofile.videoID
+INNER JOIN File ON File.FileID = videofile.FileID
+WHERE videofile.VideoID = 1;
+
+/* either one works */
+
+SELECT * from File
+INNER JOIN VideoFile ON VideoFile.FileID = File.FileID
+WHERE VideoID = 1;
+
+SELECT title, source from Video WHERE VideoID = 1;
+
+select articleid from pagearticles where pageid = 1;
+
+select * from article where id = any (select articleid from pagearticles where pageid = 1);
+
+select articleid, a.articletitle from pagearticles 
+inner join article a ON a.id = pagearticles.articleid
+where pageid = (select id from page where screenName = 'start' );

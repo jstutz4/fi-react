@@ -5,10 +5,14 @@ const gql = require('graphql-tag');
 const { buildASTSchema } = require('graphql');
 const path = require('path')
 
+const sqlite3  = require('sqlite3').verbose();
+
+
 const startPage = require('./startContent')
 const savePage = require('./saveContent')
 const investPage = require('./investContent')
-const aboutPage = require('./aboutContent')
+const aboutPage = require('./aboutContent');
+const { resolve } = require('path');
 
 const POSTS = [
   { id: 2, author: "John Doe" },
@@ -71,13 +75,16 @@ const NAVS = {
 }
 
 
+/*START HERE*/
+
   const schema = buildASTSchema(gql`
   type Query {
     posts: [Post]
     post(id: ID!): Post
     page(screenName: String!): Page
-    nav(id:ID): [Nav]
-
+    video(id:ID!): Video
+    videos: [Video]
+    article(id:ID): Article
   }
 
   type Post {
@@ -91,14 +98,13 @@ const NAVS = {
     id: ID
     screenName: String!
     articles: [Article]
+    articleNav: [Link]
   }
 
   type Article {
     id: ID
-    articleTitle: String!
-    video: String
-    videoTitle: String
-    files: [File]
+    articletitle: String!
+    video: Video
     contents: [String]
     quotes: [String]
   }
@@ -106,10 +112,17 @@ const NAVS = {
   type File {
     id: ID
     source: String
-    text: String
+    displayname: String
   }
 
-  type Nav {
+  type Video {
+    videoid: ID
+    title: String
+    source: String
+    files: [File]
+  }
+
+  type Link {
     id: ID
     to: String
     name: String
@@ -117,31 +130,52 @@ const NAVS = {
 
 `);
 
-// assigns and id to the posts
-const mapPost = (post, id) => post && ({ id, ...post });
-
+//resolvers
 const root = {
-  posts: () => POSTS,
-  // posts: () => POSTS.map(mapPost),
-  post: ({ id }) => POSTS.filter(post => post.id == id)[0],
-  // post: ({ id }) => mapPost(POSTS[id], id),
-  page:({screenName}) => PAGES.filter(page => page.screenName == screenName)[0],
-  nav: ({id}) => NAVS[id],
+  // videos: require('./queries/getVideosQuery').func,
+  // video:  require('./queries/getVideoQuery').func,
+  article: require('./queries/getArticle').func, 
+  page: require('./queries/getPage').func
+  // page: require('') 
+  // posts: () => POSTS,
+  // // posts: () => POSTS.map(mapPost),
+  // post: ({ id }) => POSTS.filter(post => post.id == id)[0],
+  // // post: ({ id }) => mapPost(POSTS[id], id),
+  // page:({screenName}) => PAGES.filter(page => page.screenName == screenName)[0],
+  // nav: ({id}) => NAVS[id],
+  // videos:() => returnTest(),
+  // video:({id}) => {const promise = getVideo(id); return promise.then(result => {
+  //   console.log("return this " + result )
+  // })}
+
+  // Video: {
+  //   video(root, args) { 
+  //     console.log("idk stop")
+  //     return getVideo(args.id) },
+  //   // posts(root, args) { return posts.filter(post => post.id === args.id)[0] }
+  // },
 };
 
-const app = express();
-app.use(cors());
-app.use('/graphql', graphqlHTTP({
-  schema,
-  rootValue: root,
-  graphiql: true,
-}));
 
-app.use(express.static('public'))
+// console.log("LOOK")
+// console.log(schema.getTypeMap())
+// let videoType = new schema
 
-app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
+// const db = new sqlite3.Database('../../public/test.db')
+
+    const app = express();
+    app.use(cors());
+    app.use('/graphql', graphqlHTTP({
+      schema,
+      rootValue: root,
+      graphiql: true,
+    }))
+
+// app.use(express.static('public'))
+
+// app.get('*', (request, response) => {
+//   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+// })
 
 const port = process.env.PORT || 4000
 app.listen(port);
