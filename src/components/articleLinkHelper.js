@@ -5,16 +5,13 @@ export default function articleLinkHelper(props, activeArticle, setActiveArticle
     let articleLinks = []
     let navLength = 0
     // start = false;
-    console.log(props)
     if(props && props.links){
       props.links.forEach((article, index) => {
         let activeStyle = ""
           if(activeArticle === article.id){
             activeStyle = "activeArticle"
           }
-          console.log(navLength)
           // if(navLength + article.name.length < 34){
-            console.log("adding article")
             navLength += article.name.length
             articleLinks.push(getLink(props.page, article, activeStyle, setActiveArticle))
           // }

@@ -28,7 +28,8 @@ export default function article(props) {
     }
     let content = props.contents.map((section,index)=>{
     let quote = props.quotes[index] ? <blockquote  style={quoteCSS}>{props.quotes[index]}</blockquote> : null
-    let key = props.articleTitle + index
+    let key = props.articletitle + index
+    
         return (
             <React.Fragment key={key}>
                 <article >{section}</article>

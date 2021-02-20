@@ -2,8 +2,6 @@
 import React from 'react'
 
 export default function video(props) {
-    console.log("video")
-    console.log(props)
     const files = []
     if(props){
         if(!props.source){
