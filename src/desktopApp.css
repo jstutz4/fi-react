@@ -1,10 +1,10 @@
 @media only screen and (min-width: 1050px){
-    #mainNav{
-        align-self: center;
+    .center{
+        align-items: center;
     }
 
     .article{
-        align-self: center;
+        /* align-self: center; */
         max-width: 1000px;
     }
 
@@ -53,4 +53,10 @@
     .MainNav:first-child{
         display: flex;
     }
+
+    /* admin page */
+    .paragraph, .quote {
+        width: 70vw;
+    }
+
 }

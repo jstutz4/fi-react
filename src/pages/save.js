@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MainContent from '../components/main'
+import Header from '../components/navMain'
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
@@ -8,8 +9,8 @@ import gql from "graphql-tag";
 
 const saveQuery= gql`
 query justAName {
-  page(screenName:"saving") {
-    screenName,
+  page(screenname:"saving") {
+    screenname,
     articleNav {
       to,
       name
@@ -61,6 +62,7 @@ export default function Save(props) {
   
   return (
     <React.Fragment>
+      {Header(props)}
       {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );

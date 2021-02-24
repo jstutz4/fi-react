@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import MainContent from '../components/main'
+import Header from '../components/navMain'
+
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
 
 
 const investQuery = gql`
 query justAName {
-  page(screenName:"investing") {
-    screenName,
+  page(screenname:"investing") {
+    screenname,
     articleNav {
       to,
       name
@@ -61,6 +63,7 @@ export default function Invest(props) {
   
   return (
     <React.Fragment>
+      {Header(props)}
       {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );

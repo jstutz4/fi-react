@@ -34,8 +34,9 @@ const routing = (
     <ApolloProvider client={client}>
       <BrowserRouter>
       <div className="center">
-            {NavHeader()}
+            {/* {NavHeader()} */}
             <App></App>
+            
             {/* {Footer()} */}
         </div>
       </BrowserRouter>

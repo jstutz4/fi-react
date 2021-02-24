@@ -81,10 +81,10 @@ const NAVS = {
   type Query {
     posts: [Post]
     post(id: ID!): Post
-    page(screenName: String!): Page
-    video(id:ID!): Video
-    videos: [Video]
     article(id:ID): Article
+    articles(screenname: String!, admin: Boolean!): [Article]
+    page(screenname: String!): Page
+    pages: [Page]
   }
 
   type Post {
@@ -96,7 +96,7 @@ const NAVS = {
 
   type Page {
     id: ID
-    screenName: String!
+    screenname: String!
     articles: [Article]
     articleNav: [Link]
   }
@@ -135,7 +135,9 @@ const root = {
   // videos: require('./queries/getVideosQuery').func,
   // video:  require('./queries/getVideoQuery').func,
   article: require('./queries/getArticle').func, 
-  page: require('./queries/getPage').func
+  articles: require('./queries/getPage').func,
+  page: require('./queries/getPage').func,
+  pages: require('./queries/getPages').func,
   // page: require('') 
   // posts: () => POSTS,
   // // posts: () => POSTS.map(mapPost),

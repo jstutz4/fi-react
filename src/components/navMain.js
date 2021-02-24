@@ -54,7 +54,9 @@ mainNavNames.forEach((item) => {
 
 
 export default function NavHeader(props) {
-
+    if(props.location.pathname.includes('admin')){
+        return
+    }
     return(
         <nav style={navColor} id="mainNav">
             <ul style={ulCSS}>
