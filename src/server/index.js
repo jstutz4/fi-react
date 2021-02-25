@@ -87,6 +87,10 @@ const NAVS = {
     pages: [Page]
   }
 
+  type Mutation {
+    setArticle(page:String, articletitle: String!, contents: [String]!, quotes: [String]): String
+  }
+
   type Post {
     id: ID
     author: String
@@ -138,6 +142,7 @@ const root = {
   articles: require('./queries/getPage').func,
   page: require('./queries/getPage').func,
   pages: require('./queries/getPages').func,
+  setArticle: require('./mutations/addArticle').func,
   // page: require('') 
   // posts: () => POSTS,
   // // posts: () => POSTS.map(mapPost),

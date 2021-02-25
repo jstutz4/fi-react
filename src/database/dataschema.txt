@@ -21,7 +21,7 @@ CREATE TABLE VideoFile (
 
 CREATE TABLE Article (
   ID    SERIAL PRIMARY KEY,
-  articleTitle VARCHAR(120) NOT NULL,
+  articleTitle VARCHAR(120) UNIQUE NOT NULL,
   VideoID     INTEGER, 
   
   FOREIGN KEY(VideoID) REFERENCES Video(VideoID)
@@ -303,3 +303,11 @@ select * from article where id = any (select articleid from pagearticles where p
 select articleid, a.articletitle from pagearticles 
 inner join article a ON a.id = pagearticles.articleid
 where pageid = (select id from page where screenName = 'start' );
+
+
+select * from articleparagraphs_id_seq;
+
+Select nextval(pg_get_serial_sequence('articleparagraphs', 'id')) as new_id;
+
+alter table article
+ADD UNIQUE (articletitle);

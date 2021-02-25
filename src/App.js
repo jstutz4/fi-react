@@ -7,12 +7,14 @@ import invest from './pages/invest'
 import gettingStarted from './pages/gettingStarted'
 import admin from './pages/admin'
 import header from './components/navMain'
+import adminAddArticle from './pages/admin_addArticle'
 
 
 function App(props) {
   return (
     <Switch>
       <Route path="/admin" component={admin} />
+      <Route path="/admin/add" component={adminAddArticle} />
       <Route path="/start/:id?" component={gettingStarted} />
       <Route path="/save/:id?" component={save} />
       <Route exact path="/invest/:id?" component={invest} />

@@ -15,7 +15,6 @@ async function getVideo(){
     let results
     await pool.query(video1query, [], (err, res) => {
       if(err){
-        console.log(err)
         results = "some string"
       }
       else {

@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import Paragraph from '../components/admin_paragraph'
 import Selector from '../components/admin_selector'
+import addArticle from './admin_addArticle'
 
 import gql from "graphql-tag";
 import { useQuery } from '@apollo/react-hooks';
 
-export default function Admin() {
-    
+export default function Admin(props) {
+
+    if(props.location.pathname.includes("add")){
+        return addArticle()
+    }
     const getPages = gql`
     query pages {
         pages{
@@ -40,7 +44,8 @@ export default function Admin() {
     const [article, setArticle] = useState({name:"Random", id:1, change:""})
     const [articlesQuery, setArticlesQuery] = useState(getArticlesInit)
     const [articleQuery, setArticleQuery] = useState(getArticleInit)
-    const [parNum, setParNum] = useState(0);
+    const [parNum, setParNum] = useState(1);
+    const [quoteNum, setQuoteNum] = useState(1);
 
     let { data : pageData, loading:pageLoading, error:pageError}  = useQuery(getPages)
     let { data: articlesData, articlesLoading, error:articlesError }  = useQuery(articlesQuery);
@@ -113,7 +118,7 @@ export default function Admin() {
     
                 </section>
                 <h2>{article.name}</h2>
-                {Paragraph({data: articleData, numParagraphs: articleData.article.contents.length, setFunc: setParNum})}
+                {Paragraph({data: articleData, numParagraphs: articleData.article.contents.length, setPar: setParNum})}
             </section>
         )
     }

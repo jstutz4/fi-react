@@ -25,6 +25,5 @@ exports.func = async () => {
 
       pool.end()
        
-      console.log(pages)
       return pages
 }
