@@ -4,7 +4,7 @@ const read = require('../dbCalls/GetAll')
 // const videoQuery = require('./getVideoQuery')
 
 
-exports.func = async ({page, articletitle, contents, quotes}) => {
+exports.func = async ({pageId, articletitle, contents, quotes}) => {
     
     var pool = new Pool({
         user: 'postgres',
@@ -14,7 +14,7 @@ exports.func = async ({page, articletitle, contents, quotes}) => {
         port: 5432,
       })
 
-      if(!(page && articletitle && contents.length > 0)){
+      if(!(pageId && articletitle && contents.length > 0)){
         return "failure achieved"
       }
       const addArticle = `insert into article (articletitle)
@@ -29,7 +29,7 @@ exports.func = async ({page, articletitle, contents, quotes}) => {
       const addArticleQuotes = `insert into articleQuotes (articleId, quoteId)
       values($1,$2);`
 
-      const getPage = `select id from page where screenName = $1`
+      // const getPage = `select id from page where screenName = $1`
 
       const addPageArticle = `insert into pageArticles (pageId, articleId)
       values($1,$2);`
@@ -80,8 +80,8 @@ exports.func = async ({page, articletitle, contents, quotes}) => {
       }
     }
     
-    pageId = await read.getOne(pool, getPage, [page])
-    pageId = pageId.id 
+    // pageId = await read.getOne(pool, getPage, [page])
+    // pageId = pageId.id 
 
     
     await calls.insertOne(pool, addPageArticle, [pageId, articleID.last_value])

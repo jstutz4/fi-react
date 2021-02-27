@@ -1,21 +1,36 @@
-import { useState } from 'react'
-import Paragraph from '../components/admin_paragraph'
+import { useState, useEffect } from 'react'
+import Article from '../components/admin_paragraph'
 import Selector from '../components/admin_selector'
 
 import gql from "graphql-tag";
-import { useQuery } from '@apollo/react-hooks';
+// needs to be from react-hooks any other location causes errors
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
 export default function Admin() {
-    function sendArticle(event){
-        console.log(event)
-        const paragraphArray = document.getElementsByName("paragraph")
-        console.log(paragraphArray)
-        const quoteArray = document.getElementsByName("quote")
-        console.log(quoteArray)
+    async function sendArticle (event){
+        const paragraphs = document.getElementsByName("paragraph")
+        //get by name returns a node list so we use Array.from to make an array
+        const paragraphArray = Array.from(paragraphs).map(paragraph => paragraph.value)
+        const quotes = document.getElementsByName("quote")
+        const quoteArray = Array.from(quotes).map(quote => quote.value)
         const title = document.getElementById("title").value
-        console.log(title)
+        const pageId = document.getElementsByName("pages")[0].value
 
+        callAddArticle({variables: {pageId, title, paragraphArray, quoteArray}})
+        // setReset(true)
     }
+
+    const addArticle = gql`
+    mutation addArticle($pageId: ID!, $title: String!, $paragraphArray: [String]!, $quoteArray: [String]) {
+        setArticle(
+            pageId: $pageId,
+            articletitle: $title,
+            contents: $paragraphArray,
+            quotes: $quoteArray
+        )
+      }`
+
+     const [callAddArticle] = useMutation(addArticle)
     
     const getPages = gql`
     query pages {
@@ -26,13 +41,14 @@ export default function Admin() {
     }
     `
 
-    let getArticles = ``
-    let getArticle = ``
+    const [reset, setReset] = useState(false);
 
-    const [parNum, setParNum] = useState(2);
-    const [quoteNum, setQuoteNum] = useState(1);
+    // useEffect(() => {
+    //     setReset(false)
+    //   }, []);
 
     let { data, loading, error}  = useQuery(getPages)
+    
 
   
 
@@ -40,26 +56,16 @@ export default function Admin() {
     // console.log(articlesLoading)
     // console.log(articleLoading)
     // console.log(pageData)
-
-    if(loading) {
-        return (
-            <section className="adminPageSize">
-                <section className="groupSelect">
-                    Data is Loading
-                </section>
-            </section>
-        )
-    }
     
     return(
         <section className="adminPageSize">
             <section className="groupSelect">
-                {Selector({type: "pages", data: data})}
+                {Selector({type: "pages", data: data, reset, setReset})}
 
             </section>
             <input type="text" placeholder="Article title" maxLength="30" id="title"></input>
 
-            {Paragraph({numParagraphs: 0, setPar: setParNum, setQuote: setQuoteNum, parNum, quoteNum, editable: true})}
+            {Article({reset, setReset})}
             <button onClick={sendArticle}>Add Article</button>
         </section>
     )

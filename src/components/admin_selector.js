@@ -1,23 +1,29 @@
+import { printIntrospectionSchema } from "graphql"
+
 export default function PageSelector(params) {
     function adjustPage(event){
         const option = event.target
         
-        if(option) {
+        if(option && params.setFunc) {
             params.setFunc({name: option.selectedOptions[0].innerHTML, id: option.value, change: params.type})
         }
     }
 
     let options = []
-    if(params.type == "pages"){
-
-        options = params.data.pages.map((page) => {
-            return <option key={page.id + page.screenname} value={page.id}>{page.screenname}</option>
+    if(params.type == "pages" && params.data){
+        options = params.data.pages.map((page, index) => {
+            let selected = ""
+            if(params.reset && index == 0){
+                selected = "selected"
+            }
+            return <option key={page.id + page.screenname} value={page.id}>{page.screenname} {selected}</option>
         })
     }
-    if(params.type == "articles"){
+    if(params.type == "articles" && params.data){
 
         options = params.data.articles.map((article) => {
-            return <option key={article.id + article.articletitle} value={article.id}>{article.articletitle}</option>
+            
+            return <option key={article.id + article.articletitle} value={article.id}>{article.articletitle} </option>
         })
     }
 

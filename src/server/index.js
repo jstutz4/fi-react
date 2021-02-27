@@ -88,7 +88,7 @@ const NAVS = {
   }
 
   type Mutation {
-    setArticle(page:String, articletitle: String!, contents: [String]!, quotes: [String]): String
+    setArticle(pageId:ID!, articletitle: String!, contents: [String]!, quotes: [String]): String
   }
 
   type Post {
