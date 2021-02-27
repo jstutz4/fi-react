@@ -48,14 +48,8 @@ export default function Admin(props) {
     let { data : pageData, loading:pageLoading, error:pageError}  = useQuery(getPages)
     let { data: articlesData, loading:articlesLoading, error:articlesError }  = useQuery(articlesQuery);
     let { data: articleData, articleLoading, error:articleError }  = useQuery(articleQuery);
-    console.log(articlesLoading)
-    console.log(articlesQuery)
   
 
-    // console.log(pageLoading)
-    // console.log(articlesLoading)
-    // console.log(articleLoading)
-    // console.log(pageData)
 
 
     if(!articlesLoading && articlesData && articlesData.articles.length > 0){
@@ -73,7 +67,6 @@ export default function Admin(props) {
         }
 
         if(articlesQuery != getArticles){
-            console.log(page.name + " : I am getting called")
             setArticlesQuery(getArticles)
             const newArticle = article
             newArticle.change = ""

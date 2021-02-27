@@ -2,7 +2,6 @@ import gql from "graphql-tag";
 import { useQuery } from '@apollo/react-hooks';
 
 export default function PageSelector(params) {
-    console.log(params)
     const getPages = gql`
         query pages {
             pages{

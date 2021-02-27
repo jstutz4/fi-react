@@ -3,7 +3,6 @@ import { printIntrospectionSchema } from "graphql"
 export default function PageSelector(params) {
     function adjustPage(event){
         const option = event.target
-        console.log(option)
         if(option && params.setFunc && params.type == "pages") {
             params.setFunc({name: option.value, id: option.value, change: params.type})
         }
