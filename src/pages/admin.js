@@ -44,13 +44,12 @@ export default function Admin(props) {
     const [article, setArticle] = useState({name:"Random", id:1, change:""})
     const [articlesQuery, setArticlesQuery] = useState(getArticlesInit)
     const [articleQuery, setArticleQuery] = useState(getArticleInit)
-    const [parNum, setParNum] = useState(1);
-    const [quoteNum, setQuoteNum] = useState(1);
 
     let { data : pageData, loading:pageLoading, error:pageError}  = useQuery(getPages)
-    let { data: articlesData, articlesLoading, error:articlesError }  = useQuery(articlesQuery);
+    let { data: articlesData, loading:articlesLoading, error:articlesError }  = useQuery(articlesQuery);
     let { data: articleData, articleLoading, error:articleError }  = useQuery(articleQuery);
-
+    console.log(articlesLoading)
+    console.log(articlesQuery)
   
 
     // console.log(pageLoading)
@@ -58,17 +57,8 @@ export default function Admin(props) {
     // console.log(articleLoading)
     // console.log(pageData)
 
-    if(pageLoading) {
-        return (
-            <section className="adminPageSize">
-                <section className="groupSelect">
-                    Data is Loading
-                </section>
-            </section>
-        )
-    }
 
-    if(!articlesLoading && articlesData){
+    if(!articlesLoading && articlesData && articlesData.articles.length > 0){
         getArticles = gql`
         query articles {
             articles(screenname: "${page.name}", admin: true){
@@ -77,16 +67,20 @@ export default function Admin(props) {
             }
         }
         `
+        if(articlesData.articles.length > 0 && article.name != articlesData.articles[0].articletitle 
+            && (page.change == "pages" && article.change == "")){
+            setArticle({name:articlesData.articles[0].articletitle, id: articlesData.articles[0].id, change: ""})
+        }
+
         if(articlesQuery != getArticles){
+            console.log(page.name + " : I am getting called")
             setArticlesQuery(getArticles)
             const newArticle = article
             newArticle.change = ""
         }
         
 
-        if(article.name != articlesData.articles[0].articletitle && (page.change == "pages" && article.change == "")){
-            setArticle({name:articlesData.articles[0].articletitle, id: articlesData.articles[0].id, change: ""})
-        }
+
     }
 
     if(!articleLoading && articleData){
@@ -106,22 +100,19 @@ export default function Admin(props) {
         }
     }
 
-    if(pageData && articlesData && articleData)
-    {
-        console.log(articleData)
-        return(
-            <section className="adminPageSize">
-                <section className="groupSelect">
-                    {Selector({type: "pages", setFunc: setPage, setArticle: setArticle, article:article, data: pageData})}
     
-                    {Selector({type: "articles", setFunc: setArticle, data: articlesData})}
-    
-                </section>
-                <h2>{article.name}</h2>
-                {Paragraph({data: articleData, numParagraphs: articleData.article.contents.length, setPar: setParNum})}
+    return(
+        <section className="adminPageSize">
+            <section className="groupSelect">
+                {Selector({type: "pages", setFunc: setPage, setArticle: setArticle, article:article, data: pageData})}
+
+                {Selector({type: "articles", setFunc: setArticle, data: articlesData})}
+
             </section>
-        )
-    }
+            <h2>{article.name ? article.name : "unknown title"}</h2>
+            {Paragraph({data: articleData})}
+        </section>
+    )
     
     if(pageData && articlesData){
         return (
