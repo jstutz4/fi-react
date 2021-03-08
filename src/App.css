@@ -131,7 +131,7 @@ footer a:hover {
 
 
 .paragraph button, .parDisplay button {
-  max-width: 100px;
+  max-width: 120px;
 }
 
 .paragraph, .quote {
@@ -151,4 +151,20 @@ textarea{
   min-height: 125px;
   outline: none;
   border: 1px solid grey;
+}
+
+.inlineLink{
+  color: blue;
+  background-color: lightgrey;
+  display: inline;
+}
+
+.inlineLink:hover{
+  color:orange;
+  background-color: lightgrey;
+}
+
+label{
+  display: grid;
+  padding-top: 10px;
 }

@@ -12,6 +12,7 @@ exports.func = async () => {
         port: 5432,
       })
       const articlesFromScreenName = `select * from page;`
+      console.log("we mad it")
 
       var pages = await common.getAll(pool, articlesFromScreenName)
 

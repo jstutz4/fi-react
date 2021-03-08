@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Paragraph from '../components/admin_paragraph'
 import Selector from '../components/admin_selector'
 import addArticle from './admin_addArticle'
+import addVideo from './admin_addVideo'
 
 import gql from "graphql-tag";
 import { useQuery } from '@apollo/react-hooks';
@@ -92,7 +93,16 @@ export default function Admin(props) {
             setArticleQuery(getArticle)
         }
     }
-
+    let body;
+    if(props.location.pathname.includes("video")){
+        body = addVideo()
+    }
+    else {
+        body = (<React.Fragment>
+            <h2>{article.name ? article.name : "unknown title"}</h2>
+                {Paragraph({data: articleData})}
+           </React.Fragment>)
+    }
     
     return(
         <section className="adminPageSize">
@@ -102,8 +112,7 @@ export default function Admin(props) {
                 {Selector({type: "articles", setFunc: setArticle, data: articlesData})}
 
             </section>
-            <h2>{article.name ? article.name : "unknown title"}</h2>
-            {Paragraph({data: articleData})}
+            {body}
         </section>
     )
     

@@ -1,6 +1,6 @@
 CREATE TABLE File (
   FileID      SERIAL PRIMARY KEY, 
-  source      TEXT NOT NULL,
+  source      TEXT UNIQUE NOT NULL,
   displayname TEXT NOT NULL
 );
 
@@ -309,5 +309,5 @@ select * from articleparagraphs_id_seq;
 
 Select nextval(pg_get_serial_sequence('articleparagraphs', 'id')) as new_id;
 
-alter table article
-ADD UNIQUE (articletitle);
+alter table file
+ADD UNIQUE (source);

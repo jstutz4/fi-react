@@ -5,16 +5,10 @@ export default function Article(props){
 
     // let { data, loading, error }  = useQuery(props.query);
     const [parNum, setParNum] = useState(1);
-    const [quoteNum, setQuoteNum] = useState(0); // since we dont start with a quote
+    //const [quoteNum, setQuoteNum] = useState(0); // since we dont start with a quote
     const emptyParContainer = Paragraph({type:"paragraph", id: parNum, size:1000, editable: true})
     const [parGroup, setParGroup] = useState([emptyParContainer])
     const [articleData, setArticleData] = useState([props.data])
-    
-    if(props.reset){
-        setParNum(1)
-        setQuoteNum(0)
-        setParGroup(() => [Paragraph({type:"paragraph", id: 1, size:1000, editable: true})])
-    }
 
     function addParagraph(item) {
         const newParNum = parNum + 1
@@ -23,9 +17,9 @@ export default function Article(props){
     }
 
     function addQuote(item) {
-        const newQuoteNum = quoteNum + 1
-        setQuoteNum(newQuoteNum)
-        setParGroup(oldArray => [...oldArray, Paragraph({type:"quote", id: newQuoteNum, size:200, editable: true})])
+        // const newQuoteNum = quoteNum + 1
+        // setQuoteNum(newQuoteNum)
+        setParGroup(oldArray => [...oldArray, Paragraph({type:"quote", id: parNum, size:200, editable: true})])
     }
     
     useEffect(() => {

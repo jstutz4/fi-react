@@ -8,22 +8,81 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 
 export default function Admin() {
     async function sendArticle (event){
-        const paragraphs = document.getElementsByName("paragraph")
-        //get by name returns a node list so we use Array.from to make an array
-        const paragraphArray = Array.from(paragraphs).map(paragraph => paragraph.value)
-        const quotes = document.getElementsByName("quote")
-        const quoteArray = Array.from(quotes).map(quote => quote.value)
-        const title = document.getElementById("title").value
-        const pageId = document.getElementsByName("pages")[0].value
+        // const paragraphs = document.getElementsByName("article")
+        // //get by name returns a node list so we use Array.from to make an array
+        // const paragraphArray = Array.from(paragraphs).reduce(function(result, element){
+        //     if(element.value != ""){
+        //         result.push(element.value)
+        //     }
+        //     return result
+        // }, [])
+        // const quotes = document.getElementsByName("quote")
+        // const quoteArray = Array.from(quotes)
+        // let quotesArray = []
+        // let quoteIndex = 0
+        // for(let i = 1; i <= paragraphArray.length; i++){
+        //     if(i == Number(quoteArray[quoteIndex].id.substring(5))){
+        //         quotesArray.push(quoteArray[quoteIndex].value)
+        //         quoteIndex++
+        //     }
+        //     else {
+        //         quotesArray.push("")
+        //     }
+        // }
+      
+        let article = document.getElementsByName('article')
+        let {
+            paragraph,
+            quote
+        } = Array.from(article).reduce(function (article, item) {
+            if (item.value != "") {
+                if (item.classList[0] == "paragraph") {
+                    article.paragraph.push(item.value)
+                    article.parCount++
+                    console.log("add par")
+                }
+                console.log((Number(item.id.substring(5))) + " : " + article.quoteIndex)
+                if(Number(item.id.substring(5)) != NaN){
+                    while(article.parCount > article.quoteIndex){
+                        console.log("add empty quote")
+                        article.quote.push("")
+                        article.quoteIndex++
+                    }
+                }
+                if (Number(item.id.substring(5)) === article.quoteIndex) {
+                    console.log("add true quote")
+                    article.quote.push(item.value)
+                    article.quoteIndex++
+                }
 
-        callAddArticle({variables: {pageId, title, paragraphArray, quoteArray}})
-        // setReset(true)
+            } else {
+                console.log("what are you doing?")
+                article.quoteIndex ++
+            }
+            return article
+
+        }, {
+            paragraph: [],
+            quote: [],
+            quoteIndex: 1,
+            parCount: 0
+        })
+
+        const title = document.getElementById("title").value
+        const screenName = document.getElementsByName("pages")[0].value
+
+        console.log(screenName)
+        console.log(title)
+        console.log(paragraph)
+        console.log(quote)
+
+        callAddArticle({variables: {screenName, title, paragraphArray, quoteArray}})
     }
 
     const addArticle = gql`
-    mutation addArticle($pageId: ID!, $title: String!, $paragraphArray: [String]!, $quoteArray: [String]) {
+    mutation addArticle($screenName: String!, $title: String!, $paragraphArray: [String]!, $quoteArray: [String]) {
         setArticle(
-            pageId: $pageId,
+            screenname: $screenName,
             articletitle: $title,
             contents: $paragraphArray,
             quotes: $quoteArray

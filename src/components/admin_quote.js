@@ -6,8 +6,8 @@ export default function Quote (props) {
     if (props.editable){
         return(
             <section key={id} className={props.type}>
-                <label htmlFor={props.id}>{capitalWord}:</label>
-                <textarea maxLength={size} name={props.type} id={id} defaultValue={""} >
+                <label htmlFor={id}>{capitalWord}:</label>
+                <textarea className={props.type} id={id} name="article" maxLength={size}defaultValue={""} >
                 </textarea>
                 <section className="groupSelect">
                 </section>

@@ -3,13 +3,14 @@ import React from 'react'
 
 export default function video(props) {
     const files = []
+    console.log()
     if(props){
         if(!props.source){
             return <React.Fragment></React.Fragment>
         }
         if(props.files) {
             props.files.forEach(file => {
-            files.push(<a key={file.source} href={file.source} download>{file.displayname}</a>)
+            files.push(<a key={file.source} href={`https://www.dropbox.com/s/3xn9uq9viuoo5dn/Understanding%20Money%20Discover.txt?dl=1`}>{file.displayname}</a>)
             });
         }
     }

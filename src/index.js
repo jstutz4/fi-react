@@ -8,17 +8,18 @@ import reportWebVitals from './reportWebVitals';
 // graph QL
 import {ApolloClient} from 'apollo-client';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import {HttpLink} from 'apollo-link-http';
+import { createUploadLink } from 'apollo-upload-client';
+// import {HttpLink} from 'apollo-link-http';
 import {ApolloProvider} from '@apollo/react-hooks'
 
 
 // components
 import NavHeader from './components/navMain'
 
-
+//createUploadLink({ uri: process.env.REACT_APP_GRAPHQL_URL });
 
 const cache = new InMemoryCache();
-const link = new HttpLink({
+const link = new createUploadLink({
   uri: 'http://localhost:4000/graphql',
   // uri: '/graphql',
   
