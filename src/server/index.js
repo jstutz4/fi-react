@@ -58,7 +58,24 @@ const { resolve } = require('path');
     files: [File]
   }
 
- 
+  input VideoInput {
+    title: String!
+    source: String!
+    articleId: ID!
+    videoInDB: Boolean!
+    files: [FileInput]
+  }
+
+  input FileInput {
+    source: String
+    displayname: String
+    db: Boolean
+  }
+
+  type Mutation {
+    setArticle(screenname:String!, articletitle: String!, contents: [String]!, quotes: [String]): String
+    videoUpload(video: VideoInput): String
+  }
 
   type Post {
     id: ID
@@ -112,10 +129,10 @@ const root = {
   articles: require('./queries/getPage').func,
   page: require('./queries/getPage').func,
   pages: require('./queries/getPages').func,
-  files: require('./queries/getFiles').func
+  files: require('./queries/getFiles').func,
 
-  // setArticle: require('./mutations/addArticle').func,
-  // videoUpload: require('./mutations/dropboxAPI/upload').upLoad,
+  setArticle: require('./mutations/addArticle').func,
+  videoUpload: require('./mutations/dropboxAPI/upload').func,
 
   // page: require('') 
   // posts: () => POSTS,

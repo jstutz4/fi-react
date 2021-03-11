@@ -168,3 +168,12 @@ label{
   display: grid;
   padding-top: 10px;
 }
+
+/* form validation */
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid black;
+}

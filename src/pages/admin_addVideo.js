@@ -60,14 +60,77 @@ export default function Admin(props) {
             });
         }
         */
-
     }
+
+    function sendVideo(e){
+        let files = []
+        const title = document.getElementById("videoTitle").value
+        const source = document.getElementById("videoSrc").value
+        let displaynames = document.getElementsByName("fileName")
+        let fileURLs = document.getElementsByName("fileURL")
+        const articleId = document.getElementsByName("articles")[0].value
+        console.log(title)
+        console.log(source)
+        console.log(displaynames)
+        console.log(fileURLs)
+        var videoInDB = document.getElementsByName("db")[0].checked
+
+        Array.from(fileURLs).forEach((file, index) => {
+            console.log("stopping here")
+            console.log(file)
+            const fileSource = document.querySelector(`#fileURLs option[value="${file.value}"]`)
+
+            // if file is already in the data base
+            if(fileSource){
+                files[index] = {source: fileSource.getAttribute("data-id"), displayname: displaynames[index].value, db: true}
+            }
+            // if the file is not in the data base
+            else
+            {
+                if(file.value != "")
+                {
+                    files[index] = {source: file.value, displayname: displaynames[index].value, db:false}
+                }
+            }
+        
+        })
+        
+        const videoWhole = {title, source, articleId, videoInDB, files}
+        console.log(videoWhole)
+
+        callUploadVideo({variables: {videoWhole}})
+
+        //temp1[0].list.attributes[0].ownerElement.childNodes[0].dataset
+        // document.querySelector('option[value="custom url"]').getAttribute("data-id")
+        
+    }
+
+    function checkForm(e){
+        const form = document.getElementById('videoForm');
+        document.getElementById("sendVideo").disabled = !form.checkValidity()
+    }
+    
+    const uploadVideo = gql`
+    mutation addArticleVideo($videoWhole: VideoInput)
+    {
+        videoUpload(
+            video: $videoWhole
+        )
+    }
+    `
+    const [callUploadVideo] = useMutation(uploadVideo)
 
     return(
         <React.Fragment>
+            <label> Is the video already in the data base?
+                <input type="checkbox" name="db" checked ></input>
+            </label>
+            <label htmlFor="videoTitle">Video Title
+                <input id="videoTitle" type="text" minLength="3" maxLength="20" placeholder="Awesome Video Title" required></input>
+            </label>
 
             <label htmlFor="videoSrc">Video URL
-                <input type="url" placeholder="https://www.youtube.com/your-video" pattern="https://.*"></input>
+                <input id="videoSrc" type="url" placeholder="https://www.youtube.com/your-video" pattern="https://.*" required></input>
             </label>
             
             {AddElementsContainer({elementConstructor: VideoFileElement, elementProps: {data: fileData}, buttonGroup: [{value: "Add Another File"}] })}
@@ -75,8 +138,8 @@ export default function Admin(props) {
             {/* {VideoFileElement({data: fileData})} */}
 
             <div>
-                <button onClick={()=> console.log("add video function")}>Add Video</button>
+                <button id="sendVideo" onClick={sendVideo}>Add Video</button>
             </div>
-        </React.Fragment>
+         </React.Fragment>
     )
 }

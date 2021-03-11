@@ -45,6 +45,7 @@ export default function Admin(props) {
     const [article, setArticle] = useState({name:"Random", id:1, change:""})
     const [articlesQuery, setArticlesQuery] = useState(getArticlesInit)
     const [articleQuery, setArticleQuery] = useState(getArticleInit)
+    const [formQuestion, setFormQuestion] = useState("")
 
     let { data : pageData, loading:pageLoading, error:pageError}  = useQuery(getPages)
     let { data: articlesData, loading:articlesLoading, error:articlesError }  = useQuery(articlesQuery);
@@ -95,7 +96,12 @@ export default function Admin(props) {
     }
     let body;
     if(props.location.pathname.includes("video")){
+        if(formQuestion === "")
+        {
+            setFormQuestion("Select article to add video ")
+        }
         body = addVideo()
+
     }
     else {
         body = (<React.Fragment>
@@ -106,6 +112,7 @@ export default function Admin(props) {
     
     return(
         <section className="adminPageSize">
+            {formQuestion}
             <section className="groupSelect">
                 {Selector({type: "pages", setFunc: setPage, setArticle: setArticle, article:article, data: pageData})}
 

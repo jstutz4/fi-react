@@ -1,11 +1,94 @@
-exports.upLoad = async ({file}) => {
-    // const ACCESS_TOKEN = `sl.AsbZtwWUMObnnxU53gmQ51G0zOWi6m2cvGNAKvv7X2f3phR1G1VPdg6tMNpPKMpJF2A8eXr2o2OM98M-pS_mJSraCzanLbmB0PWqQrY_Wx17Aznl-9gSIZ769fhghOlYlrRW5Pa-`    
-    // const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
-    // var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
+const { Pool } = require('pg');
+const calls = require('../../dbCalls/insertDBCalls')
+const read = require('../../dbCalls/GetAll')
+
+exports.func = async ({video}) => {
+
+  var pool = new Pool({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'postgres',
+    password: ' ',
+    port: 5432,
+  })
+  const insertVideoQuery = `INSERT INTO Video (title, source)
+  VALUES($1, $2);`
+
+  const insertFileQuery = `INSERT INTO File (displayname, source)
+  VALUES($1, $2);`
+
+  const getFileId = `select fileid as id from file where source = $1;`
+
+  const getVideoId = `select videoid as id from video where source = $1;
+  `
+  const insertVideoFiles = `INSERT INTO VideoFile(VideoID, FileID)
+  VALUES($1, $2);`
+ 
+  const addArticleVideo = `update article set videoid = $1 where id = $2;`
+
+  console.log(video)
+
+  if(!video.videoInDB)
+  {
+    // this will hang if video is already in db (user forgets to check the box)
+   err =  await calls.insertOne(pool, insertVideoQuery, [video.title, video.source])
+   console.log(err)
+  }
+
+  const videoId = await read.getOne(pool,getVideoId, [video.source])
     
-    console.log(file)
-    console.log("read me now")
+
+  console.log(videoId)
+  // ensure user adds a  new video or uses one already in the db
+  if(videoId != null)
+  {
+  
+  // add the files to files duplicates will not be added
+  const newFileIds = await Promise.all(video.files.map((file) => {
     
+    if(!file.db)
+    {
+      return new Promise((resolve, reject) => {
+        resolve(calls.insertOne(pool, insertFileQuery, [file.displayname, file.source ]))
+      }).then((value) =>{
+        //then get id for new file
+        return read.getOne(pool, getFileId, [file.source])
+      })
+    }
+      //then get the ids for already in db files
+    else
+    {
+      return new Promise((resolve, reject) => {
+        resolve(read.getOne(pool, getFileId, [file.source]))
+      })
+    }
+  }))
+
+  console.log(newFileIds)
+  
+  // convert them to array with id -- we could also this in the promises
+  const newFileIdArray = newFileIds.map((idObj)=>{
+    return idObj.id
+  })
+  
+  
+  // add each of the files to the video
+
+  await Promise.all(newFileIdArray.forEach((fileId) =>{
+    new Promise((resolve, reject)=> {
+      resolve(calls.insertOne(pool, insertVideoFiles, [videoId, fileId]))
+    })
+  }))
+  
+  // add videoId to the article
+  calls.insertOne(pool, addArticleVideo, [videoId, video.articleId])
+}
+  //below code is for the dropbox api
+
+  // const ACCESS_TOKEN = `sl.AsbZtwWUMObnnxU53gmQ51G0zOWi6m2cvGNAKvv7X2f3phR1G1VPdg6tMNpPKMpJF2A8eXr2o2OM98M-pS_mJSraCzanLbmB0PWqQrY_Wx17Aznl-9gSIZ769fhghOlYlrRW5Pa-`    
+  // const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
+  // var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
+  
     // if (file.size < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
     //   dbx.filesUpload({path: '/' + file.name, contents: file})
     //     .then(function(response) {
@@ -63,6 +146,6 @@ exports.upLoad = async ({file}) => {
     //   });
       
     // }
-
+    console.log("success")
     return "success";
   }

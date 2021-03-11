@@ -1,6 +1,9 @@
+import React from "react"
+
 var funPt = function VideoFileElement(props) {
+
     const key = props && props.id? "this is crazy" + props.id : "zerozerozero"
-    
+
     if(props && props.data && props.data.files){
         const options = props.data.files.map((file) => {
             return(
@@ -8,20 +11,32 @@ var funPt = function VideoFileElement(props) {
             )
         })
         return(
-            <label key={key} htmlFor="fileURL">File URL
-                <input placeholder="https://www.dropbox.com/exampleTemplate.xlsx?dl=1" list="fileURLs"  name="files" />
+            <React.Fragment key={key}>
+                <label htmlFor="fileName">File display name
+                        <input type="text" minLength="3" maxLength="30" name="fileName" placeholder="my file template"></input>
+                    </label>
 
-                <datalist id="fileURLs">
-                    {options}
-                </datalist>
-            </label>
+                <label htmlFor="fileURL">File URL
+                    <input placeholder="https://www.dropbox.com/exampleTemplate.xlsx?dl=1" list="fileURLs"  name="fileURL" />
+
+                    <datalist id="fileURLs">
+                        {options}
+                    </datalist>
+                </label>
+            </React.Fragment>
         )
     }
     else{
         return (
-            <label key={key} htmlFor="fileURL">File URL
-                        <input type="url" name="files" placeholder="https://www.dropbox.com/exampleTemplate.xlsx?dl=1"></input>
-            </label>
+            <React.Fragment key={key}>
+                <label>File display name
+                    <input type="text" minLength="3" maxLength="30" name="fileName" placeholder="my file template"></input>
+                 </label>
+
+                <label htmlFor="fileURL">File URL
+                            <input type="url" name="fileURL" placeholder="https://www.dropbox.com/exampleTemplate.xlsx?dl=1"></input>
+                </label>
+            </React.Fragment>
         )
     }
 }
