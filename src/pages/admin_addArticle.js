@@ -6,7 +6,7 @@ import gql from "graphql-tag";
 // needs to be from react-hooks any other location causes errors
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
-export default function Admin() {
+export default function AdminArticle() {
     async function sendArticle (event){
         // const paragraphs = document.getElementsByName("article")
         // //get by name returns a node list so we use Array.from to make an array
@@ -68,25 +68,25 @@ export default function Admin() {
             parCount: 0
         })
 
-        const title = document.getElementById("title").value
+        const articletitle = document.getElementById("title").value
         const screenName = document.getElementsByName("pages")[0].value
 
         console.log(screenName)
-        console.log(title)
+        console.log(articletitle)
         console.log(paragraph)
         console.log(quote)
 
-        callAddArticle({variables: {screenName, title, paragraphArray, quoteArray}})
+        const wholeArticle = {page:{screenname:screenName}, article: {articletitle, contents:paragraph, quotes: quote}}
+        // const wholeArticle = {page: {screenname:screenName}, article: "see this works"}
+
+
+        console.log(wholeArticle)
+        callAddArticle({variables: {wholeArticle}})
     }
 
     const addArticle = gql`
-    mutation addArticle($screenName: String!, $title: String!, $paragraphArray: [String]!, $quoteArray: [String]) {
-        setArticle(
-            screenname: $screenName,
-            articletitle: $title,
-            contents: $paragraphArray,
-            quotes: $quoteArray
-        )
+    mutation addArticle($wholeArticle: ArticleInput) {
+        setArticle(article: $wholeArticle)
       }`
 
      const [callAddArticle] = useMutation(addArticle)
@@ -106,7 +106,7 @@ export default function Admin() {
     //     setReset(false)
     //   }, []);
 
-    let { data, loading, error}  = useQuery(getPages)
+    // let { data, loading, error}  = useQuery(getPages)
     
 
   
@@ -118,10 +118,10 @@ export default function Admin() {
     
     return(
         <section className="adminPageSize">
-            <section className="groupSelect">
-                {Selector({type: "pages", data: data, reset, setReset})}
+            {/* <section className="groupSelect">
+                {/* {Selector({type: "pages", data: data, reset, setReset})} }
 
-            </section>
+            </section> */}
             <input type="text" placeholder="Article title" maxLength="30" id="title"></input>
 
             {Article({reset, setReset})}

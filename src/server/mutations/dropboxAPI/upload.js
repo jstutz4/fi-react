@@ -28,6 +28,7 @@ exports.func = async ({video}) => {
 
   console.log(video)
 
+
   if(!video.videoInDB)
   {
     // this will hang if video is already in db (user forgets to check the box)
@@ -67,21 +68,24 @@ exports.func = async ({video}) => {
   console.log(newFileIds)
   
   // convert them to array with id -- we could also this in the promises
-  const newFileIdArray = newFileIds.map((idObj)=>{
+  const newFileIdArray = await newFileIds.map((idObj)=>{
     return idObj.id
   })
   
-  
+  console.log(newFileIdArray)
   // add each of the files to the video
-
+if(newFileIdArray.length > 0)
+{
   await Promise.all(newFileIdArray.forEach((fileId) =>{
     new Promise((resolve, reject)=> {
-      resolve(calls.insertOne(pool, insertVideoFiles, [videoId, fileId]))
+      resolve(calls.insertOne(pool, insertVideoFiles, [videoId.id, fileId]))
+
     })
   }))
+}
   
   // add videoId to the article
-  calls.insertOne(pool, addArticleVideo, [videoId, video.articleId])
+  await calls.insertOne(pool, addArticleVideo, [videoId.id, Number(video.articleId)])
 }
   //below code is for the dropbox api
 

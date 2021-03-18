@@ -10,7 +10,7 @@ import gql from "graphql-tag";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import {Dropbox} from "dropbox";
 
-export default function Admin(props) {
+export default function AdminVideo(props) {
 
     const getFiles = gql`
         query files {
@@ -25,7 +25,7 @@ export default function Admin(props) {
     let { data : fileData, loading:loadingFile, error:fileError}  = useQuery(getFiles)
 
     const addVideo = gql`
-    mutation addVideo($file: Upload!) {
+    mutation addVideo($file: VideoInput!) {
         videoUpload(file: $file)
       }
       `
@@ -123,7 +123,7 @@ export default function Admin(props) {
     return(
         <React.Fragment>
             <label> Is the video already in the data base?
-                <input type="checkbox" name="db" checked ></input>
+                <input type="checkbox" name="db" defaultChecked ></input>
             </label>
             <label htmlFor="videoTitle">Video Title
                 <input id="videoTitle" type="text" minLength="3" maxLength="20" placeholder="Awesome Video Title" required></input>

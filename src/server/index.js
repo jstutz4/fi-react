@@ -58,24 +58,7 @@ const { resolve } = require('path');
     files: [File]
   }
 
-  input VideoInput {
-    title: String!
-    source: String!
-    articleId: ID!
-    videoInDB: Boolean!
-    files: [FileInput]
-  }
-
-  input FileInput {
-    source: String
-    displayname: String
-    db: Boolean
-  }
-
-  type Mutation {
-    setArticle(screenname:String!, articletitle: String!, contents: [String]!, quotes: [String]): String
-    videoUpload(video: VideoInput): String
-  }
+ 
 
   type Post {
     id: ID
@@ -116,6 +99,52 @@ const { resolve } = require('path');
     id: ID
     to: String
     name: String
+  }
+
+  
+  
+  input VideoInput {
+    title: String!
+    source: String!
+    articleId: ID!
+    videoInDB: Boolean!
+    files: [FileInput]
+  }
+
+  input FileInput {
+    source: String
+    displayname: String
+    db: Boolean
+  }
+
+
+  input ArticleInput {
+    page: MyPage
+    article: MyArticle
+  }
+
+  input MyPage {
+    screenname: String!
+  }
+  
+  input MyArticle {
+    id: ID
+    articletitle: String!
+    video: MyVideo
+    contents: [String]
+    quotes: [String]
+  }
+ 
+  input MyVideo  {
+    videoid: ID
+    title: String!
+    source: String!
+    files: [FileInput]
+  }
+
+  type Mutation {
+    setArticle(article: ArticleInput): String
+    videoUpload(video: VideoInput): String
   }
 
 `);

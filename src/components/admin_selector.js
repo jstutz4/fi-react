@@ -21,9 +21,11 @@ export default function PageSelector(params) {
             return <option key={page.id + page.screenname} value={page.screenname}>{page.screenname} {selected}</option>
         })
     }
-    if(params.type == "articles" && params.data){
+    
 
-        options = params.data.articles.map((article) => {
+    if(params.type == "articles" && params.data && params.data[0]){
+
+        options = params.data[0].articles.map((article) => {
             
             return <option key={article.id + article.articletitle} value={article.id}>{article.articletitle} </option>
         })

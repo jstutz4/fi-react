@@ -9,9 +9,9 @@ import { useQuery } from '@apollo/react-hooks';
 
 export default function Admin(props) {
 
-    if(props.location.pathname.includes("add")){
-        return addArticle()
-    }
+    // if(props.location.pathname.includes("add")){
+    //     return addArticle()
+    // }
     const getPages = gql`
     query pages {
         pages{
@@ -95,19 +95,29 @@ export default function Admin(props) {
         }
     }
     let body;
+    let articleSelector;
+
     if(props.location.pathname.includes("video")){
         if(formQuestion === "")
         {
             setFormQuestion("Select article to add video ")
         }
         body = addVideo()
+        articleSelector = (<React.Fragment>{Selector({type: "articles", setFunc: setArticle, data: [articlesData]})}</React.Fragment>)
 
+
+    }
+    else if(props.location.pathname.includes("add")){
+        body = addArticle()
+        articleSelector = ""
     }
     else {
         body = (<React.Fragment>
             <h2>{article.name ? article.name : "unknown title"}</h2>
                 {Paragraph({data: articleData})}
            </React.Fragment>)
+
+    articleSelector = (<React.Fragment>{Selector({type: "articles", setFunc: setArticle, data: [articlesData]})}</React.Fragment>)
     }
     
     return(
@@ -116,7 +126,7 @@ export default function Admin(props) {
             <section className="groupSelect">
                 {Selector({type: "pages", setFunc: setPage, setArticle: setArticle, article:article, data: pageData})}
 
-                {Selector({type: "articles", setFunc: setArticle, data: articlesData})}
+                {articleSelector}
 
             </section>
             {body}

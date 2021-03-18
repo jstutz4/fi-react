@@ -14,10 +14,10 @@ import adminAddVideo from './pages/admin_addVideo'
 function App(props) {
   return (
     <Switch>
-      <Route path="/admin" component={admin} />
-      {/* <Route path="/admin/video" component={adminAddVideo} /> */}
-      <Route exact path="/" component={adminAddVideo} />
-      <Route path="/admin/add" component={adminAddArticle} />
+      <Route path="/admin/" component={admin} />
+      <Route path="/admin/video" component={admin} />
+      <Route exact path="/" component={gettingStarted} />
+      {/* <Route path="/admin/add" component={adminAddArticle} /> */}
       <Route path="/start/:id?" component={gettingStarted} />
       <Route path="/save/:id?" component={save} />
       <Route exact path="/invest/:id?" component={invest} />

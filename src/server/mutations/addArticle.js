@@ -4,7 +4,7 @@ const read = require('../dbCalls/GetAll')
 // const videoQuery = require('./getVideoQuery')
 
 
-exports.func = async ({screenname, articletitle, contents, quotes}) => {
+exports.func = async ({article}) => {
     
     var pool = new Pool({
         user: 'postgres',
@@ -13,8 +13,12 @@ exports.func = async ({screenname, articletitle, contents, quotes}) => {
         password: ' ',
         port: 5432,
       })
+      console.log(article.page.screenname)
+      console.log(article.article.articletitle)
+      console.log(article.article.contents)
+      console.log(article.article.quotes)
 
-      if(!(screenname && articletitle && contents.length > 0)){
+      if(!(article.page.screenname && article.article.articletitle && article.article.contents.length > 0)){
         return "failure achieved"
       }
 
@@ -36,16 +40,16 @@ exports.func = async ({screenname, articletitle, contents, quotes}) => {
       values($1,$2);`
 
 
-    await calls.insertOne(pool, addArticle, [articletitle])
+    await calls.insertOne(pool, addArticle, [article.article.articletitle])
 
 
     const articleID = await read.getOne(pool, `select * from article_id_seq;`)
         
-    let length = contents.length
+    let length = article.article.contents.length
     // this way grantees order
     let index = 0;
     while(index < length){
-      await calls.insertOne(pool, addParagraph, [contents[index]])
+      await calls.insertOne(pool, addParagraph, [article.article.contents[index]])
       index++
     }
      
@@ -60,13 +64,17 @@ exports.func = async ({screenname, articletitle, contents, quotes}) => {
       index++
     }
 
+    length = article.article.quotes.length
      
-    if(quotes && quotes.length > 0)
+    if(article.article.quotes && length > 0)
     {
-      length = quotes.length
       index = 0;
       while(index < length){
-        await calls.insertOne(pool, addQuote, [quotes[index]])
+        if(article.article.quotes[index] != "")
+        {
+          console.log("we added " + article.article.quotes[index] + " still good?")
+          await calls.insertOne(pool, addQuote, [article.article.quotes[index]])
+        }
         index++
       }
 
@@ -85,7 +93,7 @@ exports.func = async ({screenname, articletitle, contents, quotes}) => {
     // pageId = await read.getOne(pool, getPage, [page])
     // pageId = pageId.id 
 
-    const pageId = await read.getOne(pool, getPage, [screenname])
+    const pageId = await read.getOne(pool, getPage, [article.page.screenname])
     await calls.insertOne(pool, addPageArticle, [pageId.id, articleID.last_value])
 
       pool.end()
