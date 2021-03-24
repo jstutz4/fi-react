@@ -22,6 +22,7 @@ function App(props) {
       <Route path="/save/:id?" component={save} />
       <Route exact path="/invest/:id?" component={invest} />
       <Route exact path="/about" component={about} />
+      <Route exact path="/about/:id?" component={about} />
     </Switch>
 
   );

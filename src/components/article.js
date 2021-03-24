@@ -1,24 +1,11 @@
 import React from 'react'
 import Video from './video'
 
-const sectionCSS = {
-    marginTop: '50px',
-    backgroundColor: 'lightgray',
-    padding: '10px 1vw',
-    borderRadius: '15px',
-  }
 
-const quoteCSS = {
-    backgroundColor: 'lightgreen',
-    padding: '10px 30px',
-    textAlign: 'center',
-}
 
-const headerCSS =
-{
-    borderTop: 'solid 5px lightgreen',
-    borderBottom: 'solid 3px lightgreen',
-}
+
+
+
 
 
 
@@ -27,7 +14,7 @@ export default function article(props) {
         return <section>No Data</section>
     }
     let content = props.contents.map((section,index)=>{
-    let quote = props.quotes[index] ? <blockquote  style={quoteCSS}>{props.quotes[index]}</blockquote> : null
+    let quote = props.quotes[index] ? <blockquote>{props.quotes[index]}</blockquote> : null
     let key = props.articletitle + index
     
         return (
@@ -39,8 +26,8 @@ export default function article(props) {
       })
 
     return(
-        <section style={sectionCSS}>
-            <h1 style={headerCSS}>{props.articletitle}</h1>
+        <section className="articleContent">
+            <h1>{props.articletitle}</h1>
             {Video(props.video)}
             {content}
         </section>

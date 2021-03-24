@@ -6,6 +6,8 @@ const { buildASTSchema } = require('graphql');
 const path = require('path')
 const fileUpload = require('express-fileupload');
 const { GraphQLUpload, graphqlUploadExpress  } = require('graphql-upload')
+const { makeExecutableSchema } = require("graphql-tools");
+const fs = require('fs')
 
 require('isomorphic-fetch'); // or another library of choice.
 var Dropbox = require('dropbox').Dropbox;
@@ -183,6 +185,11 @@ const root = {
   // },
 };
 
+//let typeDefs = fs.readFileSync("src/server/schema.graphql", {
+//   encoding: "utf8",
+//   flag: "r",
+// });
+// const ExeSchema = makeExecutableSchema({ typeDefs, root });
 
 // console.log("LOOK")
 // console.log(schema.getTypeMap())

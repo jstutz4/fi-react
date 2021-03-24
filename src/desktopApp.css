@@ -15,10 +15,9 @@
     nav a{
     text-decoration: none;
     color: white;
-    border: 2px green outset;
-    background-color: rgba(0, 200, 0, .3);
+    /* border: 2px green outset; */
+    /* background-color: rgba(0, 200, 0, .3); */
     padding: 0 7px;
-    border-radius: 15px;
     }
 
 
@@ -40,6 +39,7 @@
     }
 
     li:hover{
+        /* a random color not to be seen */
         background-color: rgba(0, 200, 0, .01);
     }
 

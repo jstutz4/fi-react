@@ -53,7 +53,7 @@ export default function About(props) {
   }
 
   const articleNav = data.page.articleNav
-  const page = '/start/'
+  const page = '/about/'
   const article = data.page.articles.filter(art => art.id == activeArticle)[0]
   
   return (

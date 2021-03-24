@@ -4,24 +4,8 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
 
-const ulCSS = {
-    listStyleType: "none",
-    margin: "0",
-    paddingLeft: "0",
-}
 
-const navHorizontal = {
-    
-}
 
-const navColor = {
-    border: "3px green solid",
-    borderRadius: "6px",
-    // float: "left",
-    backgroundColor: "rgba(1,100,32, .9)",
-    padding: "3px",
-    marginTop: "5vh",
-}
 
 const mainNavNames = 
 [
@@ -45,9 +29,9 @@ function toggleMainNav(item){
 
 }
 
-linkItems.push(<li key={"mainNavDropdown"}style={navHorizontal} className="show" onClick={toggleMainNav}>&#9776;</li>)
+linkItems.push(<li key={"mainNavDropdown"}className="show" onClick={toggleMainNav}>&#9776;</li>)
 mainNavNames.forEach((item) => {
-    linkItems.push(<li key={item.name} style={navHorizontal} className="hidden" onClick={toggleMainNav}>
+    linkItems.push(<li key={item.name} className="hidden" onClick={toggleMainNav}>
         <Link to={item.link}>{item.name}</Link>
         </li>);
 })
@@ -58,8 +42,8 @@ export default function NavHeader(props) {
         return
     }
     return(
-        <nav style={navColor} id="mainNav">
-            <ul style={ulCSS}>
+        <nav id="mainNav">
+            <ul>
                 {linkItems}
             </ul>
         </nav>
