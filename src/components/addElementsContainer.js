@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import Paragraph from './admin_quote'
+import React, { useEffect, useState } from 'react';
 
 export default function AddElementsContainer(props){
    

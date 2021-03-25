@@ -1,4 +1,29 @@
+
 export default function Quote (props) {
+    function editMode(e){
+        console.log(e)
+        // display the update button
+        
+        e.target.nextElementSibling.classList.toggle("hidden")
+
+        // enable edit of textarea
+        e.target.parentElement.parentElement.querySelector('textarea').readOnly = false
+    }
+
+    function updateContent(e) {
+        console.log(e)
+        let content = e.target.parentElement.parentElement.querySelector('textarea')
+        let contentIdentifier = content.getAttribute("data-content-id")
+        let newContent = {dataId:contentIdentifier, type: content.name, text: content.value}
+        console.log(newContent)
+        console.log(props.callUpdateArticle)
+        props.callUpdateArticle({variables: {content:newContent}})
+
+        e.target.classList.toggle('hidden')
+        content.readOnly = true
+
+    }
+
     const id = `${props.type}${props.id}`
     const size = `${props.size}`
     const capitalWord = `${props.type[0].toUpperCase()}${props.type.substring(1)}`
@@ -7,7 +32,7 @@ export default function Quote (props) {
         return(
             <section key={id} className={props.type}>
                 <label htmlFor={id}>{capitalWord}:</label>
-                <textarea className={props.type} id={id} name="article" maxLength={size}defaultValue={""} >
+                <textarea className={props.type} id={id} name="article" maxLength={size} defaultValue={""} >
                 </textarea>
                 <section className="groupSelect">
                 </section>
@@ -15,12 +40,14 @@ export default function Quote (props) {
         )
     }
     return(
-        <section key={id} className={props.type}>
+        <section key={props.content} className={props.type}>
             <label htmlFor={id}>{capitalWord}:</label>
-            <textarea maxLength={size} name={props.type} id={id} value={props.content} readOnly>
+            {/* must use value instead of default value for the state to update correctly */}
+            <textarea maxLength={size} name={props.type} id={id} defaultValue={props.content} readOnly data-content-id={props.dataAttribute}>
             </textarea>
             <section className="groupSelect">
-                <button>Edit</button>
+                <button onClick={editMode}>Edit</button>
+                <button className="hidden" onClick={updateContent}>update</button>
             </section>
         </section>
     )

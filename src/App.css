@@ -221,6 +221,10 @@ footer a:hover {
   min-height: 40px;
 }
 
+.hidden {
+  display: none;
+}
+
 textarea{
   float: left;
   width: 100%;
@@ -231,7 +235,7 @@ textarea{
 
 /* Might be used for links in the articles */
 .inlineLink{
-  color: var(--video-link-color);
+  color: var(--article-link-color);
   background-color: lightgrey;
   display: inline;
 }

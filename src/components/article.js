@@ -16,10 +16,13 @@ export default function article(props) {
     let content = props.contents.map((section,index)=>{
     let quote = props.quotes[index] ? <blockquote>{props.quotes[index]}</blockquote> : null
     let key = props.articletitle + index
-    
+    console.log(section)
+    let mySection = document.createElement("article")
+    mySection.innerHTML = section
+    console.log(mySection)
         return (
             <React.Fragment key={key}>
-                <article >{section}</article>
+                <article>{section}</article>
                 {quote}
             </React.Fragment>
         )

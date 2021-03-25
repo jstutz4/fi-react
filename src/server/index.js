@@ -144,9 +144,16 @@ const { resolve } = require('path');
     files: [FileInput]
   }
 
+  input UpdateContent {
+    dataId: ID
+    type: String
+    text: String
+  }
+
   type Mutation {
     setArticle(article: ArticleInput): String
     videoUpload(video: VideoInput): String
+    updateArticle(content: UpdateContent): String
   }
 
 `);
@@ -164,6 +171,7 @@ const root = {
 
   setArticle: require('./mutations/addArticle').func,
   videoUpload: require('./mutations/dropboxAPI/upload').func,
+  updateArticle: require('./mutations/updateParagraph').func,
 
   // page: require('') 
   // posts: () => POSTS,

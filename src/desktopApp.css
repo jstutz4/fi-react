@@ -43,9 +43,9 @@
         background-color: rgba(0, 200, 0, .01);
     }
 
-    .hidden {
+    /* .hidden {
         display: block;
-    }
+    } */
 
     .show{
         display: none;
