@@ -65,10 +65,14 @@ body {
 }
 
 .articleContent {
-    margin-top: 50px;
+    margin: 50px 0 25px 0;
     background-color: var(--article-background-color);
     padding: 10px 1vw;
     border-radius: 15px;
+}
+
+article {
+  margin-bottom: 10px;
 }
 
 article a {
@@ -95,7 +99,7 @@ blockquote {
 }
 
 
-li:hover, a:hover{
+#mainNav li:hover, #mainNav a:hover{
   background-color: var(--nav-hover-color);
 }
 
@@ -105,11 +109,17 @@ li:hover, a:hover{
 
 .articleNav {
   position: absolute;   
+  width: 100%;
+  max-width: 1000px;
 }
 
 .articleNav ul {
-  list-style-type: none;
   background-color: var(--articlenav-background-color);
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 1000px;
   padding: 0;
 }
 
@@ -138,10 +148,6 @@ li:hover, a:hover{
   border-radius: 0;
 }
 
-.articleNav ul{
-  margin-bottom: 0;
-  margin-left: 10px;
-}
 
 .activeArticle {
   border: none;

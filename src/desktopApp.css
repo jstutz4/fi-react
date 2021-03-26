@@ -10,6 +10,7 @@
 
     .articleNav ul{
         display: inline-block;
+        width: 98%;
     }
     
     nav a{
@@ -38,16 +39,16 @@
         padding-left: 0;
     }
 
-    li:hover{
+    #mainNav li:hover{
         /* a random color not to be seen */
         background-color: rgba(0, 200, 0, .01);
     }
 
-    /* .hidden {
+    #mainNav li {
         display: block;
-    } */
+    }
 
-    .show{
+    #mainNav ul li:first-child{
         display: none;
     }
     .MainNav:first-child{

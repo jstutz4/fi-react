@@ -1,6 +1,6 @@
 import React from 'react'
 import Video from './video'
-
+import ReactHtmlParser from 'react-html-parser'; 
 
 
 
@@ -16,13 +16,10 @@ export default function article(props) {
     let content = props.contents.map((section,index)=>{
     let quote = props.quotes[index] ? <blockquote>{props.quotes[index]}</blockquote> : null
     let key = props.articletitle + index
-    console.log(section)
-    let mySection = document.createElement("article")
-    mySection.innerHTML = section
-    console.log(mySection)
+
         return (
             <React.Fragment key={key}>
-                <article>{section}</article>
+                <article>{getLinksFromArticle(section)}</article>
                 {quote}
             </React.Fragment>
         )
@@ -52,3 +49,10 @@ export default function article(props) {
     
                     Sed ad harum mediocrem consulatu. Facer dolores complectitur sit te, regione mnesarchum cum no. Periculis vituperatoribus cum et, te atqui senserit vim, te pro case aliquip conceptam. Sed cu soluta tibique, dictas necessitatibus cu ius, ius eros omnesque intellegam et. Veritus appetere mel cu, vis rebum alterum postulant ea, ut rebum liberavisse mediocritatem per. Dictas latine no qui, id eam quot illum impetus, est id tota fastidii repudiare.
                 </article> */
+
+
+function getLinksFromArticle(content) {
+    return (
+        ReactHtmlParser (content)
+    )
+} 
