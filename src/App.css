@@ -1,18 +1,18 @@
 :root {
-  --main-background-color :gray;
+  --main-background-color :#5D5C61;
 
-  --nav-background-color: darkgreen;
+  --nav-background-color: #7395ae;
   --nav-text-color: white;
-  --nav-hover-color: orange;
+  --nav-hover-color: #557A95;
 
   --article-background-color: lightgrey;
 
-  --articlenav-hover-color: darkgreen;
-  --articlenav-border-color: orange;
-  --articlenav-background-color: darkgrey;
+  --articlenav-hover-color: #557A95;
+  --articlenav-border-color: #7395ae;
+  --articlenav-background-color: #5D5C61;
   --article-link-color: blue;
 
-  --quote-background-color: lightgreen;
+  --quote-background-color: #b1a296;
 
   --input-border-valid-color: black;
   --input-border-invalid-color: red;
