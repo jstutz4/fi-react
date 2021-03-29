@@ -8,7 +8,7 @@ export default function articleLinkHelper(props, activeArticle, setActiveArticle
     if(props && props.links){
       props.links.forEach((article, index) => {
         let activeStyle = ""
-          if(activeArticle === article.id){
+          if(activeArticle === article.to){
             activeStyle = "activeArticle"
           }
           // if(navLength + article.name.length < 34){
