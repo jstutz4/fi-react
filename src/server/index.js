@@ -150,10 +150,17 @@ const { resolve } = require('path');
     text: String
   }
 
+  input inputTitle {
+    title: String
+    articleId: ID
+  }
+
   type Mutation {
     setArticle(article: ArticleInput): String
     videoUpload(video: VideoInput): String
     updateArticle(content: UpdateContent): String
+    updateTitle(content: inputTitle): String
+    removeArticle(article: MyArticle): String
   }
 
 `);
@@ -172,6 +179,8 @@ const root = {
   setArticle: require('./mutations/addArticle').func,
   videoUpload: require('./mutations/dropboxAPI/upload').func,
   updateArticle: require('./mutations/updateParagraph').func,
+  updateTitle: require('./mutations/updateTitle').func,
+  removeArticle: require('./mutations/removeArticle').func,
 
   // page: require('') 
   // posts: () => POSTS,

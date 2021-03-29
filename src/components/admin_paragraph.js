@@ -40,8 +40,7 @@ export default function Article(props){
     }
 
     useEffect(() => {
-        if(props.data){
-            console.log("this code ran")
+        if(props?.data?.article?.contents){
             let paragraphs = []
 
             paragraphs = props.data.article.contents.map((par, index) => {

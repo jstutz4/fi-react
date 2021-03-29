@@ -21,7 +21,20 @@ exports.func = async ({id}) => {
       INNER JOIN articleQuotes aq ON aq.quoteID = quote.ID
       where articleID = $1;`
 
+      const validateArticle = `select id from article`
+
+     var validArticles =  await common.getAll(pool,validateArticle)
+
+     const valid = validArticles.filter(x => x.id == id)
+
+     if(valid.length < 1){
+       return {id:-1, articletitle:"add article", contents:[]}
+     }
+     
+     
+     
       var article = await common.getOne(pool, `select * from article where id = $1`, [id])
+      console.log(article)
 
       if(article.videoid){
         var video = await new Promise((resolve, reject) => {

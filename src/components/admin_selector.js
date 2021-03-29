@@ -22,13 +22,17 @@ export default function PageSelector(params) {
         })
     }
     
-
     if(params.type == "articles" && params.data && params.data[0]){
 
         options = params.data[0].articles.map((article) => {
             
             return <option key={article.id + article.articletitle} value={article.id}>{article.articletitle} </option>
         })
+
+        if(options.length < 1) 
+        {
+            options.push(<option key={"-1" + "add article"} value={-1}>add article </option>)
+        }
     }
 
     return (

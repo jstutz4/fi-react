@@ -5,9 +5,71 @@ import addArticle from './admin_addArticle'
 import addVideo from './admin_addVideo'
 
 import gql from "graphql-tag";
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
 export default function Admin(props) {
+
+    function editTitle(e)
+    {
+        e.target.nextElementSibling.classList.toggle("hidden")
+        let title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent
+        e.target.parentElement.previousElementSibling.value = title
+        
+        // gets the hidden input
+        e.target.parentElement.previousElementSibling.classList.toggle("hidden")
+
+        //gets the h2 title
+        e.target.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hidden")
+
+    }
+
+    function updateTitle(e)
+    {
+        // hid update button
+        e.target.classList.toggle("hidden")
+
+        // get article id
+
+        let articleId = document.getElementsByName("articles")[0].value
+
+
+        let title = e.target.parentElement.previousElementSibling.value
+        e.target.parentElement.previousElementSibling.previousElementSibling.textContent = title
+        // setArticle({...article, name:title})
+
+         // gets the hidden input
+         e.target.parentElement.previousElementSibling.classList.toggle("hidden")
+
+         //gets the h2 title
+         e.target.parentElement.previousElementSibling.previousElementSibling.classList.toggle("hidden")
+
+         callUpdateTitle({variables: {content:{title, articleId}}})
+
+         refetch()
+
+         // set change to "" so it will update?
+         let updateArticleTitle = {...article, change:""}
+
+         setArticle(updateArticleTitle)
+         // article is still not being updated but also is not the one trigging a re-render
+    }
+
+    function deleteArticle(e) {
+        let articleId = document.getElementsByName("articles")[0].value
+        let articletitle = e.target.nextElementSibling.textContent
+
+
+        callRemoveArticle({variables: {article: {id:articleId, articletitle}}})
+
+        refetch()
+
+        let updateArticleTitle = {...article, change:""}
+
+        if(articlesData.articles.length > 1)
+        {
+            setArticle(updateArticleTitle)
+        }
+    }
 
     // if(props.location.pathname.includes("add")){
     //     return addArticle()
@@ -47,14 +109,27 @@ export default function Admin(props) {
     const [articleQuery, setArticleQuery] = useState(getArticleInit)
     const [formQuestion, setFormQuestion] = useState("")
 
+    const updateArticle = gql`
+    mutation updateTitle($content: inputTitle) {
+        updateTitle(content: $content)
+      }`
+
+    const removeArticle = gql`
+    mutation removeArticle($article: MyArticle) {
+        removeArticle(article: $article)
+    }`
+
+     const [callUpdateTitle] = useMutation(updateArticle)
+     const [callRemoveArticle] = useMutation(removeArticle)
+
     let { data : pageData, loading:pageLoading, error:pageError}  = useQuery(getPages)
-    let { data: articlesData, loading:articlesLoading, error:articlesError }  = useQuery(articlesQuery);
+    let { data: articlesData, loading:articlesLoading, error:articlesError, refetch  }  = useQuery(articlesQuery);
     let { data: articleData, articleLoading, error:articleError }  = useQuery(articleQuery);
   
 
 
 
-    if(!articlesLoading && articlesData && articlesData.articles.length > 0){
+    if(!articlesLoading && articlesData){
         getArticles = gql`
         query articles {
             articles(screenname: "${page.name}", admin: true){
@@ -67,8 +142,13 @@ export default function Admin(props) {
             && (page.change == "pages" && article.change == "")){
             setArticle({name:articlesData.articles[0].articletitle, id: articlesData.articles[0].id, change: ""})
         }
+        else if (articlesData.articles.length == 0)
+        {
+            // setArticle({name:"add Article", id: -1, change: ""})
+        }
 
-        if(articlesQuery != getArticles){
+
+        if(articlesQuery != getArticles && articlesData?.articles){
             setArticlesQuery(getArticles)
             const newArticle = article
             newArticle.change = ""
@@ -79,6 +159,14 @@ export default function Admin(props) {
     }
 
     if(!articleLoading && articleData){
+
+        if(!articlesData?.articles?.[0])
+        {
+            const newArticle = article
+            newArticle.id = -1
+            newArticle.name = "add new article"
+        }
+
         getArticle = gql`
             query getArticle {
                 article(id:${article.id}) {
@@ -94,6 +182,7 @@ export default function Admin(props) {
             setArticleQuery(getArticle)
         }
     }
+
     let body;
     let articleSelector;
 
@@ -112,8 +201,20 @@ export default function Admin(props) {
         articleSelector = ""
     }
     else {
+
+        let inputClasses = "deleteInput"
+        if(!articlesData?.articles?.[0])
+        {
+            inputClasses = "deleteInput hidden"
+        }
         body = (<React.Fragment>
+            <button className={inputClasses} onClick={deleteArticle}>Delete Entire Article</button>
             <h2>{article.name ? article.name : "unknown title"}</h2>
+            <input type="text" defaultValue={article.name} className="hidden"></input>
+            <section className="groupSelect">
+                <button onClick={editTitle}>Edit Title</button>
+                <button onClick={updateTitle} className="hidden">Update Title</button>
+            </section>
                 {Paragraph({data: articleData})}
            </React.Fragment>)
 

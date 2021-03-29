@@ -265,3 +265,13 @@ input:valid {
   border: 2px solid var(--input-border-valid-color);
 }
 
+input {
+  display: block;
+  margin: 20px 0;
+}
+
+.deleteInput {
+  background-color: crimson;
+  margin-top: 20px;
+}
+
