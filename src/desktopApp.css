@@ -60,4 +60,9 @@
         width: 70vw;
     }
 
+    .adminPageSize {
+        max-width: 1000px;
+        min-width: 500px;
+    }
+
 }

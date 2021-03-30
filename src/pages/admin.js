@@ -215,7 +215,7 @@ export default function Admin(props) {
                 <button onClick={editTitle}>Edit Title</button>
                 <button onClick={updateTitle} className="hidden">Update Title</button>
             </section>
-                {Paragraph({data: articleData})}
+                {Paragraph({data: articleData, editable: false})}
            </React.Fragment>)
 
     articleSelector = (<React.Fragment>{Selector({type: "articles", setFunc: setArticle, data: [articlesData]})}</React.Fragment>)

@@ -38,7 +38,7 @@ exports.func = async ({video}) => {
 
   const videoId = await read.getOne(pool,getVideoId, [video.source])
     
-
+  console.log("video")
   console.log(videoId)
   // ensure user adds a  new video or uses one already in the db
   if(videoId != null)
@@ -65,6 +65,7 @@ exports.func = async ({video}) => {
     }
   }))
 
+  console.log("file")
   console.log(newFileIds)
   
   // convert them to array with id -- we could also this in the promises
@@ -76,16 +77,19 @@ exports.func = async ({video}) => {
   // add each of the files to the video
 if(newFileIdArray.length > 0)
 {
-  await Promise.all(newFileIdArray.forEach((fileId) =>{
+  await Promise.all(newFileIdArray.map((fileId) =>{
+    console.log(1)
+    console.log(videoId.id, fileId)
     new Promise((resolve, reject)=> {
       resolve(calls.insertOne(pool, insertVideoFiles, [videoId.id, fileId]))
-
     })
   }))
 }
   
+console.log(2)
+console.log(videoId.id, video.articleId)
   // add videoId to the article
-  await calls.insertOne(pool, addArticleVideo, [videoId.id, Number(video.articleId)])
+  await calls.insertOne(pool, addArticleVideo, [videoId.id, video.articleId])
 }
   //below code is for the dropbox api
 

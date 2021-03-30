@@ -148,6 +148,7 @@ const { resolve } = require('path');
     dataId: ID
     type: String
     text: String
+    articleId: ID
   }
 
   input inputTitle {

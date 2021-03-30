@@ -13,7 +13,8 @@ exports.func = async ({screenname, admin}) => {
       })
       const articlesFromScreenName = `select articleid, a.articletitle from pagearticles 
       inner join article a ON a.id = pagearticles.articleid
-      where pageid = (select id from page where screenname = $1 );`
+      where pageid = (select id from page where screenname = $1 )
+      ORDER BY articleid ASC;`
 
         var articleids = await common.getAll(pool, articlesFromScreenName, [screenname])
 

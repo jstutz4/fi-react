@@ -64,17 +64,19 @@ exports.func = async ({article}) => {
       index++
     }
 
+    // const numOfNullQuotes = article.article.quotes.filter(x => x != "")
+
     length = article.article.quotes.length
      
     if(article.article.quotes && length > 0)
     {
       index = 0;
       while(index < length){
-        if(article.article.quotes[index] != "")
-        {
+        // if(article.article.quotes[index] != "")
+        // {
           console.log("we added " + article.article.quotes[index] + " still good?")
           await calls.insertOne(pool, addQuote, [article.article.quotes[index]])
-        }
+        // }
         index++
       }
 
@@ -83,7 +85,6 @@ exports.func = async ({article}) => {
 
       index = quoteID.last_value - length + 1
 
-      //order does not matter on insert
       while(index <= quoteID.last_value){
         await calls.insertOne(pool, addArticleQuotes, [articleID.last_value, index] )
         index++

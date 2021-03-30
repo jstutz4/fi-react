@@ -9,7 +9,7 @@ export default function Article(props){
     // let { data, loading, error }  = useQuery(props.query);
     const [parNum, setParNum] = useState(1);
     //const [quoteNum, setQuoteNum] = useState(0); // since we dont start with a quote
-    const emptyParContainer = Paragraph({type:"paragraph", id: parNum, size:1000, editable: true})
+    const emptyParContainer = Paragraph({type:"paragraph", id: parNum, size:5000, editable: true})
     const [parGroup, setParGroup] = useState([emptyParContainer])
     const [articleData, setArticleData] = useState(props.data)
     const[problem, setProblem] = useState("")
@@ -21,16 +21,22 @@ export default function Article(props){
 
      const [callUpdateArticle] = useMutation(updateArticle)
 
+console.log(props.editable)
+let isEditable = true
+if(props?.editable != undefined)
+    isEditable = props.editable
+    
     function addParagraph(item) {
+        console.log("stopping " + isEditable)
         const newParNum = parNum + 1
         setParNum(newParNum)
-        setParGroup(oldArray => [...oldArray, Paragraph({type:"paragraph", id: newParNum, size:1000, editable: true, callUpdateArticle})])
+        setParGroup(oldArray => [...oldArray, Paragraph({type:"paragraph", id: newParNum, size:5000, editable: isEditable, callUpdateArticle})])
     }
 
     function addQuote(item) {
         // const newQuoteNum = quoteNum + 1
         // setQuoteNum(newQuoteNum)
-        setParGroup(oldArray => [...oldArray, Paragraph({type:"quote", id: parNum, size:200, editable: true, callUpdateArticle})])
+        setParGroup(oldArray => [...oldArray, Paragraph({type:"quote", id: parNum, size:200, editable: isEditable, callUpdateArticle})])
     }
 
 
@@ -51,7 +57,7 @@ export default function Article(props){
                 
                 return (
                     <React.Fragment key={id+"quote"+index}>
-                    {Paragraph({content: par, id, type:"paragraph", size: 1000, dataAttribute:dataParIdentifier, callUpdateArticle})}
+                    {Paragraph({content: par, id, type:"paragraph", size: 5000, dataAttribute:dataParIdentifier, callUpdateArticle})}
                     {quote}
                 </React.Fragment>
                 )

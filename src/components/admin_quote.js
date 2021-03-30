@@ -14,7 +14,8 @@ export default function Quote (props) {
         console.log(e)
         let content = e.target.parentElement.parentElement.querySelector('textarea')
         let contentIdentifier = content.getAttribute("data-content-id")
-        let newContent = {dataId:contentIdentifier, type: content.name, text: content.value}
+        let articleId = document.getElementsByName("articles")[0].value
+        let newContent = {dataId:contentIdentifier, type: content.name, text: content.value, articleId}
         console.log(newContent)
         console.log(props.callUpdateArticle)
         props.callUpdateArticle({variables: {content:newContent}})
