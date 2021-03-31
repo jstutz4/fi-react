@@ -1,0 +1,73 @@
+{
+    "page": {
+        "screenname": "start",
+        "articleNav": [{
+                "to": "45",
+                "name": "Getting started"
+            },
+            {
+                "to": "46",
+                "name": "Being Content"
+            },
+            {
+                "to": "47",
+                "name": "Start saving, start getting mo"
+            }
+        ],
+        "articles": [{
+                "id": "45",
+                "articletitle": "Getting started",
+                "video": {
+                    "videoid": "1",
+                    "title": "Intro video",
+                    "source": "https://www.youtube-nocookie.com/embed/qLk7yr3YP1Q?start=1",
+                    "files": [{
+                        "id": "8",
+                        "source": "https://www.dropbox.com/scl/fi/scasnoq4z02qil1cbm463/trackMoney.xlsx?dl=1",
+                        "displayname": "Track your expenses -Sample"
+                    }]
+                },
+                "contents": [
+                    "What is money? What do you exchange your money for? What do you exchange for your money? Think about these questions before reading on.. The above questions may shed light on your why, that is why do you want money. Another way to ask this question is what would you do if didn't have to work? What do you do now when you don't have to work? You may not know what your life would look like if you didn't have to work and that is okay. One of the goals is to be able to answer this question.",
+                    "To be able to compare or weigh activities, jobs, or destressors with each other we need a common measurement. What do you exchange for your money? TIME. Time is the one thing we cannot control and we never know when we will run out. If you view your choices as a value of time then you can begin to make informed judgments on your choices.",
+                    "Another element that will help you understand what you want to do if you didn't work and money was not a problem is values. How can you know if the choices you are making are good and leading you to the future you will enjoy? Values, knowing what your values are and what they mean to you give you a standard to move towards and a way to make informed judgments on your choices. It is okay if your values change over time, in fact, I think we should strive to refine our values throughout our lives.",
+                    "This is your foundation your values and your why. When you have a strong sense of your foundation and the joy you get out of from the events of your life you can begin to take control of who you want to be, and not just letting the world dictate who you should be. In the next section, we will go over how you can become aware of how your choices are measuring up to your values, why and the joy you want in this life."
+                ],
+                "quotes": [
+                    "What would you do if you didn't have to work for money?",
+                    "We exchange our TIME for money",
+                    ""
+                ]
+            },
+            {
+                "id": "46",
+                "articletitle": "Being Content",
+                "video": null,
+                "contents": [
+                    "The law of diminishing returns, getting the besting bang for your buck. This is best by the authors of the book your life or your money in chapter 5. Go read that chapter. The law of diminishing returns means that will each additional item, that could be a bigger home, boat, fancy vacations, clothes, the next iPhone, or anything, we will get less enjoyment from each item we buy again and again. Content me is that high point where you get the most amount of joy out of your life for the least amount of time and money. You will need to discover this optimal point in your life. If you can achieve optimal happiness without spending a vast amount of money you can reach this high of life earlier and longer. This is where you will find meaning, purpose, and joy in your life and from your relationships.",
+                    "You can <a href=\"https://www.dropbox.com/s/lz5fkytdt35g3xy/Understanding%20Money%20Discover.txt?dl=1\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >download the text file </a> with tons of questions that will help you discover what role money has and will play in your life, who you want to become, how you start enjoying life more, and what legacy you want to leave. No need to want for “retirement” before you can start doing what you are passionate about and destined to learn, teach, and guide others through. ",
+                    "Making a change is often easier with the help of another person so grab your spouse, friend, or parent to be able to discuss ideas and learn from different points of view. Remember you can start enjoying more of life sooner than traditional retirement!"
+                ],
+                "quotes": [
+                    "",
+                    ""
+                ]
+            },
+            {
+                "id": "47",
+                "articletitle": "Start saving, start getting mo",
+                "video": null,
+                "contents": [
+                    "Once you have tracked your expenses for a month or two you can analyze where your money is going and where you can start to cut back on. Does your spending match your values? Have you pondered and discuss the questions in the understanding money document? These questions will help you see where some of your money habits started, and how they may need to start for you to realize your calling in life. You must start to stop giving your paycheck away to others in the form of unwise debt before it even hits your bank account. This requires setting aside money for an emergency which is something you can’t foresee coming or even want to happen. Your emergency fund will help you change your spend, spend, spend mindset more into a saving mindset. The truth is most people spend their money on items they don’t need and even use that often. If you want to take control of your finances, you may need to go without some of the nice comfort items you currently purchasing for a short time.",
+                    "Start by cutting back look for ways to save. Start saving first! Before you spend your paycheck build your emergency fund. I will suggest a couple of banks where you can keep your emergency fund and don’t have to look at it each time you check your checking account. Digital federal credit union and Blue federal credit union are good options to keep your emergency fund. Go watch the how-to video in this section of the saving section to learn more about why these are good accounts and how to open them.",
+                    "Next cut back on or eliminate your subscription purchases. Do you have more than one streaming subscription? Do you really need three+ streaming subscriptions? What if you tried going without tv for a whole month? Next is your phone bill. Did you know you don’t have to be on a big brand name like Verizon or T-Mobile to use the same cell towers they do. <a href=”https://www.mintmobile.com/\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >Mint Mobile</a> is a company that uses the same phone tower network as T-Mobile their price plans range from $15-$40 a month. They are so many companies like mint mobile so you if don’t like your options there do a quick search for phone companies like mint mobile and you will begin to see several more options. Continue to look at the areas with the biggest expenses can you save and cut back in those areas in creative ways? Those are some of the easiest ways you can find the money you need to start to save. ",
+                    "Another area is insurance and utilities bills. You should call up your provider and ask if you can get a lower rate or compare prices and see if you can get a lower rate with a different company. Do what you can on your own first, then use software to help you. Have you heard of <a href=”https://www.truebill.com/\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >True Bill</a> or <a href=”https://www.asktrim.com/\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" > Ask Trim </a> ? These are companies that will use software to ask for a better price for the services you are paying for. They get a part of the money they help you save. I would encourage you to learn how you can use the free parts these companies provide to lower your expenses."
+                ],
+                "quotes": [
+                    "",
+                    ""
+                ]
+            }
+        ]
+    }
+}

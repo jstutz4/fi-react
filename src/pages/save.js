@@ -1,49 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MainContent from '../components/main'
 import Header from '../components/navMain'
-
-import { useQuery } from '@apollo/react-hooks';
-import gql from "graphql-tag";
-
-
-
-const saveQuery= gql`
-query justAName {
-  page(screenname:"saving") {
-    screenname,
-    articleNav {
-      to,
-      name
-    }
-    articles {
-      id,
-      articletitle,
-      video {
-        videoid,
-        title,
-        source,
-        files {
-          id,
-          source,
-          displayname
-        }
-      }
-      contents,
-      quotes,
-    }
-  }
-}
-  `
+import saveData from '../database/saving.json'
 
 export default function Save(props) {
+
   // set to some junk value
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);
   
-  let { data, loading, error }  = useQuery(saveQuery);
-  
-  if(loading) return <section>No Data</section>
-  if(error) return <section>we have an error</section>
+  let data = saveData
   
   const urlID = props.match.params.id
 

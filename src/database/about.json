@@ -1,0 +1,27 @@
+{
+    "page": {
+        "screenname": "about",
+        "articleNav": [
+            {
+                "to": "53",
+                "name": "My Story"
+            }
+        ],
+        "articles": [
+            {
+                "id": "53",
+                "articletitle": "My Story",
+                "video": null,
+                "contents": [
+                    "I made this website as a place where I could store and explain the knowledge of financial independence I have gained over the years. I do hope this website will be informational to friends that wonder where to start and an open place where like-minded people can share their stories and ideas of how they are striving to live a life where their income does not automatically dictate their life.",
+                    "One of my earliest memories with money was when I had a paper route and I received my paycheck my mom encourages me to pay 10% to tithing first and save 80% for college, or future expenses I would incur once I left the house. My mom declared that my needs as a teenager were taken care of and I didn’t really have that many expenses, therefore I could use 10% of my paper route paycheck. I believe this experience with my mom was the foundation for me accepting and seeking out information about financial independence.",
+                    "My older sister introduced me to the term FIRE one Christmas. After that, a couple of months later when searching about FIRE, the term FI or financial independence also come up which led me to find the podcast ChoseFI. I also would listen to millennial investing/real estate podcasts over the course of about a year. Often, I would look at content from the guests they had on the shows. One of my favorite books I read were “A Simple Path to Wealth” and “Your life or Your Money”. Both books have greatly influenced my views of financial independence. After a year or so I felt that I had sufficient knowledge to make a plan that was simple enough for me to do on my own, that would not require my attention constantly or a large amount of my time to maintain and make a good enough return so I could “retire” in twenty years."
+                ],
+                "quotes": [
+                    "",
+                    ""
+                ]
+            }
+        ]
+    }
+}

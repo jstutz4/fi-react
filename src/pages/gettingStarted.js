@@ -1,47 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MainContent from '../components/main'
 import Header from '../components/navMain'
+import startData from '../database/gettingStarted.json'
 
-import { useQuery } from '@apollo/react-hooks';
-import gql from "graphql-tag";
 
 export default function Start(props) {
-  
-  const startQuery = gql`
-  query justAName {
-    page(screenname:"start") {
-      screenname,
-      articleNav {
-        to,
-        name
-      }
-      articles {
-        id,
-        articletitle,
-        video {
-          videoid,
-          title,
-          source,
-          files {
-            id,
-            source,
-            displayname
-          }
-        }
-        contents,
-        quotes,
-      }
-    }
-  }
-    `
 
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);
   
-  let { data, loading, error }  = useQuery(startQuery);
-  
-  if(loading) return <section>No Data</section>
-  if(error) return <section>we have an error</section>
+  let data = startData
   
   const urlID = props.match.params.id
 
