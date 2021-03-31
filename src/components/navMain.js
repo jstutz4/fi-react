@@ -10,6 +10,7 @@ const mainNavNames =
     {name:"Saving", link:`/save`},
     {name:"Investing", link:"/invest"},
     {name:"About", link:"/about"},
+    {name:"Feedback", link:"/feedback"},
 ]
 
 const linkItems = [];

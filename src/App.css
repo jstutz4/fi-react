@@ -186,6 +186,33 @@ footer a:hover {
   min-height: 15vw;
 }
 
+/* feedback page */
+
+form {
+  margin: 20px 5px;
+}
+
+fieldset{
+  background-color: var(--article-background-color);
+}
+
+legend {
+  color: var(--quote-background-color, yellow);
+  font-weight: bolder;
+  position: relative;
+  top: 10px;
+}
+
+form button {
+  width: 100%;
+}
+
+.attention {
+  background-color: var(--article-background-color);
+  text-align: center;
+}
+
+
 /* admin page */
 
 .adminPageSize {

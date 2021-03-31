@@ -5,6 +5,7 @@ import about from './pages/about'
 import save from './pages/save'
 import invest from './pages/invest'
 import gettingStarted from './pages/gettingStarted'
+import feedback from './pages/feedback'
 import admin from './pages/admin'
 import header from './components/navMain'
 import adminAddArticle from './pages/admin_addArticle'
@@ -23,6 +24,7 @@ function App(props) {
       <Route exact path="/invest/:id?" component={invest} />
       <Route exact path="/about" component={about} />
       <Route exact path="/about/:id?" component={about} />
+      <Route path="/feedback" component={feedback} />
     </Switch>
 
   );
