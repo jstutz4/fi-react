@@ -1,24 +1,11 @@
 import React from 'react'
 import Video from './video'
+import ReactHtmlParser from 'react-html-parser'; 
 
-const sectionCSS = {
-    marginTop: '50px',
-    backgroundColor: 'lightgray',
-    padding: '10px 1vw',
-    borderRadius: '15px',
-  }
 
-const quoteCSS = {
-    backgroundColor: 'lightgreen',
-    padding: '10px 30px',
-    textAlign: 'center',
-}
 
-const headerCSS =
-{
-    borderTop: 'solid 5px lightgreen',
-    borderBottom: 'solid 3px lightgreen',
-}
+
+
 
 
 
@@ -27,20 +14,21 @@ export default function article(props) {
         return <section>No Data</section>
     }
     let content = props.contents.map((section,index)=>{
-    let quote = props.quotes[index] ? <blockquote  style={quoteCSS}>{props.quotes[index]}</blockquote> : null
-    let key = props.articleTitle + index
+    let quote = props.quotes[index] ? <blockquote>{props.quotes[index]}</blockquote> : null
+    let key = props.articletitle + index
+
         return (
             <React.Fragment key={key}>
-                <article >{section}</article>
+                <article>{getLinksFromArticle(section)}</article>
                 {quote}
             </React.Fragment>
         )
       })
 
     return(
-        <section style={sectionCSS}>
-            <h1 style={headerCSS}>{props.articleTitle}</h1>
-            {Video({...props})}
+        <section className="articleContent">
+            <h1>{props.articletitle}</h1>
+            {Video(props.video)}
             {content}
         </section>
     );
@@ -61,3 +49,10 @@ export default function article(props) {
     
                     Sed ad harum mediocrem consulatu. Facer dolores complectitur sit te, regione mnesarchum cum no. Periculis vituperatoribus cum et, te atqui senserit vim, te pro case aliquip conceptam. Sed cu soluta tibique, dictas necessitatibus cu ius, ius eros omnesque intellegam et. Veritus appetere mel cu, vis rebum alterum postulant ea, ut rebum liberavisse mediocritatem per. Dictas latine no qui, id eam quot illum impetus, est id tota fastidii repudiare.
                 </article> */
+
+
+function getLinksFromArticle(content) {
+    return (
+        ReactHtmlParser (content)
+    )
+} 

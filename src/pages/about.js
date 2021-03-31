@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import MainContent from '../components/main'
+import Header from '../components/navMain'
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
@@ -7,31 +8,31 @@ import gql from "graphql-tag";
 export default function About(props) {
   const aboutQuery = gql`
   query aboutQuery {
-    page(screenName:"about") {
-      id,
-      screenName,
+    page(screenname:"about") {
+      screenname,
+      articleNav {
+        to,
+        name
+      }
       articles {
         id,
-        articleTitle,
-        video,
-        videoTitle,
-        files {
-          id,
+        articletitle,
+        video {
+          videoid,
+          title,
           source,
-          text
-        },
+          files {
+            id,
+            source,
+            displayname
+          }
+        }
         contents,
         quotes,
-      },
+      }
     }
-    
-    nav(id:4){
-      id,
-      to,
-      name,
-    }
-
   }`
+  
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);
   
@@ -47,15 +48,18 @@ export default function About(props) {
     setActiveArticle(props.match.params.id)
   } //if url param id is null and first render
   else if(!urlID && activeArticle == initialState){
-    setActiveArticle(data.page.articles[0].id)
+    if(data && data.page && data.page.articles && data.page.articles.length > 0)
+      setActiveArticle(data.page.articles[0].id)
   }
-  
-  const articleNav = data.nav
+
+  const articleNav = data.page.articleNav
+  const page = '/about/'
   const article = data.page.articles.filter(art => art.id == activeArticle)[0]
   
   return (
     <React.Fragment>
-      {MainContent(props,articleNav,article, activeArticle, setActiveArticle)}
+      {Header(props)}
+      {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MainContent from '../components/main'
+import Header from '../components/navMain'
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
@@ -7,33 +8,34 @@ import gql from "graphql-tag";
 
 
 const saveQuery= gql`
-query saveQuery {
-  page(screenName:"save") {
-    id,
-    screenName,
+query justAName {
+  page(screenname:"saving") {
+    screenname,
+    articleNav {
+      to,
+      name
+    }
     articles {
       id,
-      articleTitle,
-      video,
-      videoTitle,
-      files {
-        id,
+      articletitle,
+      video {
+        videoid,
+        title,
         source,
-        text
-      },
+        files {
+          id,
+          source,
+          displayname
+        }
+      }
       contents,
       quotes,
-    },
-  }
-  nav(id:2){
-    id,
-    to,
-    name,
+    }
   }
 }
-`
+  `
 
-export default function Start(props) {
+export default function Save(props) {
   // set to some junk value
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);
@@ -50,15 +52,18 @@ export default function Start(props) {
     setActiveArticle(props.match.params.id)
   } //if url param id is null and first render
   else if(!urlID && activeArticle == initialState){
-    setActiveArticle(data.page.articles[0].id)
+    if(data && data.page && data.page.articles && data.page.articles.length > 0)
+      setActiveArticle(data.page.articles[0].id)
   }
-  
-  const articleNav = data.nav
-  const article = data.page.articles.filter(art => art.id == activeArticle)[0]
 
+  const articleNav = data.page.articleNav
+  const page = '/save/'
+  const article = data.page.articles.filter(art => art.id == activeArticle)[0]
+  
   return (
     <React.Fragment>
-      {MainContent(props,articleNav,article, activeArticle, setActiveArticle)}
+      {Header(props)}
+      {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );
 }

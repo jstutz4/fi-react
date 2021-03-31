@@ -1,24 +1,24 @@
 @media only screen and (min-width: 1050px){
-    #mainNav{
-        align-self: center;
+    .center{
+        align-items: center;
     }
 
     .article{
-        align-self: center;
+        /* align-self: center; */
         max-width: 1000px;
     }
 
     .articleNav ul{
         display: inline-block;
+        width: 98%;
     }
     
     nav a{
     text-decoration: none;
     color: white;
-    border: 2px green outset;
-    background-color: rgba(0, 200, 0, .3);
+    /* border: 2px green outset; */
+    /* background-color: rgba(0, 200, 0, .3); */
     padding: 0 7px;
-    border-radius: 15px;
     }
 
 
@@ -39,18 +39,30 @@
         padding-left: 0;
     }
 
-    li:hover{
+    #mainNav li:hover{
+        /* a random color not to be seen */
         background-color: rgba(0, 200, 0, .01);
     }
 
-    .hidden {
+    #mainNav li {
         display: block;
     }
 
-    .show{
+    #mainNav ul li:first-child{
         display: none;
     }
     .MainNav:first-child{
         display: flex;
     }
+
+    /* admin page */
+    .paragraph, .quote {
+        width: 70vw;
+    }
+
+    .adminPageSize {
+        max-width: 1000px;
+        min-width: 500px;
+    }
+
 }

@@ -8,15 +8,13 @@ export default function articleLinkHelper(props, activeArticle, setActiveArticle
     if(props && props.links){
       props.links.forEach((article, index) => {
         let activeStyle = ""
-          if(activeArticle === article.id){
+          if(activeArticle === article.to){
             activeStyle = "activeArticle"
           }
-          console.log(navLength)
-          if(navLength + article.name.length < 34){
-            console.log("adding article")
+          // if(navLength + article.name.length < 34){
             navLength += article.name.length
-            articleLinks.push(getLink(article, activeStyle, setActiveArticle))
-          }
+            articleLinks.push(getLink(props.page, article, activeStyle, setActiveArticle))
+          // }
         })
 
       return(
@@ -27,11 +25,11 @@ export default function articleLinkHelper(props, activeArticle, setActiveArticle
     }
 }
 
-function getLink(article, activeStyle, setActiveArticle){
+function getLink(page, article, activeStyle, setActiveArticle){
     return(
             <Link key={article.name} 
                   className={activeStyle}
-                  to={article.to} 
+                  to={page + article.to} 
                   onClick={() => setActiveArticle(article.id)}>
                 {article.name}
             </Link>

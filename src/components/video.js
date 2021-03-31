@@ -3,18 +3,24 @@ import React from 'react'
 
 export default function video(props) {
     const files = []
-    if(props.files) {
-        props.files.forEach(file => {
-        files.push(<a key={file.source} href={file.source} download>{file.text}</a>)
-        });
+    console.log()
+    if(props){
+        if(!props.source){
+            return <React.Fragment></React.Fragment>
+        }
+        if(props.files) {
+            props.files.forEach(file => {
+            files.push(<a key={file.source} href={`https://www.dropbox.com/s/3xn9uq9viuoo5dn/Understanding%20Money%20Discover.txt?dl=1`}>{file.displayname}</a>)
+            });
+        }
     }
-    if(!props.video){
+    else {
         return <React.Fragment></React.Fragment>
     }
     return (
         <section className="video">
             {/* <section className="videoWrapper"> */}
-                <iframe title={props.title} width="224" height="126" src={props.video} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe title={props.title} width="224" height="126" src={props.source} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             {/* </section> */}
             <section>
                 {files}
