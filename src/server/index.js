@@ -155,6 +155,10 @@ const { resolve } = require('path');
     title: String
     articleId: ID
   }
+  
+  input FormInput{
+    name: String
+  }
 
   type Mutation {
     setArticle(article: ArticleInput): String
@@ -162,6 +166,7 @@ const { resolve } = require('path');
     updateArticle(content: UpdateContent): String
     updateTitle(content: inputTitle): String
     removeArticle(article: MyArticle): String
+    sendFeedback(form: FormInput): String
   }
 
 `);
@@ -229,8 +234,8 @@ const root = {
     }))
 
     // file upload api
-  app.post('/upload', (req, res) => {
-    console.log(req.files)
+  app.post('/submit', (req, res) => {
+    console.log(req)
     return res.status(500).send({ msg: "file is not found" })
     if (!req.files) {
         return res.status(500).send({ msg: "file is not found" })
@@ -246,6 +251,11 @@ const root = {
         // returning the response with file path and name
         return res.send({name: myFile.name, path: `/${myFile.name}`});
     });
+  })
+
+  app.get('./submit', (req, res) => {
+    console.log("Receiving data")
+    return "failed"
   })
 
 // app.use(express.static('public'))
