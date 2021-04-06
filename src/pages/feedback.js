@@ -16,8 +16,6 @@ export default function Feedback(props) {
 
     }
     function sendFeedback(e) {
-        // const ACCESS_TOKEN = `PUhCjKvYpocAAAAAAAAAAaII-qvGnTQLjZafU8XEFbemFkxucDdVVeT8aF6IPObT` 
-
         const ACCESS_TOKEN =`ZKvRlHwUzmrXXXXXXXXXXxTTqdwCbGDSlOxnKcEINyiBNhekrJjWWiGcxNaTZMyG`   
         const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
 
