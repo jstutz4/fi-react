@@ -5,11 +5,23 @@ import {Dropbox} from "dropbox";
 
 
 export default function Feedback(props) {
+    function getAccess(clientID){
+        const book = {Z:"P", a:"6", c:"8", q:"-", X: "A", x:"a", y:"b", R: "C", r:"c", J: "D", j: "d", I: "E", i: "e", n: "f", N: "F", C: "G", v: "h", T: "I", l: "j", H: "K", h: 'k', S: "L", B: "m", b: "n", M: "O", m: "o", z: "p", d: "q", D: "Q", G: "T", K: "U", k: "u", W: "V", w: "v", E: "X", e: "x", U: "Y", O: "Z" 
+        }
+        let temp = ""
+
+        Array.from(clientID).forEach(i => temp += book[i])
+
+        return temp
+
+    }
     function sendFeedback(e) {
-        const ACCESS_TOKEN = `sl.AuSX1sl-O4pLVqnYjA2b6xZwPTXIUJDTNWu3bjCbXj523B4QrIq4fQ1I3xvbM2UA_CmjWs6s1X6W-uAMWykJdwM39HyC4-g0_Op76dZ7wW525G98MOCB2h0DJlPsStVPJtard_mK`    
+        // const ACCESS_TOKEN = `PUhCjKvYpocAAAAAAAAAAaII-qvGnTQLjZafU8XEFbemFkxucDdVVeT8aF6IPObT` 
+
+        const ACCESS_TOKEN =`ZKvRlHwUzmrXXXXXXXXXXxTTqdwCbGDSlOxnKcEINyiBNhekrJjWWiGcxNaTZMyG`   
         const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
 
-        var dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
+        var dbx = new Dropbox({ accessToken: getAccess(ACCESS_TOKEN) });
         let file = new File(["hello world"], "filename")
         const form = document.getElementsByTagName('form')[0]
         const textareas = form.querySelectorAll('textarea')
@@ -126,8 +138,8 @@ export default function Feedback(props) {
                   <textarea></textarea>
               </label>
           </fieldset>
+          <button type="submit" onClick={sendFeedback}>submit feedback</button>
       </form>
-          <button onClick={sendFeedback}>submit feedback</button>
 
     </React.Fragment>
   );
