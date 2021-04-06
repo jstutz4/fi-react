@@ -1,82 +1,102 @@
 {
-    "page": {
-      "screenname": "saving",
-      "articleNav": [
-        {
-          "to": "4",
-          "name": "Saving for More Choices"
-        },
-        {
-          "to": "27",
-          "name": "What are bank accounts for"
-        },
-        {
-          "to": "48",
-          "name": "Easy High Yield Bank Account"
-        }
-      ],
-      "articles": [
-        {
-          "id": "4",
-          "articletitle": "Saving for More Choices",
-          "video": null,
-          "contents": [
-            "Why on earth do you need to save? Think about what you would do with $100, $1,000, or $10,000 right now? How many possibilities would you have to choose from? What if your rent increases $200 this month what would you do with the \"extra\" $100 -$10,000 I may give you? What if you got laid of at work or a close loved one was just diagnosed with cancer and will have a rapid increase in expenses what would you do with the money then?",
-            "Saving money gives you more choices! More choices to be flexible in your expenses. It gives you the opportunity to take advantages of sales, to wait for a better price on a home, it gives to time to plan and make smart choices when you lose your job instead of freaking out and turning to credit cards to take care your \"needed\" expenses. Savings is a form of insurance that protects you when a gray swan event happens.",
-            "It is not if a financial emergency it is when a financial emergency will happen. Are you prepared?\nThe amount of saving you should have depended on you. It should cover your expenses for you to consider options and adjust to your new circumstances. For some it looks like 1-3 months of expenses, others 12-24 months and even others 0 months of expenses. The last group is not the group with zero savings and no plan if they are hit with an unplanned expense that month, but a group that has a plan and security to be able to handle an unplanned expense without going into debt. One group is not any better than any it just depends on you and what helps you have a better finical independence without sacrificing any of your physical or mental health. Yes, I your level of comfort with the amount of savings you need may change and I hope it does change as you learn more about what you exchange money for, and how your future expenses will change. Start now to make a commitment to build a savings fund for one month of expense, then make a plan and execute your plan to build one month of expenses.",
-            "Your savings should be in a place that is different than money you use for spending and monthly expense. It could look like cash in a safe, or a bank account that at a different bank then your checking account. Whatever your savings look like for you it should be you can access quickly but not tempted to spend to go out to dinner or other monthly expenses. With a saving protection buffer built you are ready to take on the extra risk of when an unplanned event comes knocking on your door next month."
-          ],
-          "quotes": [
-            "How many ways can you spend an \"extra\" $100, $1,000 or $10,000?",
-            "Saved money is money with Choices, money for opportunity!",
-            "Is your savings prepared for a $100-$5000 unplanned expense?"
+  "page": {
+    "screenname": "saving",
+    "articleNav": [
+      {
+        "to": "4",
+        "name": "Saving for More Choices"
+      },
+      {
+        "to": "27",
+        "name": "What are bank accounts for"
+      },
+      {
+        "to": "48",
+        "name": "Easy High Yield Bank Account"
+      },
+      {
+        "to": "54",
+        "name": "House Hacking"
+      }
+    ],
+    "articles": [
+      {
+        "id": "4",
+        "articletitle": "Saving for More Choices",
+        "video": null,
+        "contents": [
+          "Why on earth do you need to save? Think about what you would do with $100, $1,000, or $10,000 right now? How many possibilities would you have to choose from? What if your rent increases $200 this month what would you do with the \"extra\" $100 -$10,000 I may give you? What if you got laid of at work or a close loved one was just diagnosed with cancer and will have a rapid increase in expenses what would you do with the money then?",
+          "Saving money gives you more choices! More choices to be flexible in your expenses. It gives you the opportunity to take advantages of sales, to wait for a better price on a home, it gives to time to plan and make smart choices when you lose your job instead of freaking out and turning to credit cards to take care your \"needed\" expenses. Savings is a form of insurance that protects you when a gray swan event happens.",
+          "It is not if a financial emergency it is when a financial emergency will happen. Are you prepared?\nThe amount of saving you should have depended on you. It should cover your expenses for you to consider options and adjust to your new circumstances. For some it looks like 1-3 months of expenses, others 12-24 months and even others 0 months of expenses. The last group is not the group with zero savings and no plan if they are hit with an unplanned expense that month, but a group that has a plan and security to be able to handle an unplanned expense without going into debt. One group is not any better than any it just depends on you and what helps you have a better finical independence without sacrificing any of your physical or mental health. Yes, I your level of comfort with the amount of savings you need may change and I hope it does change as you learn more about what you exchange money for, and how your future expenses will change. Start now to make a commitment to build a savings fund for one month of expense, then make a plan and execute your plan to build one month of expenses.",
+          "Your savings should be in a place that is different than money you use for spending and monthly expense. It could look like cash in a safe, or a bank account that at a different bank then your checking account. Whatever your savings look like for you it should be you can access quickly but not tempted to spend to go out to dinner or other monthly expenses. With a saving protection buffer built you are ready to take on the extra risk of when an unplanned event comes knocking on your door next month."
+        ],
+        "quotes": [
+          "How many ways can you spend an \"extra\" $100, $1,000 or $10,000?",
+          "Saved money is money with Choices, money for opportunity!",
+          "Is your savings prepared for a $100-$5000 unplanned expense?"
+        ]
+      },
+      {
+        "id": "27",
+        "articletitle": "What are bank accounts for",
+        "video": null,
+        "contents": [
+          "What form should your emergency fund take, mean where and how should you store your emergency fund? They are many options and the one that is “right” for you all depends on you! You should consider how you spend, what if you no longer can access your money through normal means, your abilities to earn income even when you lose your job, quick opportunities, and inflation tradeoff. ",
+          "If you are like most people you probably have a checking account where you can spend money using a card. So, having an account for your emergency fund is what you think of naturally. Storing your money in a bank can be a good place to keep your emergency fund. You will have quick access to it, and it won’t be at risk of loss or is it? We will come back to this question is a moment. If you are in a place where you have experienced a power outage or reaching an ATM limit of withdraw when you need more money for your emergency? I think most of us can go without access to are money when we may need it. Therefore, I would encourage you to have some cash always on hand and if you feel you need to get a small vault at home to keep this money then do so. Much of our lives depend on electricity and the internet if your town or the whole us lost power for a week could you get by? How about a month? Think about the place you live is there a high chance a storm of some sort how through and damage ",
+          "Another reason to keep some cash on hand is opportunities that go quick and cash is power. No for most people I don’t think this will apply to them, many it will help later in life. For those that are familiar with a niece market and understand a good deal when you see an opportunity that will go fast you will have extra cash to quickly make a purchase. This could be at the store, someone selling a good car for quick cash because they are moving, or numerous other items. If you have the cash, you can take size the opportunity and since you paid cash for it time is on your side and you can wait for a better offer or won’t need to spend when the item is at a higher price since you got extra at a low price. Warning you need to understand the market of the item you want to purchase well in advance, if you are not an expert in the market then do not purchase this so call investment opportunity if you don’t understand it yourself.",
+          "Inflation! What risk is your money exposed to when sitting in an insured bank account? The cost of items tends to increase, or the amount of what your money can buy decreases, this is called money power. This is how you can compare todays dollars to future dollars, what is your money power today vs next year. For example, if you have $1,000 in your emergency fund how much does it have power to buy today? Will it have the same power in five years? This decrease in buying power for your money is called Inflation and it can be considering a tax for money sitting still. Remember your emergency is a form of insurance so it is ok if you lose a little money that you have in cash or sitting at a bank. If you are going to have $20,000 - $50,000 in your emergency funds or other places that are considered low risk, or safe places for your money you may not wont all of it in cash or in a bank account. It is up to you have much you have sitting and waiting for an emergency to happen.",
+          "So, what are bank accounts good for? The bank bonuses! Gone are the days where you are rewarded for being a loyal customer, here are the days you are rewarded for being a new customer. This applies to most services and not only banks. You can get hundreds of dollars each year by opening new accounts redirecting a portion of your paycheck for a short time and getting $50-$400 per account. If you are spending less than you make and have an emergency fund, you can go without your full paycheck for 1-3 months and get a $100+. I made close to $1,000 my first year of collecting bank bonuses and most of which I simply redirected my paycheck to and then transferred it into my bank account that I used for daily purchase. Other accounts required $5,000 to sit in the account for three months. With an emergency fund of a couple of month expenses you could make an additional $400-$1,000 in your first year with little change to your lifestyle.",
+          "Another option you must find banks that offer 5%+ for your first $1,000 deposited in the account. These account you can open deposit your emergency fund (0-$5,000) and don’t have to worry about anything else and you will know your money is beating the current 2.5-3% inflation rate. In the next article I will go in more depth of bank account bonuses."
+        ],
+        "quotes": [
+          "Does your emergency fund take in account your life situations? Are you Prepared for an emergency?",
+          "Inflation is a tax for money sitting still. Even if you are gaining money your money may be losing purchasing power!",
+          "Banks will pay you for your “new” money not for being a loyal customer!"
+        ]
+      },
+      {
+        "id": "48",
+        "articletitle": "Easy High Yield Bank Account",
+        "video": {
+          "videoid": "20",
+          "title": "DCU walk through",
+          "source": "https://www.youtube.com/embed/m9ixvpfBTic",
+          "files": [
+            {
+              "id": "13",
+              "source": "https://www.dropbox.com/scl/fi/0asgq5ozk29aufyiaqar1/emergency-fund-starter.docx?dl=1&rlkey=81ocr0n4q93uijpu5twhly36r",
+              "displayname": "Emergency Fund Starter"
+            }
           ]
         },
-        {
-          "id": "27",
-          "articletitle": "What are bank accounts for",
-          "video": null,
-          "contents": [
-            "What form should your emergency fund take, mean where and how should you store your emergency fund? They are many options and the one that is “right” for you all depends on you! You should consider how you spend, what if you no longer can access your money through normal means, your abilities to earn income even when you lose your job, quick opportunities, and inflation tradeoff. ",
-            "If you are like most people you probably have a checking account where you can spend money using a card. So, having an account for your emergency fund is what you think of naturally. Storing your money in a bank can be a good place to keep your emergency fund. You will have quick access to it, and it won’t be at risk of loss or is it? We will come back to this question is a moment. If you are in a place where you have experienced a power outage or reaching an ATM limit of withdraw when you need more money for your emergency? I think most of us can go without access to are money when we may need it. Therefore, I would encourage you to have some cash always on hand and if you feel you need to get a small vault at home to keep this money then do so. Much of our lives depend on electricity and the internet if your town or the whole us lost power for a week could you get by? How about a month? Think about the place you live is there a high chance a storm of some sort how through and damage ",
-            "Another reason to keep some cash on hand is opportunities that go quick and cash is power. No for most people I don’t think this will apply to them, many it will help later in life. For those that are familiar with a niece market and understand a good deal when you see an opportunity that will go fast you will have extra cash to quickly make a purchase. This could be at the store, someone selling a good car for quick cash because they are moving, or numerous other items. If you have the cash, you can take size the opportunity and since you paid cash for it time is on your side and you can wait for a better offer or won’t need to spend when the item is at a higher price since you got extra at a low price. Warning you need to understand the market of the item you want to purchase well in advance, if you are not an expert in the market then do not purchase this so call investment opportunity if you don’t understand it yourself.",
-            "Inflation! What risk is your money exposed to when sitting in an insured bank account? The cost of items tends to increase, or the amount of what your money can buy decreases, this is called money power. This is how you can compare todays dollars to future dollars, what is your money power today vs next year. For example, if you have $1,000 in your emergency fund how much does it have power to buy today? Will it have the same power in five years? This decrease in buying power for your money is called Inflation and it can be considering a tax for money sitting still. Remember your emergency is a form of insurance so it is ok if you lose a little money that you have in cash or sitting at a bank. If you are going to have $20,000 - $50,000 in your emergency funds or other places that are considered low risk, or safe places for your money you may not wont all of it in cash or in a bank account. It is up to you have much you have sitting and waiting for an emergency to happen.",
-            "So, what are bank accounts good for? The bank bonuses! Gone are the days where you are rewarded for being a loyal customer, here are the days you are rewarded for being a new customer. This applies to most services and not only banks. You can get hundreds of dollars each year by opening new accounts redirecting a portion of your paycheck for a short time and getting $50-$400 per account. If you are spending less than you make and have an emergency fund, you can go without your full paycheck for 1-3 months and get a $100+. I made close to $1,000 my first year of collecting bank bonuses and most of which I simply redirected my paycheck to and then transferred it into my bank account that I used for daily purchase. Other accounts required $5,000 to sit in the account for three months. With an emergency fund of a couple of month expenses you could make an additional $400-$1,000 in your first year with little change to your lifestyle.",
-            "Another option you must find banks that offer 5%+ for your first $1,000 deposited in the account. These account you can open deposit your emergency fund (0-$5,000) and don’t have to worry about anything else and you will know your money is beating the current 2.5-3% inflation rate. In the next article I will go in more depth of bank account bonuses."
-          ],
-          "quotes": [
-            "Does your emergency fund take in account your life situations? Are you Prepared for an emergency?",
-            "Inflation is a tax for money sitting still. Even if you are gaining money your money may be losing purchasing power!",
-            "Banks will pay you for your “new” money not for being a loyal customer!"
-          ]
-        },
-        {
-          "id": "48",
-          "articletitle": "Easy High Yield Bank Account",
-          "video": {
-            "videoid": "20",
-            "title": "DCU walk through",
-            "source": "https://www.youtube.com/embed/m9ixvpfBTic",
-            "files": [
-              {
-                "id": "13",
-                "source": "https://www.dropbox.com/scl/fi/0asgq5ozk29aufyiaqar1/emergency-fund-starter.docx?dl=1&rlkey=81ocr0n4q93uijpu5twhly36r",
-                "displayname": "Emergency Fund Starter"
-              }
-            ]
-          },
-          "contents": [
-            "When opening any bank account, they will ask for all your personal information. If you go in person, they will make photocopies of your identifying documents. These processors are all standard and you should not be alarmed. I personally like opening accounts online because only computers see my data instead of a person, but that is just how I feel. If you feel that giving your information online, then you have that right and opening bank accounts online is not for you.",
-            "Information they will ask can be the following address, birthdate, social security number, and driver's license. Some banks will ask you to upload photos of your driver's license or passport along with your social security card, but not all. You should also have proof of address, being an official letter from a bill, or another bank's welcome letter that has your name, address, and a date on it, just in case they ask for a photo of that. Oh, and now many banks will ask for your mobile number to text a verification number to you.",
-            "I will walk you through the process of signing up for Digital Federal Credit Union. Their savings account will give you 6.17% APY (Annual percentage yield) which is the rate your money will earn if you keep it in all year. You will earn that rate on the first $1,000 after that the money will earn a blended rate which can be calculated (1000/ total * 6.17) + (total – 1000 /total * .25)  = your blended rate you money will earn. For example, if you put in $5,000 your rate your money will earn is 1.434% APY, or about $72 each year you leave your $5,000 in the account. My cut-off for the blended rate is about 2.5-3% or about $2500 ruffly. The best part is that there are no fees and only a $5 minimum to keep the account open! Many banks can easily transfer money back and forth between accounts with no problem. Keep in mind this is a savings account to you can’t transfer money out of making direct deposits more than six times a month. This should not be a problem, but you should be aware. I use the credit union partnership to move money between my account which don’t get applied to this rule. If you want, you can check it out at <a href=\"https://www.co-opfs.org/Solutions/Engage/CO-OP-Shared-Branch\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >co-op shared banking </a>.",
-            "Let’s start go to <a href=\"https://www.dcu.org\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >DCU </a>.then click bank and then primary savings. This will take you to the page where you should read about the fees and fine print that you agree to when opening this account. Go ahead and click open now, fill out the information, put in your bank account routing number and account number, and make an opening deposit of at least $5-$20 and you are done! You have a great place to store the beginnings of your emergency fund!"
-          ],
-          "quotes": [
-            "",
-            "",
-            ""
-          ]
-        }
-      ]
-    }
+        "contents": [
+          "When opening any bank account, they will ask for all your personal information. If you go in person, they will make photocopies of your identifying documents. These processors are all standard and you should not be alarmed. I personally like opening accounts online because only computers see my data instead of a person, but that is just how I feel. If you feel that giving your information online, then you have that right and opening bank accounts online is not for you.",
+          "Information they will ask can be the following address, birthdate, social security number, and driver's license. Some banks will ask you to upload photos of your driver's license or passport along with your social security card, but not all. You should also have proof of address, being an official letter from a bill, or another bank's welcome letter that has your name, address, and a date on it, just in case they ask for a photo of that. Oh, and now many banks will ask for your mobile number to text a verification number to you.",
+          "I will walk you through the process of signing up for Digital Federal Credit Union. Their savings account will give you 6.17% APY (Annual percentage yield) which is the rate your money will earn if you keep it in all year. You will earn that rate on the first $1,000 after that the money will earn a blended rate which can be calculated (1000/ total * 6.17) + (total – 1000 /total * .25)  = your blended rate you money will earn. For example, if you put in $5,000 your rate your money will earn is 1.434% APY, or about $72 each year you leave your $5,000 in the account. My cut-off for the blended rate is about 2.5-3% or about $2500 ruffly. The best part is that there are no fees and only a $5 minimum to keep the account open! Many banks can easily transfer money back and forth between accounts with no problem. Keep in mind this is a savings account to you can’t transfer money out of making direct deposits more than six times a month. This should not be a problem, but you should be aware. I use the credit union partnership to move money between my account which don’t get applied to this rule. If you want, you can check it out at <a href=\"https://www.co-opfs.org/Solutions/Engage/CO-OP-Shared-Branch\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >co-op shared banking </a>.",
+          "Let’s start go to <a href=\"https://www.dcu.org\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >DCU </a>.then click bank and then primary savings. This will take you to the page where you should read about the fees and fine print that you agree to when opening this account. Go ahead and click open now, fill out the information, put in your bank account routing number and account number, and make an opening deposit of at least $5-$20 and you are done! You have a great place to store the beginnings of your emergency fund!"
+        ],
+        "quotes": [
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "id": "54",
+        "articletitle": "House Hacking",
+        "video": null,
+        "contents": [
+          "House Hacking is the term used for when you live in such a way that other people pay part or all of your mortgage. Your housing cost is your next biggest expense that we have yet to address. Creativity is what will allow you to house hack the way that best fits your needs. As with everything this lifestyle is not for everyone. A traditional view of house hacking would be buying a duplex or fourplex and live-in part of it and rent out the other spaces. The rent coming in would pay all or most of your rent, therefore your cost of living goes down and you will be building equity in the property. You could live in that one property, or you could move out and do another property just like the one before. You must live in the property for at least one year before moving out. You could apply this concept to the air-bnb sector where you buy a big house rent out by the room then as your family grows cut back on the rooms you rent out. Another option is buying a house that can be separated into separate living areas like an apartment and rent out the extra space. This could also be done with a mother-in-law suite. As you can see there are many possibilities to house hacking when you are creative. ",
+          "Yes, you will become a landlord through this process, if you don’t like that idea, just plan to have a management company do all the work for you. This will cut in your income but just plan accordingly when running the numbers if the property will be a good fit for house hacking and as a rental.",
+          "Another option is to do a live-in flip. You buy a livable run-down house and take then next year fixing it up yourself, then after a year sell the house for hopefully a big gain and if you live in the house for a year or more you don’t have to pay taxes on your profits. Awesome right?",
+          "Creativity is what is stopping you from discovering ways to live how you want paying what you like. Learn, plan, act, and repeat."
+        ],
+        "quotes": [
+          "",
+          "",
+          ""
+        ]
+      }
+    ]
+  }
 }
