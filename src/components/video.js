@@ -10,7 +10,7 @@ export default function video(props) {
         }
         if(props.files) {
             props.files.forEach(file => {
-            files.push(<a key={file.source} href={`https://www.dropbox.com/s/3xn9uq9viuoo5dn/Understanding%20Money%20Discover.txt?dl=1`}>{file.displayname}</a>)
+            files.push(<a key={file.source} href={file.source}>{file.displayname}</a>)
             });
         }
     }
