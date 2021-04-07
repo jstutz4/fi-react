@@ -133,6 +133,8 @@ blockquote {
   padding-left: 5px;
   border-left: 2px solid var(--articlenav-border-color);
   border-radius: 0;
+  overflow: hidden;
+  max-height: 50px;
 }
 
 .articleNav a:first-child {
