@@ -10,26 +10,21 @@ const mainNavNames =
     {name:"Saving", link:`/save`},
     {name:"Investing", link:"/invest"},
     {name:"About", link:"/about"},
-    {name:"Feedback", link:"/feedback"},
+    {name:"Feedback", link:"/feedback"}
 ]
 
 const linkItems = [];
+const menuBtn = []
 
-function toggleMainNav(item){
-    let i = 0
-
-    // so we will always get the nav and hidden children
-    if(item.nativeEvent.path.length > 9) {
-        i++
-    }
-
-    item.nativeEvent.path[i].parentElement.childNodes.forEach((child, index)=> {if(index != 0){child.classList.toggle('hidden')}})
+function toggleMainNav(e){
+    console.log(e.target)
+    e.target.parentNode.nextElementSibling.classList.toggle("hidden")
 
 }
 
-linkItems.push(<li key={"mainNavDropdown"}className="show" onClick={toggleMainNav}>&#9776;</li>)
+menuBtn.push(<li key={"mainNavDropdown"} onClick={toggleMainNav}>&#9776;</li>)
 mainNavNames.forEach((item) => {
-    linkItems.push(<li key={item.name} className="hidden" onClick={toggleMainNav}>
+    linkItems.push(<li key={item.name}>
         <Link to={item.link}>{item.name}</Link>
         </li>);
 })
@@ -42,6 +37,9 @@ export default function NavHeader(props) {
     return(
         <nav id="mainNav">
             <ul>
+                {menuBtn}
+            </ul>
+            <ul className="hidden">
                 {linkItems}
             </ul>
         </nav>
