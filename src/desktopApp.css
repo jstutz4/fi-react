@@ -48,9 +48,14 @@
         display: block;
     }
 
-    #mainNav ul li:first-child{
+    #mainNav ul:first-of-type{
         display: none;
     }
+
+    .navLinks_hidden {
+        display: flex;
+      }
+
     .MainNav:first-child{
         display: flex;
     }

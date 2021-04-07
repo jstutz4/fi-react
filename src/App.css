@@ -45,6 +45,10 @@ body {
   padding-left: 0;
 }
 
+.navLinks_hidden {
+  display: none;
+}
+
 /* nav a{
   text-decoration: none;
   color: white;

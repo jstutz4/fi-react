@@ -18,7 +18,7 @@ const menuBtn = []
 
 function toggleMainNav(e){
     console.log(e.target)
-    e.target.parentNode.nextElementSibling.classList.toggle("hidden")
+    e.target.parentNode.nextElementSibling.classList.toggle("navLinks_hidden")
 
 }
 
@@ -39,7 +39,7 @@ export default function NavHeader(props) {
             <ul>
                 {menuBtn}
             </ul>
-            <ul className="hidden">
+            <ul className="navLinks_hidden">
                 {linkItems}
             </ul>
         </nav>
