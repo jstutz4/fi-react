@@ -15,11 +15,12 @@ export default function Feedback(props) {
         return temp
 
     }
-    function sendFeedback(e) {
+    
+    async function sendFeedback(e) {
         const ACCESS_TOKEN =`ZKvRlHwUzmrXXXXXXXXXXxTTqdwCbGDSlOxnKcEINyiBNhekrJjWWiGcxNaTZMyG`   
         const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
 
-        var dbx = new Dropbox({ accessToken: getAccess(ACCESS_TOKEN) });
+        var dbx = await new Dropbox({ accessToken: getAccess(ACCESS_TOKEN) });
         let file = new File(["hello world"], "filename")
         const form = document.getElementsByTagName('form')[0]
         const textareas = form.querySelectorAll('textarea')
@@ -55,31 +56,37 @@ export default function Feedback(props) {
         `
 
         console.log(fileContent)
-        if (15000 < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
-            // dbx.filesListFolder({path: '/feedback'})
-            //   .then(function(response) {
-            //     console.log("second")
-            //     console.log(response.result.entries);
-            //   })
-            //   .catch(function(error) {
-            //     console.log(error);
-            //   });
+        await new Promise((resolve, reject) =>{
+
+            if (15000 < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
+                // dbx.filesListFolder({path: '/feedback'})
+                //   .then(function(response) {
+                //     console.log("second")
+                //     console.log(response.result.entries);
+                //   })
+                //   .catch(function(error) {
+                //     console.log(error);
+                //   });
 
 
 
+                    resolve(
+                        dbx.filesUpload({path: '/feedback/' + `${textareas.item(0)?.value}-feedback.txt`, contents: fileContent})
+                        .then(function(response) {
+                            // then do another api call to get the shareable link
+                            // then do a graphql mutation and add the link to the db
+                        console.log(response);
+                        })
+                        .catch(function(error) {
+                            // consider redirect to update key or tell them they already submitted a feedback
+                        console.error(error);
+                        })
+                    )
+                }
+        })
 
-        dbx.filesUpload({path: '/feedback/' + `${textareas.item(0)?.value}-feedback.txt`, contents: fileContent})
-            .then(function(response) {
-                // then do another api call to get the shareable link
-                // then do a graphql mutation and add the link to the db
-            console.log(response);
-            })
-            .catch(function(error) {
-                // consider redirect to update key or tell them they already submitted a feedback
-            console.error(error);
-            });
-        }
-        
+        textareas.forEach(x => x.value = "")
+        window.scrollTo(0,0)
     }
 
   
@@ -136,8 +143,8 @@ export default function Feedback(props) {
                   <textarea></textarea>
               </label>
           </fieldset>
-          <button type="submit" onClick={sendFeedback}>submit feedback</button>
       </form>
+          <button onClick={sendFeedback}>submit feedback</button>
 
     </React.Fragment>
   );
