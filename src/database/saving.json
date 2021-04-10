@@ -15,6 +15,10 @@
         "name": "Easy High Yield Bank Account"
       },
       {
+        "to": "101",
+        "name": "Bank Bonuses"
+      },
+      {
         "to": "54",
         "name": "House Hacking"
       }
@@ -64,16 +68,33 @@
           "files": [
             {
               "id": "13",
-              "source": "https://www.dropbox.com/scl/fi/6lc0vyya4dy2i0zj4bo0k/emergency-fund-starter.docx?dl=1&rlkey=mwjjm0z4ib4favojqh29oc45g",
+              "source": "https://www.dropbox.com/scl/fi/6lc0vyya4dy2i0zj4bo0k/emergency-fund-starter.docx?dl=0&rlkey=mwjjm0z4ib4favojqh29oc45g",
               "displayname": "Emergency Fund Starter"
             }
           ]
         },
         "contents": [
           "When opening any bank account, they will ask for all your personal information. If you go in person, they will make photocopies of your identifying documents. These processors are all standard and you should not be alarmed. I personally like opening accounts online because only computers see my data instead of a person, but that is just how I feel. If you feel that giving your information online, then you have that right and opening bank accounts online is not for you.",
-          "Information they will ask can be the following address, birthdate, social security number, and driver's license. Some banks will ask you to upload photos of your driver's license or passport along with your social security card, but not all. You should also have proof of address, being an official letter from a bill, or another bank's welcome letter that has your name, address, and a date on it, just in case they ask for a photo of that. Oh, and now many banks will ask for your mobile number to text a verification number to you.",
+          "Information they will ask can be the following address, birthday, social security number, and driver's license. Some banks will ask you to upload photos of your driver's license or passport along with your social security card, but not all. You should also have proof of address, being an official letter from a bill, or another bank's welcome letter that has your name, address, and a date on it, just in case they ask for a photo of that. Oh, and now many banks will ask for your mobile number to text a verification number to you.",
           "I will walk you through the process of signing up for Digital Federal Credit Union. Their savings account will give you 6.17% APY (Annual percentage yield) which is the rate your money will earn if you keep it in all year. You will earn that rate on the first $1,000 after that the money will earn a blended rate which can be calculated (1000/ total * 6.17) + (total – 1000 /total * .25)  = your blended rate you money will earn. For example, if you put in $5,000 your rate your money will earn is 1.434% APY, or about $72 each year you leave your $5,000 in the account. My cut-off for the blended rate is about 2.5-3% or about $2500 ruffly. The best part is that there are no fees and only a $5 minimum to keep the account open! Many banks can easily transfer money back and forth between accounts with no problem. Keep in mind this is a savings account to you can’t transfer money out of making direct deposits more than six times a month. This should not be a problem, but you should be aware. I use the credit union partnership to move money between my account which don’t get applied to this rule. If you want, you can check it out at <a href=\"https://www.co-opfs.org/Solutions/Engage/CO-OP-Shared-Branch\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >co-op shared banking </a>.",
           "Let’s start go to <a href=\"https://www.dcu.org\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >DCU </a>.then click bank and then primary savings. This will take you to the page where you should read about the fees and fine print that you agree to when opening this account. Go ahead and click open now, fill out the information, put in your bank account routing number and account number, and make an opening deposit of at least $5-$20 and you are done! You have a great place to store the beginnings of your emergency fund!"
+        ],
+        "quotes": [
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "id": "101",
+        "articletitle": "Bank Bonuses",
+        "video":null,
+        "contents": [
+          "There are many banks that will offer bonuses when you open an account(s) with them a meet a certain criterion. There are two different types of criteria that I go for. 1. Savings, usually you will need to deposit large sum ($5,000-$25,000) and keep it in the account for x number of months usually about 3-12 months, then you will receive the bonus usually $100-$400. It all just depends on the bonus offer.",
+
+          "Most account that you will open will not affect your credit score. This is known as a soft pull and a hard pull will affect your credit score temporarily. With bank bonuses you will need to look for the fees and what it takes to waive the fee each month. Time restrictions this could be how long the money must stay in the account or if you need to have the direct deposit repeatedly hit your account for a certain number of months. And it is good practice to read the fine print or any time you see a *, you should read that. Remember to check the fees, how you will transfer money, the criterion you will need to meet, and if there are any earlier account closure fees.",
+
+          "If you keep your account open for 12 months you won’t have a problem with losing your bonus when you close your account. Many banks will give you the bonus again after you close your account for 12-48 months. If you want more of an overview you can read an article at <a href=\"https://financialpanther.com/the-ultimate-guide-to-bank-account-bonuses/\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >the financial panther </a>. Where do you find these bank bonuses? You can find them online by searching “chase bank bonus” or any other bank. You can search for online forms or even have facebook target adds for bank bonuses. Here are a couple of places I have used to find bonuses, <a href=\"https://everybankbonus.com/ \" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >every bank bonus </a>, and <a href=\"https://www.doctorofcredit.com/best-bank-account-bonuses/\" class=\"inlineLink\" target=\"_blank\" rel=\"noopener noreferrer\" >credit doctor </a>. They are so many of these kinds of websites you can find them with a google search."
         ],
         "quotes": [
           "",

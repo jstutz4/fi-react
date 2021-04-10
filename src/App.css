@@ -16,6 +16,7 @@
 
   --input-border-valid-color: black;
   --input-border-invalid-color: red;
+  --navArrow-disabled-color: rgb(0 0 0 / 25%);
 }
 
 body {
@@ -121,10 +122,28 @@ blockquote {
   background-color: var(--articlenav-background-color);
   list-style-type: none;
   margin-bottom: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
   max-width: 1000px;
-  padding: 0;
+  padding: 0 7px;
+  display: flex;
+  align-items: center;
+  width: 95vw;
+}
+
+.leftArrow {
+  transform: rotate(180deg);
+  margin-right: 3px;
+  position: relative;
+  right: 5px;
+}
+
+.rightArrow {
+  margin-left: 3px;
+}
+
+.arrowDisabled {
+  color: var(--navArrow-disabled-color)
 }
 
 .articleNav a {
@@ -133,8 +152,8 @@ blockquote {
   padding-left: 5px;
   border-left: 2px solid var(--articlenav-border-color);
   border-radius: 0;
-  overflow: hidden;
   max-height: 50px;
+  padding: 0 5px;
 }
 
 .articleNav a:first-child {
@@ -144,8 +163,8 @@ blockquote {
 
 .articleNav li {
   display: flex;
-  max-width: 90vw;
   overflow: hidden;
+  padding-right: 10px;
 }
 
 .articleNav a:hover {

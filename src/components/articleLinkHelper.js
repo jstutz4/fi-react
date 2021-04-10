@@ -1,22 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {useState, useEffect} from 'react'
 
-export default function articleLinkHelper(props, activeArticle, setActiveArticle){
+export default function articleLinkHelper(props, activeArticle, setActiveArticle, setLastArticle){
+    // const [navLinks, setNavLinks] = useState([<li></li>])
     let articleLinks = []
     let navLength = 0
     // start = false;
     if(props && props.links){
-      props.links.forEach((article, index) => {
+
+      for(let i = props.firstArticle; i < props.lastArticle; i++){
+        
+        let article = props.links[i]
         let activeStyle = ""
           if(activeArticle === article.to){
             activeStyle = "activeArticle"
           }
-          // if(navLength + article.name.length < 34){
-            navLength += article.name.length
-            articleLinks.push(getLink(props.page, article, activeStyle, setActiveArticle))
-          // }
-        })
+          articleLinks.push(getLink(props.page, article, activeStyle, setActiveArticle))
+      }
 
+      useEffect(()=>{
+        let calNum = document?.getElementsByClassName("linksLength")[0]?.clientWidth/100
+        let articlesToDisplay = Math.floor( calNum && calNum <= props.links.length ? calNum : props.links.length )
+        setLastArticle(articlesToDisplay)
+        
+      }, [])
       return(
           <React.Fragment>
               {articleLinks}
