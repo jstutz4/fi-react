@@ -10,13 +10,13 @@ export default function Main(props, page, articleNav, article, activeArticle, se
 
     const [firstArticle, setFirstArticle] = useState(0)
     const [lastArticle, setLastArticle] = useState(articlesToDisplay)
-    // const [viewArticles, setViewArticles] = useState({first:0, last: articlesToDisplay, display:articlesToDisplay })
 
-    // useEffect(()=>{
-    //     setLastArticle(viewArticles.last)
-    //     setFirstArticle(viewArticles.first)
-    //     console.log(viewArticles)
-    // }, [viewArticles])    
+    useEffect(()=>{
+        let calNum = ((document.querySelector(".articleNav ul")?.clientWidth)-60)/100
+        let articlesToDisplay = Math.floor( calNum && calNum <= articleNav.length ? calNum : articleNav.length )
+        setLastArticle(articlesToDisplay)
+          
+        }, [])
 
     return(
         <section className="article">
