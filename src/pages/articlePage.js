@@ -5,7 +5,6 @@ import pageQuery from '../sanity/page.js'
 import MainContent from '../components/main'
 
 export default function ArticlePage(props) {
-console.log(props)
 
     const [pageData, setPageData] = useState(null)
     const [activeArticle, setActiveArticle] = useState(null)
@@ -27,7 +26,6 @@ console.log(props)
           .catch(console.error)
       }, [props.location.pathname])
 
-      console.log(pageData)
     if(!pageData || pageData.length <= 0 || !pageData[0].articles)
     {
         return (
@@ -37,21 +35,16 @@ console.log(props)
         )
     }
 
-    const urlID = props.match.params.id
+    const urlID = props.match.params.id || pageData[0]?.articles?.[0].slug
 
-    console.log(urlID)
-    if(!urlID && !activeArticle){
-        setActiveArticle(pageData[0]?.articles?.[0].slug)
-    }
-  
     const articleNav = pageData[0]?.nav
     const page = `/${pageData[0]?.name}/`
-    const article = pageData[0]?.articles?.filter(art => art.slug == activeArticle)[0]
+    const article = pageData[0]?.articles?.filter(art => art.slug == urlID)[0]
     
     console.log(article)
     return (
       <React.Fragment>
-        {MainContent({page, articleNav,article, activeArticle, setActiveArticle, firstArticle, lastArticle, setFirstArticle, setLastArticle})}
+        {MainContent({page, articleNav,article, activeArticle: urlID, firstArticle, lastArticle, setFirstArticle, setLastArticle})}
       </React.Fragment>
     )
 

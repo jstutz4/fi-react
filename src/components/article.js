@@ -4,8 +4,6 @@ import ReactHtmlParser from 'react-html-parser';
 
 export default function article(props) {
 
-    console.log(props)
-
     if(!props?.paragraph){
         return <section>No Data</section>
     }

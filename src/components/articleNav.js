@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function articleNav(props, setFirstArticle, setLastArticle) {
+export default function articleNav(props) {
     function getPrevArticle(e){
+
+
 
         if(!e.target.classList.contains("arrowDisabled")){
             const numArticles = props.data.articleNav.length

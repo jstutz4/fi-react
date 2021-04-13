@@ -12,17 +12,19 @@ export default function Main(props){
     
 
     if(!articlesToDisplay){
+        console.log("first")
         return (
             <section>
                 <ArticleNav></ArticleNav>
             </section>
         )
     }
+    console.log("second")
 
     return(
         <section className="article">
         <ArticleNav data={{...props, articlesToDisplay}}>
-            {articleLinkHelper({...props})}
+            {articleLinkHelper({...props, articlesToDisplay})}
         </ArticleNav>
         {Article(props.article)}
         </section>

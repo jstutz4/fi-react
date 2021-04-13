@@ -55,7 +55,6 @@ export default function Feedback(props) {
         ${textareas.item(6).value}
         `
 
-        console.log(fileContent)
         await new Promise((resolve, reject) =>{
 
             if (15000 < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
@@ -75,7 +74,7 @@ export default function Feedback(props) {
                         .then(function(response) {
                             // then do another api call to get the shareable link
                             // then do a graphql mutation and add the link to the db
-                        console.log(response);
+                        // console.log(response);
                         })
                         .catch(function(error) {
                             // consider redirect to update key or tell them they already submitted a feedback

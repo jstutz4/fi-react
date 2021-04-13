@@ -21,13 +21,11 @@ export default function Article(props){
 
      const [callUpdateArticle] = useMutation(updateArticle)
 
-console.log(props.editable)
 let isEditable = true
 if(props?.editable != undefined)
     isEditable = props.editable
     
     function addParagraph(item) {
-        console.log("stopping " + isEditable)
         const newParNum = parNum + 1
         setParNum(newParNum)
         setParGroup(oldArray => [...oldArray, Paragraph({type:"paragraph", id: newParNum, size:5000, editable: isEditable, callUpdateArticle})])

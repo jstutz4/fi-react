@@ -7,15 +7,36 @@ export default function articleLinkHelper(props){
     let navLength = 0
     // start = false;
     if(props?.articleNav){
+      let stopPoint = props.lastArticle
+      let startPoint = props.firstArticle
 
-      for(let i = props.firstArticle; i < props.lastArticle; i++){
-        
-        let article = props.articleNav[i]
-        let activeStyle = ""
+      if(props.firstArticle === props.lastArticle || stopPoint > props.articleNav.length)
+      {
+        stopPoint = props.articleNav.length
+      }
+      // let startAtActive = false
+
+      // if(props.lastArticle -  props.firstArticle < props.articlesToDisplay){
+      //   startPoint = 0
+      //   stopPoint = props.articleNav.length
+      //   startAtActive = true
+      // }
+      console.log(props)
+
+      for(let i = startPoint; i < stopPoint; i++){
+        // if(props.activeArticle == props.articleNav[i].slug)
+        // {
+        //   startAtActive = false
+        // }
+        // if(!startAtActive)
+        // {
+          let article = props.articleNav[i]
+          let activeStyle = ""
           if(props.activeArticle === article.to){
             activeStyle = "activeArticle"
           }
           articleLinks.push(getLink(props.page, article, activeStyle, props.setActiveArticle))
+        // }
       }
 
       return(
@@ -30,8 +51,7 @@ function getLink(page, article, activeStyle, setActiveArticle){
     return(
             <Link key={article.name} 
                   className={activeStyle}
-                  to={page + article.to} 
-                  onClick={() => setActiveArticle(article.to)}>
+                  to={page + article.to} >
                 {article.name}
             </Link>
     )
