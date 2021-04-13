@@ -41,7 +41,6 @@ export default function ArticlePage(props) {
     const page = `/${pageData[0]?.name}/`
     const article = pageData[0]?.articles?.filter(art => art.slug == urlID)[0]
     
-    console.log(article)
     return (
       <React.Fragment>
         {MainContent({page, articleNav,article, activeArticle: urlID, firstArticle, lastArticle, setFirstArticle, setLastArticle})}
