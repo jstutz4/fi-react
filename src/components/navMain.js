@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -18,28 +18,26 @@ const menuBtn = []
 
 function toggleMainNav(e){
     console.log(e.target)
-    e.target.parentNode.nextElementSibling.classList.toggle("navLinks_hidden")
+    document.querySelector(".coreNavSelector").classList.toggle("navLinks_hidden")
 
 }
 
 menuBtn.push(<li key={"mainNavDropdown"} onClick={toggleMainNav}>&#9776;</li>)
 mainNavNames.forEach((item) => {
-    linkItems.push(<li key={item.name}>
-        <Link to={item.link}>{item.name}</Link>
+    linkItems.push(<li key={item.name} onClick={toggleMainNav}>
+        <NavLink to={item.link}>{item.name}</NavLink>
         </li>);
 })
 
 
-export default function NavHeader(props) {
-    if(props.location.pathname.includes('admin')){
-        return
-    }
+export default function NavHeader() {
+
     return(
         <nav id="mainNav">
             <ul>
                 {menuBtn}
             </ul>
-            <ul className="navLinks_hidden">
+            <ul className="coreNavSelector navLinks_hidden">
                 {linkItems}
             </ul>
         </nav>

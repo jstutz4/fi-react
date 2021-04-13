@@ -49,11 +49,11 @@ export default function articleNav(props, setFirstArticle, setLastArticle) {
     let leftArrowClasses = "leftArrow"
     let RightArrowClasses = "rightArrow"
 
-    if(props.data.firstArticle <= 0){
+    if(props?.data?.firstArticle <= 0){
         leftArrowClasses = "leftArrow arrowDisabled"
     }
 
-    if(props.data.articleNav.length <= props.data.lastArticle){
+    if(props?.data?.articleNav?.length <= props?.data?.lastArticle){
         RightArrowClasses = "rightArrow arrowDisabled"
     }
 

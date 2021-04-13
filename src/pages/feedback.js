@@ -92,7 +92,6 @@ export default function Feedback(props) {
   
   return (
     <React.Fragment>
-      {Header(props)}
       <p className="attention">Please leave any feedback, opinions, or suggestions in the relevant sections</p>
       <form>
       <fieldset>

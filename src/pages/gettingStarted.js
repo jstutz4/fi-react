@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainContent from '../components/main'
 import Header from '../components/navMain'
 import startData from '../database/gettingStarted.json'
@@ -9,7 +9,9 @@ export default function Start(props) {
   const initialState = 10000
   const [activeArticle, setActiveArticle] = useState(initialState);
   
+  
   let data = startData
+
   
   const urlID = props.match.params.id
 
@@ -28,7 +30,6 @@ export default function Start(props) {
   
   return (
     <React.Fragment>
-      {Header(props)}
       {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );

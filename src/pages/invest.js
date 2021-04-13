@@ -28,7 +28,6 @@ export default function Invest(props) {
   
   return (
     <React.Fragment>
-      {Header(props)}
       {MainContent(props, page, articleNav,article, activeArticle, setActiveArticle)}
     </React.Fragment>
   );

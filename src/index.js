@@ -3,45 +3,19 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-// graph QL
-import {ApolloClient} from 'apollo-client';
-import {InMemoryCache} from 'apollo-cache-inmemory';
-import { createUploadLink } from 'apollo-upload-client';
-// import {HttpLink} from 'apollo-link-http';
-import {ApolloProvider} from '@apollo/react-hooks'
-
 
 // components
-import NavHeader from './components/navMain'
+import MainNav from './components/navMain'
 
-//createUploadLink({ uri: process.env.REACT_APP_GRAPHQL_URL });
-
-const cache = new InMemoryCache();
-const link = new createUploadLink({
-  uri: 'http://localhost:4000/graphql',
-  // uri: '/graphql',
-  
-})
-
-const client = new ApolloClient({
-  cache,
-  link
-})
 
 const routing = (
 <React.StrictMode>
-    <ApolloProvider client={client}>
       <BrowserRouter>
       <div className="center">
-            {/* {NavHeader()} */}
+            <MainNav />
             <App></App>
-            
-            {/* {Footer()} */}
         </div>
       </BrowserRouter>
-      </ApolloProvider>
   </React.StrictMode>
 )
 ReactDOM.render(

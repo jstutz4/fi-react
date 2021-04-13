@@ -1,22 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {useState, useEffect} from 'react'
 
-export default function articleLinkHelper(props, activeArticle, setActiveArticle, setLastArticle){
+export default function articleLinkHelper(props){
     // const [navLinks, setNavLinks] = useState([<li></li>])
     let articleLinks = []
     let navLength = 0
     // start = false;
-    if(props && props.links){
+    if(props?.articleNav){
 
       for(let i = props.firstArticle; i < props.lastArticle; i++){
         
-        let article = props.links[i]
+        let article = props.articleNav[i]
         let activeStyle = ""
-          if(activeArticle === article.to){
+          if(props.activeArticle === article.to){
             activeStyle = "activeArticle"
           }
-          articleLinks.push(getLink(props.page, article, activeStyle, setActiveArticle))
+          articleLinks.push(getLink(props.page, article, activeStyle, props.setActiveArticle))
       }
 
       return(
@@ -32,7 +31,7 @@ function getLink(page, article, activeStyle, setActiveArticle){
             <Link key={article.name} 
                   className={activeStyle}
                   to={page + article.to} 
-                  onClick={() => setActiveArticle(article.id)}>
+                  onClick={() => setActiveArticle(article.to)}>
                 {article.name}
             </Link>
     )
