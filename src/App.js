@@ -4,11 +4,13 @@ import './desktopApp.css';
 
 import feedback from './pages/feedback'
 import ArticlePage from './pages/articlePage';
+import RoadMap from './pages/roadmap'
 
 
 function App() {
   return (
     <Switch>
+      <Route path="/roadmap" exact component={RoadMap}/>
       <Route path="/start/:id?" component={ArticlePage} />
       <Route path="/save/:id?" component={ArticlePage} />
       <Route path="/invest/:id?" component={ArticlePage} />

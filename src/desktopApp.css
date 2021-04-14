@@ -13,6 +13,10 @@
         width: 98%;
     }
 
+    .roadMap {
+        display: block;
+    }
+
     .leftArrow, .rightArrow {
         display:none;
     }
@@ -41,6 +45,10 @@
     }
     ul li:first-child {
         padding-left: 0;
+    }
+
+    .roadMap li:first-child {
+        padding-left: 10px;
     }
 
     #mainNav li:hover{
