@@ -10,9 +10,7 @@ export default function ArticlePage(props) {
 
     const [firstArticle, setFirstArticle] = useState(0)
     const [lastArticle, setLastArticle] = useState(null)
-    const pageName = props.match.url.split('/')
-    const params = {page: pageName[1]}
-
+    
     useEffect(()=>{
             let calNum = ((document.querySelector(".articleNav ul")?.clientWidth)-60)/100
             let articlesToDisplay = Math.floor( calNum && calNum <= pageData?.[0]?.nav?.length ? calNum : pageData?.[0]?.nav?.length )
@@ -20,10 +18,10 @@ export default function ArticlePage(props) {
         }, [pageData])
 
     useEffect(() =>{
-        sanityClient.fetch(pageQuery, params)
+        sanityClient.fetch(pageQuery, {page: props.match.url.split('/')[1]})
           .then((data) => setPageData(data))
           .catch(console.error)
-      }, [props.location.pathname, params])
+      }, [props.match.url])
 
     if(!pageData || pageData.length <= 0 || !pageData[0].articles)
     {
