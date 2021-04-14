@@ -7,7 +7,6 @@ import MainContent from '../components/main'
 export default function ArticlePage(props) {
 
     const [pageData, setPageData] = useState(null)
-    const [activeArticle, setActiveArticle] = useState(null)
 
     const [firstArticle, setFirstArticle] = useState(0)
     const [lastArticle, setLastArticle] = useState(null)
@@ -24,7 +23,7 @@ export default function ArticlePage(props) {
         sanityClient.fetch(pageQuery, params)
           .then((data) => setPageData(data))
           .catch(console.error)
-      }, [props.location.pathname])
+      }, [props.location.pathname, params])
 
     if(!pageData || pageData.length <= 0 || !pageData[0].articles)
     {
@@ -39,7 +38,7 @@ export default function ArticlePage(props) {
 
     const articleNav = pageData[0]?.nav
     const page = `/${pageData[0]?.name}/`
-    const article = pageData[0]?.articles?.filter(art => art.slug == urlID)[0]
+    const article = pageData[0]?.articles?.filter(art => art.slug === urlID)[0]
     
     return (
       <React.Fragment>

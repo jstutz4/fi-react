@@ -1,6 +1,5 @@
 import React from 'react'
 import Video from './video'
-import ReactHtmlParser from 'react-html-parser'; 
 
 export default function article(props) {
 
@@ -40,6 +39,7 @@ export default function article(props) {
                 <blockquote key={section.children[0].text}>{body}</blockquote>
             )
         }
+        return <React.Fragment></React.Fragment>
     })
 
     return(

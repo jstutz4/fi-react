@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../components/navMain'
 
 import {Dropbox} from "dropbox";
 
@@ -21,7 +20,7 @@ export default function Feedback(props) {
         const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
 
         var dbx = await new Dropbox({ accessToken: getAccess(ACCESS_TOKEN) });
-        let file = new File(["hello world"], "filename")
+     
         const form = document.getElementsByTagName('form')[0]
         const textareas = form.querySelectorAll('textarea')
         let fileContent = `
@@ -70,7 +69,7 @@ export default function Feedback(props) {
 
 
                     resolve(
-                        dbx.filesUpload({path: '/feedback/' + `${textareas.item(0)?.value}-feedback.txt`, contents: fileContent})
+                        dbx.filesUpload({path: `/feedback/${textareas.item(0)?.value}-feedback.txt`, contents: fileContent})
                         .then(function(response) {
                             // then do another api call to get the shareable link
                             // then do a graphql mutation and add the link to the db

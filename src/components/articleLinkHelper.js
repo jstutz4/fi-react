@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 export default function articleLinkHelper(props){
     // const [navLinks, setNavLinks] = useState([<li></li>])
     let articleLinks = []
-    let navLength = 0
-    // start = false;
+
     if(props?.articleNav){
       let stopPoint = props.lastArticle
       let startPoint = props.firstArticle

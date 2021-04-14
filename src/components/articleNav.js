@@ -6,7 +6,6 @@ export default function articleNav(props) {
 
 
         if(!e.target.classList.contains("arrowDisabled")){
-            const numArticles = props.data.articleNav.length
             const lastIndex = props.data.lastArticle
             const startIndex = props.data.firstArticle
             const ArticlesInView = props.data.articlesToDisplay

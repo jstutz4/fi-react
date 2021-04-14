@@ -1,5 +1,3 @@
-import {useState, useEffect} from 'react'
-
 import Article from '../components/article'
 import ArticleNav from '../components/articleNav'
 import articleLinkHelper from '../components/articleLinkHelper'
