@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 const mainNavNames = 
 [
+    {name:"Road Map", link:"/roadmap"}, 
     {name:"Getting Started", link:"/start"}, 
     {name:"Saving", link:`/save`},
     {name:"Investing", link:"/invest"},
