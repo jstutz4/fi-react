@@ -33,6 +33,7 @@ export default function Post(props) {
                   setPost(data[0])
                 })
               .catch(console.error)
+             // eslint-disable-next-line
           },[])
 
           useEffect(()=>{

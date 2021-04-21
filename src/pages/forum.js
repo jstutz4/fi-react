@@ -22,6 +22,7 @@ const query = `*[_type == 'forum']{
               setTopic(data)
             })
           .catch(console.error)
+        // eslint-disable-next-line
       }, [])
 
     if(!topic)
