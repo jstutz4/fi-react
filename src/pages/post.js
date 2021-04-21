@@ -33,7 +33,7 @@ export default function Post(props) {
                   setPost(data[0])
                 })
               .catch(console.error)
-          })
+          },[])
 
           useEffect(()=>{
               if(hasSubmit){
@@ -41,7 +41,7 @@ export default function Post(props) {
                   let body = document.querySelector('textarea')
                   let comment
 
-                    comment =  <div key={body} className="background_color padding_box margin_top border_header margin_comment comment">
+                    comment =  <div key={body.value} className="background_color padding_box margin_top border_header margin_comment comment">
                                 
                     <p>{body.value}</p>
                     <p className="smaller_text">{username.value}</p>

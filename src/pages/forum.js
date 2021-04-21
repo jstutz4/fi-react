@@ -22,7 +22,7 @@ const query = `*[_type == 'forum']{
               setTopic(data)
             })
           .catch(console.error)
-      })
+      }, [])
 
     if(!topic)
     {

@@ -2,6 +2,7 @@
   "name": "fi-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/roadmap",
   "dependencies": {
     "@apollo/client": "^3.3.11",
     "@sanity/client": "^2.7.1",
