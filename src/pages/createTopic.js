@@ -16,7 +16,6 @@ function onsubmit(e) {
     let username = inputs[0].value
     let title = inputs[1].value
     let body = e.target.parentElement.querySelectorAll('textarea')[0].value
-    let newPostID
     client.config({
         // token: process.env.REACT_APP_TOKEN
         token: `skRi3CzVL8TBolcm4dtLTrxVyBbRMSyFRMwrLXOTvjzyVHcIrHV435FOryp75H6CmuR1n2UhReuGJa1BF8jKsuQhmngV0BTZSal0FSY8LKeuTDDWXa4e5ppi0AaqWizUe40SE6UQVCWWPI46Wmj0oW1yMZ9XJFk3S8RkYpuHbTf87j6zK3kw`
