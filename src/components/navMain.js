@@ -11,14 +11,14 @@ const mainNavNames =
     {name:"Saving", link:`/save`},
     {name:"Investing", link:"/invest"},
     {name:"About", link:"/about"},
-    {name:"Feedback", link:"/feedback"}
+    {name:"Feedback", link:"/feedback"},
+    {name:"Community", link:"/community"},
 ]
 
 const linkItems = [];
 const menuBtn = []
 
 function toggleMainNav(e){
-    console.log(e.target)
     document.querySelector(".coreNavSelector").classList.toggle("navLinks_hidden")
 
 }

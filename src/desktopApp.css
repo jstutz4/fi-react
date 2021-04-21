@@ -72,6 +72,12 @@
         display: flex;
     }
 
+    /* community page */
+    form {
+        min-width: 40vw;
+    }
+
+
     /* admin page */
     .paragraph, .quote {
         width: 70vw;

@@ -11,7 +11,6 @@ export default function RoadMap(props) {
           .catch(console.error)
       }, [props.match.url])
 
-
     if(!pageData)
     {
         return (
@@ -27,21 +26,20 @@ export default function RoadMap(props) {
     let body = pageData.map((page) => {
         return(
         <section key={page.heading}>
-
-            <h2 key={page.heading + "h2"}>{page.heading}</h2>
-            <ul key={page.heading + "ul"} className="roadMap">
+            <h2>{page.heading}</h2>
+            <ul className="roadMap">
             {page?.articlelist?.map((article) => {
                 if(!article.id)
                 {
                     return (
-                        <li key={article.id}>
+                        <li key={article.title}>
                             {article.title}
                         </li>
                     )
                 }
                 return (
                     <li key={article.id}>
-                        <a key={article.id + "a"} href={`/${page.page}/${article.id}`} className="inlineLink" target="_blank" rel="noopener noreferrer" >{article.title} </a>
+                        <a href={`/${page.page}/${article.id}`} className="inlineLink" target="_blank" rel="noopener noreferrer" >{article.title} </a>
                    </li>
                )
             })}
