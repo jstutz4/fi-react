@@ -27,7 +27,7 @@ export default function ForumTopic(props) {
                         <h3 onClick={toggleTopic}>{props.topic}</h3>
                         <Link to={{pathname: `/create/topic/${props.topic}`,
                                     state: {topic: props.id}}}>
-                            <img onClick={getForm} src={AddImg} width="30" className="addPost" data-topic={props._id}/>
+                            <img onClick={getForm} src={AddImg} width="30" className="addPost" data-topic={props._id} alt="add a topic"/>
                         
                         </Link>
                     </section>

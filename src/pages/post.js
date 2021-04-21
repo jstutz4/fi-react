@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import client from '../client.js'
-import { Link } from 'react-router-dom'
 
 import CreateComment from './createComment'
 
@@ -34,7 +33,7 @@ export default function Post(props) {
                   setPost(data[0])
                 })
               .catch(console.error)
-          }, [])
+          })
 
           useEffect(()=>{
               if(hasSubmit){

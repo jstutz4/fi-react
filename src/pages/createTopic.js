@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import client from '../client'
 import {Redirect} from 'react-router-dom'
 import {nanoid} from 'nanoid'
@@ -30,7 +30,6 @@ function onsubmit(e) {
         //     _ref: topicId,
         // }
     }).then((data) => {
-        newPostID = data._id
         client.patch(topicId)
         .setIfMissing({numTopics: 0, subtopics: []})
         .inc({numTopics: 1})
