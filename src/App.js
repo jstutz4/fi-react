@@ -21,9 +21,10 @@ function App() {
       <Route exact path="/" component={ArticlePage} />
       {/* <Route exact path="/about/:id?" component={about} /> */}
       <Route path="/about" component={ArticlePage} />
-      <Route path="/community/:topic" component={Post} />
+      <Route path="/community/:topic/:post" component={Post} />
 
-      <Route path="/community" component={Forum} />
+      <Route path="/community/:topic" component={Forum} />
+      <Route path="/community/" component={Forum} />
       <Route path="/feedback" component={feedback} />
       <Route exact path="/create/topic" component={Forum} />
       <Route exact path="/create/comment" component={Forum} />
