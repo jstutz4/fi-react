@@ -390,6 +390,10 @@ label{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  /* display: grid;
+  grid-template-columns: auto 30px max-content;
+  grid-template-rows: max-content; */
 }
 
 /* view post page */
@@ -420,7 +424,16 @@ label{
 .comment:nth-child(odd){
   background-color:#d3d3d3d5;
 }
+.credit {
+  border: none;
+  display: inline;
+  color: var(--nav-text-color);
+  background-color: var(--main-background-color);
+}
 
+.width_full{
+  width: 100%;
+}
 /* form validation */
 input:invalid {
   border: 2px solid var(--input-border-invalid-color);

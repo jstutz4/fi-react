@@ -30,8 +30,11 @@ export default function ForumTopic(props) {
                             <img onClick={getForm} src={AddImg} width="30" className="addPost" data-topic={props._id} alt="add a topic"/>
                         
                         </Link>
+                        <div className="width_full"></div>
+                        <p className="smaller_text">{props.description}</p>
+
                     </section>
-                    <p className="smaller_text">{props.description}</p>
+                        {/* <p className="smaller_text width_full">{props.description}</p> */}
                 </div>
 
                 <ul className="forum_sub_topic hidden">
