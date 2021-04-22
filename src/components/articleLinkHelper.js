@@ -20,7 +20,6 @@ export default function articleLinkHelper(props){
       //   stopPoint = props.articleNav.length
       //   startAtActive = true
       // }
-      console.log(props)
 
       for(let i = startPoint; i < stopPoint; i++){
         // if(props.activeArticle == props.articleNav[i].slug)
