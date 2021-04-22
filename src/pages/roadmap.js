@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import sanityClient from '../client.js'
 import roadMapQuery from '../sanity/roadmap_query.js'
 
