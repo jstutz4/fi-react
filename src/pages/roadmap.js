@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import sanityClient from '../client.js'
 import roadMapQuery from '../sanity/roadmap_query.js'
 
@@ -54,6 +55,12 @@ export default function RoadMap(props) {
             <h1>FI Road Map</h1>
             <div className="articleContent">
                 {body}
+                <h2>Join the Community</h2>
+                <ul>
+                    <li>
+                        <a href={`/community`} className="inlineLink" target="_blank" rel="noopener noreferrer" >See what the community is saying</a>
+                   </li>
+                   </ul>
             </div>
         </section>
     )

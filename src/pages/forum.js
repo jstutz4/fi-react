@@ -29,14 +29,18 @@ const query = `*[_type == 'forum']{
     {
         return (
             <React.Fragment>
+            <header className="background_color margin_top padding_box">
+                <h1>Welcome to the community</h1>
+                <p>You are free to ask questions under the best fit category and answer questions from the community by sharing your stories and experiences.</p>
+            </header>
 
-        <div className="forum background_color">
-        <p className="forum_header">Icon</p>
-        <p className="forum_header">Posts</p>
-        <p className="forum_header">Stats</p>
-        {/* <p className="forum_header">Most Recent</p> */}
-            {TopicRow({topic:"General Discussion", description: "A place to share you journey and stories", sub_topic: [{title: "post 1"}, {title: "post two"}, {title:"my story to share"}], num_posts: 0, num_topics: 0})}
-        </div>
+            <div className="forum background_color">
+                <p className="forum_header">Icon</p>
+                <p className="forum_header">Posts</p>
+                <p className="forum_header">Stats</p>
+                {/* <p className="forum_header">Most Recent</p> */}
+                    {TopicRow({topic:"General Discussion", description: "A place to share you journey and stories", sub_topic: [{title: "post 1"}, {title: "post two"}, {title:"my story to share"}], num_posts: 0, num_topics: 0})}
+            </div>
             <p>Thanks to <a href='https://dryicons.com/free-icons/forum-icon'> Dryicons </a> for providing the awesome forum icons</p>
         </React.Fragment>
         )
