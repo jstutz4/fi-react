@@ -7,29 +7,37 @@ import { Link } from 'react-router-dom'
 export default function ForumTopic(props) {
 
     function toggleTopic(e){
-        e.target.parentElement.parentElement.parentElement.querySelector('.forum_sub_topic').classList.toggle('hidden')
+        let topic =  e.target.getAttribute('data-info')
+        document.querySelector(`ul[data-info=${topic}`).classList.toggle('hidden')
     }
 
     function getForm(e){
 
     }
+
+    // this removes all the space and symbols in topic title
+    // so we can use a css selector for the data-info
+    let noSpaceTopic = props.topic.replace(/[\s \' \- \? \! \.]/g, "" )
     return(
         // this represents a row on the forum page
         <React.Fragment key={props.key}>
             <section className="forum_icon forum_col">
-                <img src={ForumIcon} width="50" alt="forum icon" />
+                <img src={ForumIcon} width="35" alt="forum icon" />
             </section>
             
             <section className="forum_topic forum_col"  >
 
                 <div>
                     <section className="topicHeader">
-                        <h3 onClick={toggleTopic}>{props.topic}</h3>
+                        <div className="sameLine">
+
+                        <h3 onClick={toggleTopic} data-info={noSpaceTopic}>{props.topic}</h3>
                         <Link to={{pathname: `/create/topic/${props.topic}`,
                                     state: {topic: props.id}}}>
-                            <img onClick={getForm} src={AddImg} width="30" className="addPost" data-topic={props._id} alt="add a topic"/>
+                            <img onClick={getForm} src={AddImg} width="30" className="addPost" alt="add a topic"/>
                         
                         </Link>
+                        </div>
                         <div className="width_full"></div>
                         <p className="smaller_text">{props.description}</p>
 
@@ -37,7 +45,7 @@ export default function ForumTopic(props) {
                         {/* <p className="smaller_text width_full">{props.description}</p> */}
                 </div>
 
-                <ul className="forum_sub_topic hidden">
+                <ul className={`forum_sub_topic hidden`} data-info={noSpaceTopic}>
                     {props?.sub_topic?.map((subTopic) => {
                         return (
                             <Link key={props.topic + subTopic.title}
