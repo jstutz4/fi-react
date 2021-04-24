@@ -11,6 +11,11 @@ const call = `*[_type == 'page' && name == $page]
       paragraph[]
       {
         style,
+        listItem,
+        level,
+        'image': asset->.url,
+        'alt': asset->originalFilename,
+        _type,
         children[]{marks, text},
         markDefs[]
         {

@@ -12,9 +12,8 @@ export default function video(props) {
         files.push(<a key={file.url} href={file.url}>{file.name}</a>)
         });
     }
-    else {
-        return <React.Fragment></React.Fragment>
-    }
+    
+    console.log(props)
     return (
         <section className="video">
             {/* <section className="videoWrapper"> */}

@@ -17,7 +17,7 @@ export default function ForumTopic(props) {
 
     // this removes all the space and symbols in topic title
     // so we can use a css selector for the data-info
-    let noSpaceTopic = props.topic.replace(/[\s \' \- \? \! \.]/g, "" )
+    let noSpaceTopic = props.topic.replace(/[\s ' \- ? ! .]/g, "" )
     return(
         // this represents a row on the forum page
         <React.Fragment key={props.key}>

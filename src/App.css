@@ -292,6 +292,16 @@ textarea{
   border: 1px solid grey;
 }
 
+.flex_center {
+  display: flex;
+  justify-content: center;
+}
+
+.inline_image{
+  /* about the size of the smallest phone*/
+  min-width: 315px;
+}
+
 /* Road Map */
 
 
