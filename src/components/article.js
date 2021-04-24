@@ -2,7 +2,6 @@ import React from 'react'
 import Video from './video'
 
 export default function article(props) {
-    console.log(props)
 
     function resolveChildren(childrenArray, markDefs) {
         let body = []
@@ -62,23 +61,20 @@ export default function article(props) {
             }
 
             if(readyToBuild){
-                console.log(multiList)
                body.push(
-                <ul>
+                <ul key={section.children[0].text}>
 
                     {multiList.map((listItem) => {
                         if(listItem.level === 2){
                             return(
-                            <ul>
+                            <ul key={"ul" + listItem.body[0].body[0]}>
                             
                             {listItem.body.map((subListItem) =>{
-                                {console.log(subListItem.body[0])}
                                 return(<li key={subListItem.body[0]}>{subListItem.body[0]}</li>)   
                             })}
                             </ul>)
                         }
                         else{
-                            {console.log(listItem.body[0])}
                            return( <li key={listItem.body[0]}>{listItem.body[0]}</li>)
                         }
                     })}
@@ -86,7 +82,6 @@ export default function article(props) {
                )
                readyToBuild = false
                multiList = []
-               console.log(body)
             }
             // if it is a list item then dont add anything
             // the add of an list item will be done in the if statement above
@@ -110,12 +105,12 @@ export default function article(props) {
         }
         else if (section.image){
             return(
-                <div className="flex_center">
-                    <img src={section.image} alt={section.image} className="inline_image" />
+                <div key={section.alt} className="flex_center">
+                    <img src={section.image} alt={section.alt} className="inline_image" />
                 </div>
             )
         }
-        return <React.Fragment></React.Fragment>
+        return <React.Fragment key="need a lame key"></React.Fragment>
     })
 
     return(

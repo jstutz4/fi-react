@@ -13,7 +13,6 @@ export default function video(props) {
         });
     }
     
-    console.log(props)
     return (
         <section className="video">
             {/* <section className="videoWrapper"> */}
