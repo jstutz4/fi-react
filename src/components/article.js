@@ -53,7 +53,9 @@ export default function article(props) {
                     level2List.push({level:section.level, body: resolveChildren(section.children, section.markDefs)})
                 }
                 else {
-                    level2List.length > 0 ? multiList.push({level:2, body: level2List}) : "nothing"
+                    if(level2List.length > 0)
+                        multiList.push({level:2, body: level2List})
+
                     multiList.push({level:section.level, body: resolveChildren(section.children, section.markDefs)})
                     level2List = []
                 }
