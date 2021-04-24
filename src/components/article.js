@@ -80,6 +80,7 @@ export default function article(props) {
                     })}
                 </ul>
                )
+               body.push(resolveChildren(section.children, section.markDefs))
                readyToBuild = false
                multiList = []
             }
