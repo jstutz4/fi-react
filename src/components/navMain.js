@@ -11,7 +11,7 @@ const mainNavNames =
     {name:"Saving", link:`/save`},
     {name:"Investing", link:"/invest"},
     {name:"About", link:"/about"},
-    {name:"Feedback", link:"/feedback"},
+    // {name:"Feedback", link:"/feedback"},
     {name:"Community", link:"/community"},
 ]
 

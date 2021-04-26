@@ -25,7 +25,7 @@ function App() {
 
       <Route path="/community/:topic" component={Forum} />
       <Route path="/community/" component={Forum} />
-      <Route path="/feedback" component={feedback} />
+      {/* <Route path="/feedback" component={feedback} /> */}
       <Route exact path="/create/topic" component={Forum} />
       <Route exact path="/create/comment" component={Forum} />
 
