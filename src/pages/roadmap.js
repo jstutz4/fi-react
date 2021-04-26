@@ -27,7 +27,7 @@ export default function RoadMap(props) {
         return(
         <section key={page.heading}>
             <h2>{page.heading}</h2>
-            <ul className="roadMap">
+            <ul className="display_block">
             {page?.articlelist?.map((article) => {
                 if(!article.id)
                 {

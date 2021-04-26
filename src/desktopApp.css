@@ -8,12 +8,18 @@
         max-width: 1000px;
     }
 
-    .articleNav ul{
-        display: inline-block;
-        width: 98%;
+    .articleNav {
+        margin-top: 20px;
     }
 
-    .roadMap {
+    .articleNav ul{
+        display: inline-block;
+        width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .display_block {
         display: block;
     }
 
@@ -29,7 +35,6 @@
     padding: 0 7px;
     }
 
-
     nav a:hover {
         border-style: inset;
         border-bottom: none;
@@ -41,7 +46,7 @@
 
     ul li {
         align-self:center ;
-        padding-left: 10px;
+        /* padding-left: 10px; */
     }
     ul li:first-child {
         padding-left: 0;

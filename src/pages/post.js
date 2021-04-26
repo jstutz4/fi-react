@@ -68,7 +68,7 @@ export default function Post(props) {
       
 
     return (
-        <React.Fragment>
+        <div>
 
         <div className="background_color padding_box margin_top margin_post">
             <header className="border_header">
@@ -99,6 +99,6 @@ export default function Post(props) {
                 <CreateComment topic={post.title} id={props.location.state.post} url={props.location.pathname} state={props.location.state} {...{hasSubmit, setHasSubmit}}/>
         </div>
            
-        </React.Fragment>
+        </div>
     )
 }

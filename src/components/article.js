@@ -62,12 +62,12 @@ export default function article(props) {
 
             if(readyToBuild){
                body.push(
-                <ul key={section.children[0].text}>
+                <ul key={section.children[0].text} className="display_block">
 
                     {multiList.map((listItem) => {
                         if(listItem.level === 2){
                             return(
-                            <ul key={"ul" + listItem.body[0].body[0]}>
+                            <ul key={"ul" + listItem.body[0].body[0]} className="display_block">
                             
                             {listItem.body.map((subListItem) =>{
                                 return(<li key={subListItem.body[0]}>{subListItem.body[0]}</li>)   
