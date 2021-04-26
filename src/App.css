@@ -183,6 +183,27 @@ blockquote {
   border-radius: 0;
 }
 
+/* this is for the investing vehicle types table */
+.overflow_auto {
+  overflow: auto;
+}
+
+.biggerWidth {
+  min-width: 105px;
+}
+
+th {
+  padding-left: 10px;
+}
+
+table, table thead, table tr, table td {
+  border: solid;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--quote-background-color)
+}
+
 .video a {
   background-color: rgb(0 0 0 / 0%);;
   color:var(--article-link-color);

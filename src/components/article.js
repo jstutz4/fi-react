@@ -1,27 +1,10 @@
 import React from 'react'
 import Video from './video'
+import InvestingVehiclesTable from './investingTypesTables'
 
 export default function article(props) {
 
-    function resolveChildren(childrenArray, markDefs) {
-        let body = []
-        childrenArray.forEach((child) => {
-            if(child?.marks?.length > 0)
-            {
-                 let link = markDefs.filter(mark => mark._key === child.marks[0])[0]
-
-                 let location = link?.href || link?.asset?.url
-                 body.push(<a key={location} href={location} className="inlineLink" target="_blank" rel="noopener noreferrer" >{child.text} </a>)
-            }
-            else {
-                body.push(child.text)
-            }
-
-             
-         })
-
-         return body
-    }
+    
 
     if(!props?.paragraph){
         return <section>No Data</section>
@@ -62,20 +45,20 @@ export default function article(props) {
 
             if(readyToBuild){
                body.push(
-                <ul key={section.children[0].text} className="display_block">
+                <ul key={"ul1" + section.children[0].text} className="display_block">
 
                     {multiList.map((listItem) => {
                         if(listItem.level === 2){
                             return(
-                            <ul key={"ul" + listItem.body[0].body[0]} className="display_block">
+                            <ul key={"ul2" + listItem.body[0].body[0]} className="display_block">
                             
                             {listItem.body.map((subListItem) =>{
-                                return(<li key={subListItem.body[0]}>{subListItem.body[0]}</li>)   
+                                return(<li key={"point" + subListItem.body[0]}>{subListItem.body[0]}</li>)   
                             })}
                             </ul>)
                         }
                         else{
-                           return( <li key={listItem.body[0]}>{listItem.body[0]}</li>)
+                           return( <li key={"point" +listItem.body[0]}>{listItem.body[0]}</li>)
                         }
                     })}
                 </ul>
@@ -91,9 +74,8 @@ export default function article(props) {
                 body.push(resolveChildren(section.children, section.markDefs))
             }
 
-
             return (
-                <article key={section.children[0].text}>{body}</article>
+                <article key={section.children[0].text + section.children[0]?.marks?.[0]}>{body}</article>
             )
         }
         else if (section.style === "blockquote")
@@ -114,11 +96,44 @@ export default function article(props) {
         return <React.Fragment key="need a lame key"></React.Fragment>
     })
 
+    let table = null
+    if(props.slug === "types-of-investing-accounts")
+    {
+        table = <InvestingVehiclesTable />
+    }
+
     return(
         <section className="articleContent">
             <h1>{props.title}</h1>
             {Video({video: props.article_video, files: props.template_file})}
             {content}
+            {table}
         </section>
     );
+}
+
+function resolveChildren(childrenArray, markDefs) {
+    let body = []
+    childrenArray.forEach((child) => {
+        if(child?.marks?.length > 0)
+        {
+            if(child.marks[0] === 'strong'){
+                body.push(<h3 key={"heading"+child.text}>{child.text} </h3>)
+            }
+            else
+            {
+                let link = markDefs.filter(mark => mark._key === child.marks[0])[0]
+                
+                let location = link?.href || link?.asset?.url
+                body.push(<a key={location} href={location} className="inlineLink" target="_blank" rel="noopener noreferrer" >{child.text} </a>)
+            }
+        }
+        else {
+            body.push(child.text)
+        }
+
+         
+     })
+
+     return body
 }
