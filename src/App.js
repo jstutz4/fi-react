@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom'
 import './App.css';
 import './desktopApp.css';
 
-import feedback from './pages/feedback'
+// import feedback from './pages/feedback'
 import ArticlePage from './pages/articlePage';
 import RoadMap from './pages/roadmap'
 import Forum from './pages/forum';

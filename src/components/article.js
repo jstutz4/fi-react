@@ -24,13 +24,15 @@ export default function article(props) {
             if(!startMultiList && section.listItem)
                 startMultiList=true
 
-            if(startMultiList && continueMultiList && !section.listItem)
+            else if(startMultiList && continueMultiList && !section.listItem)
             {
                 startMultiList = false
                 continueMultiList = true
                 readyToBuild = true
+                if(level2List.length > 0)
+                    multiList.push({level:2, body: level2List})
             }
-            if(startMultiList && continueMultiList){
+           if(startMultiList && continueMultiList){
                 if(section.level === 2){
                     level2List.push({level:section.level, body: resolveChildren(section.children, section.markDefs)})
                 }
@@ -65,7 +67,9 @@ export default function article(props) {
                )
                body.push(resolveChildren(section.children, section.markDefs))
                readyToBuild = false
+               continueMultiList = true
                multiList = []
+               level2List = []
             }
             // if it is a list item then dont add anything
             // the add of an list item will be done in the if statement above
