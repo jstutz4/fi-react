@@ -15,6 +15,8 @@ export default function article(props) {
     let readyToBuild = false
     let multiList = []
     let level2List = []
+    // a way to have unique keys when having a spacer paragraph
+    let counter = 0
 
     let content = props.paragraph.map((section) => {
         if(section.style === "normal")
@@ -77,9 +79,15 @@ export default function article(props) {
                 // handles links
                 body.push(resolveChildren(section.children, section.markDefs))
             }
-
+            // consider adding a spacer
+            // if(section.children[0].text == '') {
+            //     console.log(section.children[0].text)
+            //     console.log(body)
+            // }
+            counter++
             return (
-                <article key={section.children[0].text + section.children[0]?.marks?.[0]}>{body}</article>
+
+                <article key={section.children[0].text + section.children[0]?.marks?.[0]+counter}>{body}</article>
             )
         }
         else if (section.style === "blockquote")
