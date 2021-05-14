@@ -13,6 +13,7 @@ const mainNavNames =
     {name:"About", link:"/about"},
     // {name:"Feedback", link:"/feedback"},
     {name:"Community", link:"/community"},
+    {name:"1on1 Meeting", link:"/meeting"},
 ]
 
 const linkItems = [];

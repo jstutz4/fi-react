@@ -18,9 +18,11 @@ export default function ArticlePage(props) {
         }, [pageData])
 
     useEffect(() =>{
+      console.log(
         sanityClient.fetch(pageQuery, {page: props.match.url.split('/')[1]})
           .then((data) => setPageData(data))
           .catch(console.error)
+      )
       }, [props.match.url])
 
     if(!pageData || pageData.length <= 0 || !pageData[0].articles)

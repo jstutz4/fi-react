@@ -9,6 +9,7 @@ import Forum from './pages/forum';
 import CreateTopic from './pages/createTopic';
 import Post from './pages/post';
 import CreateComment from './pages/createComment'
+import Meeting from './pages/OneOnOneMeeting'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 
       <Route exact path="/create/topic/:topic?" component={CreateTopic} />
       <Route exact path="/create/comment/:topic?" component={CreateComment} />
+      <Route exact path='/meeting' component={Meeting} />
     </Switch>
 
   );
